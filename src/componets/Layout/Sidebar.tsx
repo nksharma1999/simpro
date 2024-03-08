@@ -24,6 +24,8 @@ export const Sidebar = () => {
         <NavLink className="nav-link sidebarNavLink" to={"/quarterly-performance"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Quarterly Performance</NavLink>
         <NavLink className="nav-link sidebarNavLink" to={"/business-prospects"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Business Prospects</NavLink>
         <NavLink className="nav-link sidebarNavLink" to={"/project-update"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Project Update</NavLink>
+        <NavLink className="nav-link sidebarNavLink" to={"/balance-sheet"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Balance Sheet</NavLink>
+        <NavLink className="nav-link sidebarNavLink" to={"/cashFlow-statement"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Cash Flow Statement</NavLink>
 
         
         

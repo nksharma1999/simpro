@@ -1,28 +1,36 @@
 import React, { useRef, useState } from "react";
-
+import DatePicker from "react-datepicker";
 interface props {
-    closeAddComponent: () => void;
-  }
-export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
-    const [selectedStatus, setSelectedStatus] = useState('Open');
-  const [selectedSubmissionStatus, setSelectedSubmissionStatus] = useState('Submitted');
-  const projectInput = useRef<any>("");
-  const customeNameInput = useRef<any>("");
-  const orderAwardQtrInput = useRef<any>("");
-  const bidSubmissionQtrInput = useRef<any>("");
-  const valuetInput = useRef<any>("");
-  const winningProbabilityInput = useRef<any>("");
+  closeAddComponent: () => void;
+}
+export const AddDataForProjectUpdate: React.FC<props> = ({
+  closeAddComponent,
+}) => {
+  const [selectedStatus, setSelectedStatus] = useState("Ongoing");
+  const projectNameInput = useRef<any>("");
+  const projectDetailsInput = useRef<any>("");
+  const Original_Contract_ValueInput = useRef<any>("");
+  const Project_Completion_pre = useRef<any>("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const handleStatusSelection = (e: any) => {
     // console.log(e.target.value);
     setSelectedStatus(e.target.value);
   };
-  const handleSubmissionStatus =(e: any) =>{
-    setSelectedSubmissionStatus(e.target.value)
-  }
+  const handleStartDateChange = (date: any) => {
+    setStartDate(date);
+  };
+
+  const handleEndDateChange = (date: any) => {
+    setEndDate(date);
+  };
   return (
     <div className="popup">
-      <div className="popup-inner" style={{overflowY:'auto', maxHeight:'100vh'}}>
+      <div
+        className="popup-inner"
+        style={{  maxHeight: "100vh" }}
+      >
         <div className="card" style={{ padding: "10px", maxWidth: "700px" }}>
           <div
             //   className="card-body"
@@ -57,9 +65,9 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
                     className="form-control"
                     id="floatingInput1"
                     placeholder="Enter Customer Name"
-                    ref={customeNameInput}
+                    ref={projectNameInput}
                   />
-                  <label htmlFor="floatingInput1">Customer</label>
+                  <label htmlFor="floatingInput1">Project Name</label>
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
@@ -69,9 +77,9 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
                     className="form-control"
                     id="floatingPassword2"
                     placeholder="Project"
-                    ref={projectInput}
+                    ref={projectDetailsInput}
                   />
-                  <label htmlFor="floatingPassword2">Project</label>
+                  <label htmlFor="floatingPassword2">Project Details</label>
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
@@ -81,9 +89,9 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
                     className="form-control"
                     id="floatingPassword3"
                     placeholder="Value"
-                    ref={valuetInput}
+                    ref={Original_Contract_ValueInput}
                   />
-                  <label htmlFor="floatingPassword3">Value</label>
+                  <label htmlFor="floatingPassword3">Original Contract Value</label>
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
@@ -93,53 +101,45 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
                     className="form-control"
                     id="floatingPassword4"
                     placeholder="Bid Submission Qtr."
-                    ref={bidSubmissionQtrInput}
+                    ref={Project_Completion_pre}
                   />
-                  <label htmlFor="floatingPassword4">Bid Submission Qtr</label>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12">
-                <div className="form-floating mb-3">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="floatingPassword5"
-                    placeholder="Order Award Qtr."
-                    ref={orderAwardQtrInput}
-                  />
-                  <label htmlFor="floatingPassword5">Order Award Qtr.</label>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12">
-                <div className="form-floating mb-3">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="floatingPassword6"
-                    placeholder="Winning Probability"
-                    ref={winningProbabilityInput}
-                  />
-                  <label htmlFor="floatingPassword7">Winning Probability</label>
+                  <label htmlFor="floatingPassword4">% of Project Completion</label>
                 </div>
               </div>
             </div>
             <div className="row ">
-              <div className="col-md">
-                <div className="form-floating">
-                  <select
-                    className="form-select"
-                    id="floatingSelectGrid"
-                    aria-label="Floating label select example"
-                    onChange={handleSubmissionStatus}
-                    value={selectedSubmissionStatus}
-                  >
-                    <option disabled>---Select---</option>
-                    <option value="Submitted">Part A - Bids Submitted</option>
-                    <option value="YetSubmitted">Part B - Bids yet to be Submitted</option>
-                  </select>
-                  <label htmlFor="floatingSelectGrid">Submission Status</label>
-                </div>
-              </div>
+            <div className="col-lg-3 col-md-6 mb-3" style={{position:'relative'}}>
+                    <label htmlFor="startDate" className="form-label" style={{position:'absolute',top:4,zIndex:1,fontSize:'13px',left:'25px'}}>
+                      Start Date:
+                    </label>
+                    <DatePicker
+                      id="startDate"
+                      selected={startDate}
+                      onChange={handleStartDateChange}
+                      selectsStart
+                      startDate={startDate}
+                      endDate={endDate}
+                      dateFormat="dd/MM/yyyy"
+                      
+                      className="form-control DatePicker"
+                    />
+                  </div>
+                  <div className="col-lg-3 col-md-6 mb-3" style={{position:'relative'}}>
+                    <label htmlFor="endDate" className="form-label"  style={{position:'absolute',top:4,zIndex:1,fontSize:'13px',left:'25px'}}>
+                      Target Date:
+                    </label>
+                    <DatePicker
+                      id="endDate"
+                      selected={endDate}
+                      onChange={handleEndDateChange}
+                      selectsEnd
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control DatePicker"
+                    />
+                  </div>
               <div className="col-md">
                 <div className="form-floating">
                   <select
@@ -150,8 +150,8 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
                     value={selectedStatus}
                   >
                     <option disabled>---Select---</option>
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ongoing</option>
                   </select>
                   <label htmlFor="floatingSelectGrid2">Status</label>
                 </div>
@@ -175,4 +175,4 @@ export const AddDataForProjectUpdate:React.FC<props> = ({closeAddComponent}) =>{
       </div>
     </div>
   );
-}
+};

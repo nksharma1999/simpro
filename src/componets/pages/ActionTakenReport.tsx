@@ -159,35 +159,7 @@ const ActionTakenReport: React.FC = () => {
                       className="form-control DatePicker"
                     />
                   </div>
-                  {/* <div className="col-lg-3 col-md-6">
-                    <div style={{ border: "1px solid black", borderRadius: 5 }}>
-                      <label>Start Date:</label>
-                      <DatePicker
-                        selected={startDate}
-                        onChange={handleStartDateChange}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        dateFormat="dd/MM/yyyy"
-                        className="DatePicker"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6">
-                    <div style={{ border: "1px solid black" }}>
-                      <label>End Date:</label>
-                      <DatePicker
-                        selected={endDate}
-                        onChange={handleEndDateChange}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        dateFormat="dd/MM/yyyy"
-                        className="DatePicker"
-                      />
-                    </div>
-                  </div> */}
+                  
                 </div>
                 <div className="row g-2">
                   <div className="col-md">

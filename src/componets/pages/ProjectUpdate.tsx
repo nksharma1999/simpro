@@ -1,45 +1,87 @@
 import { useState } from "react";
 import { AddDataForProjectUpdate } from "../Layout/AddDataForProjectUpdate";
+import * as XLSX from "xlsx";
+import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+
 const data1 = [
-    {
-      Customer: "Order Inflow",
-      Project: "ANC",
-      Value: 120,
-      Bid_Submission_Qtr: 20,
-      Order_Award_Qtr: 25,
-      Winning_Probability: "25%",
-      Status: "Open",
-    },
-    {
-      Customer: "Order Inflow",
-      Project: "ANsdfC",
-      Value: 120,
-      Bid_Submission_Qtr: 20,
-      Order_Award_Qtr: 25,
-      Winning_Probability: "25%",
-      Status: "Closed",
-    },
-  ];
+  {
+    Project_name: "Order Inflow",
+    Project_details: "ANC",
+    Original_Contract_Value: 120,
+    Start_Date: "20-02-2024",
+    Completion_Date: "20-02-2026",
+    Project_Completion_pre: "25%",
+    Status: "Completed",
+  },
+  {
+    Project_name: "Order Inflow",
+    Project_details: "ANC",
+    Original_Contract_Value: 1230,
+    Start_Date: "20-02-2024",
+    Completion_Date: "20-02-2027",
+    Project_Completion_pre: "25%",
+    Status: "Ongoing",
+  },
+];
 
+const ProjectUpdate = () => {
+  const [projectUpdateData, setprojectUpdateData] = useState(data1);
+  const [selectedStatus, setSelectedStatus] = useState("All");
+  const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const exportToExcel = () => {
+    const filterprojectUpdateData =
+      selectedStatus === "All"
+        ? projectUpdateData
+        : projectUpdateData.filter((f) => f.Status === selectedStatus);
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(filterprojectUpdateData);
+    XLSX.utils.book_append_sheet(wb, ws1, "Bids Submitted");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `table_${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Project_Update${filename}.xlsx`);
+  };
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-const ProjectUpdate = () =>{
-    const [submittedData, setsubmittedData] = useState(data1);
-    const [selectedStatus, setSelectedStatus] = useState("All");
-    const [showAddNewDataView, setShowAddNewData] = useState(false);
-    const handleSelection = (e: any) => {
-        // console.log(e.target.value);
-        setSelectedStatus(e.target.value);
-      };
-    const showAddNewDataEntryView = () => {
-        setShowAddNewData(!showAddNewDataView);
-      };
-    const filterData = (data: any) => {
-        if (selectedStatus === "All") return data;
-        const fdata = data.filter((val: any) => val.Status === selectedStatus);
-        return fdata;
-      };
-    return <>
-    <div>
+    reader.onload = (event: any) => {
+      const binaryString = event.target.result;
+      const workbook = XLSX.read(binaryString, { type: "binary" });
+      const sheetName1 = workbook.SheetNames[0];
+      const worksheet1 = workbook.Sheets[sheetName1];
+      const inportedData1: any[] = XLSX.utils.sheet_to_json(worksheet1, {
+        header: 1,
+      });
+
+      const jsonResult1: any[] = excelFileDataToJson(inportedData1);
+      setprojectUpdateData((prev) => [...prev, ...jsonResult1]);
+    };
+
+    reader.readAsBinaryString(file);
+  };
+  const handleSelection = (e: any) => {
+    // console.log(e.target.value);
+    setSelectedStatus(e.target.value);
+  };
+  const showAddNewDataEntryView = () => {
+    setShowAddNewData(!showAddNewDataView);
+  };
+  const filterData = (data: any) => {
+    if (selectedStatus === "All") return data;
+    const fdata = data.filter((val: any) => val.Status === selectedStatus);
+    return fdata;
+  };
+  return (
+    <>
+      <div>
         <h3>Project Update</h3>
         <div className={"card "} style={{ padding: "10px" }}>
           <div
@@ -77,14 +119,14 @@ const ProjectUpdate = () =>{
                   type="file"
                   className="form-control"
                   id="inputGroupFile01"
-                //   onChange={handleFileChange}
+                  onChange={handleFileChange}
                 />
               </div>
             </div>
 
             <div style={{ marginRight: "10px", marginTop: "10px" }}>
               <button
-                // onClick={exportToExcel}
+                onClick={exportToExcel}
                 style={{ backgroundColor: "white", borderWidth: "0" }}
               >
                 <i
@@ -117,9 +159,6 @@ const ProjectUpdate = () =>{
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
           <div>
-            <div style={{ textAlign: "center" }}>
-              <h4>Part A - Bids Submitted</h4>
-            </div>
             <div
               className="ActionTakenDashboard"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
@@ -127,30 +166,34 @@ const ProjectUpdate = () =>{
               <table className="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Project</th>
-                    <th scope="col">Value</th>
-                    <th scope="col">Bid Submission Qtr.</th>
-                    <th scope="col">Order Award Qtr.</th>
-                    <th scope="col">Winning Probability High / Medium / Low</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Project details (Short description)</th>
+                    <th scope="col">Original Contract Value (Rs. Cr/Mn USD)</th>
+                    <th scope="col">Start-Date</th>
+                    <th scope="col">Expected / Actual Completion Date</th>
+                    <th scope="col">% of Project Completion</th>
                     <th scope="col">Status </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filterData(submittedData).map((val: any, index: number) => {
-                    return (
-                      <tr key={index}>
-                        <th>{val.Customer}</th>
-                        <td>{val.Project}</td>
-                        <td>{val.Value}</td>
+                  {filterData(projectUpdateData).map(
+                    (val: any, index: number) => {
+                      return (
+                        <tr key={index}>
+                          <th>{val.Project_name}</th>
+                          <td>{val.Project_details}</td>
+                          <td>{val.Original_Contract_Value}</td>
 
-                        <td>{val.Bid_Submission_Qtr}</td>
-                        <td>{val.Order_Award_Qtr}</td>
-                        <td>{val.Winning_Probability}</td>
-                        <td>{val.Status}</td>
-                      </tr>
-                    );
-                  })}
+                          <td>{val.Start_Date}</td>
+                          <td>{val.Completion_Date}</td>
+                          <td>{val.Project_Completion_pre}</td>
+                          <td style={{ textAlign: "center", color: "green" }}>
+                            {val.Status}
+                          </td>
+                        </tr>
+                      );
+                    }
+                  )}
                 </tbody>
               </table>
             </div>
@@ -161,6 +204,7 @@ const ProjectUpdate = () =>{
         <AddDataForProjectUpdate closeAddComponent={showAddNewDataEntryView} />
       )}
     </>
-}
+  );
+};
 
 export default ProjectUpdate;
