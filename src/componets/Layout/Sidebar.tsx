@@ -1,4 +1,4 @@
-import { url } from "inspector";
+                                                                                                                                import { url } from "inspector";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -24,6 +24,8 @@ export const Sidebar = () => {
         <NavLink className="nav-link sidebarNavLink" to={"/quarterly-performance"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Quarterly Performance</NavLink>
         <NavLink className="nav-link sidebarNavLink" to={"/business-prospects"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Business Prospects</NavLink>
         <NavLink className="nav-link sidebarNavLink" to={"/project-update"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Project Update</NavLink>
+        <NavLink className="nav-link sidebarNavLink" to={"/summary-forecast"}><i className="fa-solid fa-chart-line sidebarIcon"></i>P&L summary&forecast</NavLink>
+        <NavLink className="nav-link sidebarNavLink" to={"/working-capital"}><i className="fa-solid fa-chart-line sidebarIcon"></i>Working Capital</NavLink>
 
         
         
