@@ -7,6 +7,8 @@ const DashBoard = lazy(() => import('./componets/pages/DashBoard'));
 const ActionTakenReport = lazy(() => import('./componets/pages/ActionTakenReport'));
 const QuarterlyPerformance = lazy(() => import('./componets/pages/QuarterlyPerformance'));
 const BusinessProspects = lazy(() => import('./componets/pages/BusinessProspects'));
+const Summaryforecast = lazy(()=> import('./componets/pages/SummaryForecast')); 
+const WorkingCapital = lazy(()=> import('./componets/pages/WorkingCapital'));
 const ProjectUpdate = lazy(() => import('./componets/pages/ProjectUpdate'));
 function App() {
   return (
@@ -18,10 +20,12 @@ function App() {
         <Route path="quarterly-performance" element={<QuarterlyPerformance />}/>
         <Route path="business-prospects" element={<BusinessProspects />}/>
         <Route path="project-update" element={<ProjectUpdate />}/>
+        <Route path="summary-forecast" element={<Summaryforecast />}/>
+        <Route path="working-capital" element={<WorkingCapital />}/>
         <Route path="balance-sheet" element={<BalanceSheet />}/>
         <Route path="cashFlow-statement" element={<CashFlowStatement />}/>
       </Routes>
-      </Suspense>
+      </Suspense>                                                                               
     </MainLayout>
   );
 }
