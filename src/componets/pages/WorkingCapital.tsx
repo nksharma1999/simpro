@@ -1,4 +1,5 @@
 import React, { useState ,ChangeEvent} from "react";
+import * as XLSX from "xlsx";
 const data = [
   {
     Particulars: "Sales",
@@ -217,7 +218,22 @@ const WorkingCapital = () => {
     setSelectedEntity("");
   };
 
-
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(filterData());
+    XLSX.utils.book_append_sheet(wb, ws1, "Wroking Capital");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Working_Capital_${selectedFY}_${filename}.xlsx`);
+  };
   const findBudgetQtr = (fyA:number,fyB:number) =>{
     const budget = (((fyA-fyB)/fyB)*100);
     if(budget>=0){
@@ -288,13 +304,34 @@ const WorkingCapital = () => {
           <button className="clear-button" onClick={clearFilters}>
             Clear Filters
           </button>
+          <button
+            onClick={exportToExcel}
+            style={{
+              backgroundColor: "white",
+              borderWidth: "0",
+              marginRight: "15px",
+              marginLeft:'10px'
+            }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              className="fa-solid fa-download fa-fade"
+            ></i>
+          </button>
         </div>
+        <div
+            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+          ></div>
         <div
           className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered table-striped">
-            <thead className="table-format">
+            <thead className="table-format" style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
             <tr>
               <th rowSpan={2}>Particulars</th>
               <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>

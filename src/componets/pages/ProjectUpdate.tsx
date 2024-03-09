@@ -86,7 +86,7 @@ const ProjectUpdate = () => {
         <div className={"card "} style={{ padding: "10px" }}>
           <div
             style={{
-              padding: "10px",
+              paddingBottom: "10px",
               borderRadius: "0.3px",
               display: "flex",
               flexWrap: "wrap",
@@ -164,7 +164,7 @@ const ProjectUpdate = () => {
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
-                <thead>
+                <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
                   <tr>
                     <th scope="col">Project Name</th>
                     <th scope="col">Project details (Short description)</th>

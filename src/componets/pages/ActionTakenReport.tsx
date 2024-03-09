@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { EditPopup } from "./EditActivity";
+import * as XLSX from "xlsx";
 const data = [
   {
     topic: "ABC",
@@ -24,6 +25,23 @@ const ActionTakenReport: React.FC = () => {
   const [endDate, setEndDate] = useState(null);
   const [editData,setEditData] = useState('');
   const [showEdit, setShowEdit] =useState<boolean>(false);
+
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(allActivity);
+    XLSX.utils.book_append_sheet(wb, ws1, "Action Taken Report");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Action_Taken_Report_${filename}.xlsx`);
+  };
   const handleEdit = (data:any) =>{
     // console.log(data);
     setEditData(data);
@@ -237,7 +255,23 @@ const ActionTakenReport: React.FC = () => {
             }}
           >
             <p style={{ fontSize: "20px" }}> Activity Tracker</p>
+            {/* <div style={{ marginRight: "10px", marginTop: "10px" }}>
+              
+            </div> */}
             <div style={{ marginTop: "-10px", marginRight: "10px" }}>
+            <button
+                onClick={exportToExcel}
+                style={{ backgroundColor: "white", borderWidth: "0" ,marginRight:'15px'}}
+              >
+                <i
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                  className="fa-solid fa-download fa-fade"
+                ></i>
+              </button>
               <button
                 onClick={updateAddNewActivityView}
                 style={{ backgroundColor: "white", borderWidth: "0" }}
@@ -252,6 +286,7 @@ const ActionTakenReport: React.FC = () => {
                 ></i>
               </button>
             </div>
+            
           </div>
           <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
@@ -261,7 +296,7 @@ const ActionTakenReport: React.FC = () => {
             style={{ overflow: "auto", marginTop: "10px" }}
           >
             <table className="table table-bordered">
-              <thead>
+              <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
                 <tr>
                   <th scope="col">Sn.</th>
                   <th scope="col">Topic</th>

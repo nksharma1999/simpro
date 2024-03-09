@@ -1,10 +1,11 @@
-import React, { useState ,ChangeEvent} from "react";
+import React, { useState, ChangeEvent } from "react";
+import * as XLSX from "xlsx";
 const data = [
   {
     Particulars: "Order Book",
     FYpre: 100,
     FYcurrent: 120,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -18,7 +19,7 @@ const data = [
     Particulars: "Order Inflow",
     FYpre: 100,
     FYcurrent: 10,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -32,7 +33,7 @@ const data = [
     Particulars: "Sales",
     FYpre: 100,
     FYcurrent: 160,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -46,7 +47,7 @@ const data = [
     Particulars: "EBITDA",
     FYpre: 100,
     FYcurrent: 170,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -60,7 +61,7 @@ const data = [
     Particulars: "% margin",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -74,7 +75,7 @@ const data = [
     Particulars: "Other Income",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -88,7 +89,7 @@ const data = [
     Particulars: "Depreciation",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -102,7 +103,7 @@ const data = [
     Particulars: "PBIT",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -116,7 +117,7 @@ const data = [
     Particulars: "% Margin(including other income)",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -130,7 +131,7 @@ const data = [
     Particulars: "Interest",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -144,7 +145,7 @@ const data = [
     Particulars: "PBT",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -158,7 +159,7 @@ const data = [
     Particulars: "PAT",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -172,19 +173,17 @@ const data = [
     Particulars: "% Margin (including other income)",
     FYpre: 100,
     FYcurrent: 150,
-    Growth: '50%',
+    Growth: "50%",
     Q1FYCurrent_A: 50,
     Q2FYCurrent_A: 50,
     Q3FYCurrent_A: 50,
-    Q4FYCurrent_A: 50,                                                                                                                                                                                                                                      
+    Q4FYCurrent_A: 50,
     Q1FYCurrent_B: 50,
     Q2FYCurrent_B: 50,
     Q3FYCurrent_B: 50,
-    Q4FYCurrent_B: 50                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ,
-  },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-  
+    Q4FYCurrent_B: 50,
+  },
 ];
-
 
 const SummaryForecast = () => {
   const [selectedFY, setSelectedFY] = useState("2023");
@@ -202,16 +201,30 @@ const SummaryForecast = () => {
   const clearFilters = () => {
     setSelectedEntity("");
   };
-
-
-  const findGrowth = (cfy:number,pfy:number) =>{
-    const growth = ((cfy-pfy)/pfy)*100;
-    if(growth>=0){
-        return {value: growth, isUp: true};
-    }else{
-        return {value: growth, isUp: false};
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(filterData());
+    XLSX.utils.book_append_sheet(wb, ws1, "P&L Summary Forecast");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `P&L_Summary_Forecast_${selectedFY}_${filename}.xlsx`);
+  };
+  const findGrowth = (cfy: number, pfy: number) => {
+    const growth = ((cfy - pfy) / pfy) * 100;
+    if (growth >= 0) {
+      return { value: growth, isUp: true };
+    } else {
+      return { value: growth, isUp: false };
     }
-  }
+  };
 
   const filterData = () => {
     if (selectedEntity === "") {
@@ -243,87 +256,159 @@ const SummaryForecast = () => {
             </select>
             <label htmlFor="floatingSelectGrid">Select FY</label>
           </div>
-        <div className="Entity-filter">  
-          <div className="form-floating">
-            <select
-              className="form-select"
-              id="entityFilter"
-              aria-label="Floating label select example"
-              onChange={handleEntityFilter}
-              value={selectedEntity}
-            >
-              <option value="">All Entities</option>
-              {data.map((item) => (
-                <option key={item.Particulars} value={item.Particulars}>
-                  {item.Particulars}
-                </option>
-              ))}
-            </select>
-            <label htmlFor="entityFilter">Select Entity</label>
+          <div className="Entity-filter">
+            <div className="form-floating">
+              <select
+                className="form-select"
+                id="entityFilter"
+                aria-label="Floating label select example"
+                onChange={handleEntityFilter}
+                value={selectedEntity}
+              >
+                <option value="">All Entities</option>
+                {data.map((item) => (
+                  <option key={item.Particulars} value={item.Particulars}>
+                    {item.Particulars}
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="entityFilter">Select Entity</label>
+            </div>
           </div>
-        </div>          
           <button className="clear-button" onClick={clearFilters}>
             Clear Filters
           </button>
+          <button
+            onClick={exportToExcel}
+            style={{
+              backgroundColor: "white",
+              borderWidth: "0",
+              marginRight: "15px",
+              marginLeft:'10px'
+            }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              className="fa-solid fa-download fa-fade"
+            ></i>
+          </button>
         </div>
+        <div
+            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+          ></div>
         <div
           className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered table-striped">
-            <thead className="table-format">
-            <tr>
-              <th rowSpan={2}>Particulars</th>
-              <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
-              <th colSpan={2}>Q1 FY{selectedFY}</th>
-              <th colSpan={2}>Q2 FY{selectedFY}</th>
-              <th colSpan={2}>Q3 FY{selectedFY}</th>
-              <th colSpan={2}>Q4 FY{selectedFY}</th>
-              <th rowSpan={2}>FY{Number(selectedFY)}</th>
-              <th rowSpan={2}>Growth %</th>
-            </tr>
-                <tr>
-                  <th scope="col">Q1 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q2 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q3 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
-                 
-                </tr>
+            <thead
+              className="table-format"
+              style={{ color: "#FC5C7D", backgroundColor: "#f6f0f7" }}
+            >
+              <tr>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}>Q1 FY{selectedFY}</th>
+                <th colSpan={2}>Q2 FY{selectedFY}</th>
+                <th colSpan={2}>Q3 FY{selectedFY}</th>
+                <th colSpan={2}>Q4 FY{selectedFY}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}</th>
+                <th rowSpan={2}>Growth %</th>
+              </tr>
+              <tr>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+              </tr>
             </thead>
             <tbody>
               {filterData().map((val, index) => {
-                    const info = findGrowth(val.FYcurrent, val.FYpre);
-    const isSalesOrMargin = val.Particulars === "Sales" || val.Particulars === "% Margin";
-    const isSelectedEntity = val.Particulars.toLowerCase().includes(selectedEntity.toLowerCase());
+                const info = findGrowth(val.FYcurrent, val.FYpre);
+                const isSalesOrMargin =
+                  val.Particulars === "Sales" || val.Particulars === "% Margin";
+                const isSelectedEntity = val.Particulars.toLowerCase().includes(
+                  selectedEntity.toLowerCase()
+                );
 
-    return (
-      <tr key={index} className={isSelectedEntity ? "highlight-row" : ""}>
-        <th scope="row" className={isSalesOrMargin ? "bold-text" : ""}>
-          {val.Particulars.includes("Margin") ? (
-            <>
-              % Margin <sub style={{ fontSize: "smaller" }}>(including other income)</sub>
-            </>
-          ) : (
-            val.Particulars
-          )}
-        </th>
-        <td>{val.FYpre}</td>
-        <td>{val.Q1FYCurrent_A}</td>
-        <td>{val.Q2FYCurrent_A}</td>
-        <td>{val.Q3FYCurrent_A}</td>
-        <td>{val.Q4FYCurrent_A}</td>
-        <td>{val.Q1FYCurrent_B}</td>
-        <td>{val.Q2FYCurrent_B}</td>
-        <td>{val.Q3FYCurrent_B}</td>
-        <td>{val.Q4FYCurrent_B}</td>
-        <td>{val.FYcurrent}</td>
-        <td>{info.value}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
-      </tr>
-    );
+                return (
+                  <tr
+                    key={index}
+                    className={isSelectedEntity ? "highlight-row" : ""}
+                  >
+                    <th
+                      scope="row"
+                      className={isSalesOrMargin ? "bold-text" : ""}
+                    >
+                      {val.Particulars.includes("Margin") ? (
+                        <>
+                          % Margin{" "}
+                          <sub style={{ fontSize: "smaller" }}>
+                            (including other income)
+                          </sub>
+                        </>
+                      ) : (
+                        val.Particulars
+                      )}
+                    </th>
+                    <td>{val.FYpre}</td>
+                    <td>{val.Q1FYCurrent_A}</td>
+                    <td>{val.Q2FYCurrent_A}</td>
+                    <td>{val.Q3FYCurrent_A}</td>
+                    <td>{val.Q4FYCurrent_A}</td>
+                    <td>{val.Q1FYCurrent_B}</td>
+                    <td>{val.Q2FYCurrent_B}</td>
+                    <td>{val.Q3FYCurrent_B}</td>
+                    <td>{val.Q4FYCurrent_B}</td>
+                    <td>{val.FYcurrent}</td>
+                    <td>
+                      {info.value}%{" "}
+                      {info.isUp ? (
+                        <i
+                          style={{ color: "green" }}
+                          className="fa-solid fa-arrow-trend-up fa-fade"
+                        ></i>
+                      ) : (
+                        <i
+                          style={{ color: "red" }}
+                          className="fa-solid fa-arrow-trend-down fa-fade"
+                        ></i>
+                      )}
+                    </td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>
@@ -334,4 +419,3 @@ const SummaryForecast = () => {
 };
 
 export default SummaryForecast;
-

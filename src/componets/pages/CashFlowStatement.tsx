@@ -56,6 +56,8 @@ const data = [
 const CashFlowStatement = () => {
   const [allActivity, setAllActivity] = useState(data);
   const [selectedFY, setSelectedFY] = useState("23");
+  const [selectedQtr, setSelectedQtr] = useState(["(A)", "(B)"]);
+
   const handleFY = (e: any) => {
     // console.log(e.target.value);
     setSelectedFY(e.target.value);
@@ -89,8 +91,8 @@ const CashFlowStatement = () => {
       <h3>Cash Flow Statement</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
         <div
-           style={{
-            padding: "10px",
+          style={{
+            paddingBottom: "10px",
             borderRadius: "0.3px",
             display: "flex",
             flexWrap: "wrap",
@@ -116,48 +118,85 @@ const CashFlowStatement = () => {
             <label htmlFor="floatingSelectGrid">Select FY</label>
           </div>
           <div style={{ marginRight: "10px", marginTop: "10px" }}>
-              <button
-                onClick={exportToExcel}
-                style={{ backgroundColor: "white", borderWidth: "0" }}
-              >
-                <i
-                  style={{
-                    fontSize: "25px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                  className="fa-solid fa-download fa-fade"
-                ></i>
-              </button>
-            </div>
+            <button
+              onClick={exportToExcel}
+              style={{ backgroundColor: "white", borderWidth: "0" }}
+            >
+              <i
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+                className="fa-solid fa-download fa-fade"
+              ></i>
+            </button>
+          </div>
         </div>
-        {/* <div
-          style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
-        ></div> */}
+        <div
+            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+          ></div>
         <div
           className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
-            <thead>
+            <thead className="table-format" style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
               <tr>
-                <th scope="col">Particulars</th>
-                <th scope="col">FY{Number(selectedFY) - 1} (A)</th>
-                <th scope="col">Q1 FY{selectedFY} (A)</th>
-                <th scope="col">Q1 FY{selectedFY} (B)</th>
-                <th scope="col">Q2 FY{selectedFY} (A)</th>
-                <th scope="col">Q2 FY{selectedFY} (B)</th>
-                <th scope="col">Q3 FY{selectedFY} (A)</th>
-                <th scope="col">Q3 FY{selectedFY} (B)</th>
-                <th scope="col">Q4 FY{selectedFY} (A)</th>
-                <th scope="col">Q4 FY{selectedFY} (B)</th>
-                <th scope="col">FY{selectedFY} (A)</th>
-                <th scope="col">FY{selectedFY} (B)</th>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}>Q1 FY{selectedFY}</th>
+                <th colSpan={2}>Q2 FY{selectedFY}</th>
+                <th colSpan={2}>Q3 FY{selectedFY}</th>
+                <th colSpan={2}>Q4 FY{selectedFY}</th>
+                <th rowSpan={2}>
+                  FY{Number(selectedFY)}
+                  {selectedQtr[0]}
+                </th>
+                <th rowSpan={2}>
+                  FY{Number(selectedFY)}
+                  {selectedQtr[1]}
+                </th>
+                <th rowSpan={2}>
+                  Budget v/s Actual {Number(selectedFY)}-
+                  {Number(selectedFY) - 1}
+                </th>
+                <th rowSpan={2}>
+                  Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
+                </th>
+              </tr>
+              <tr>
                 <th scope="col">
-                  Budget v/s Actual FY{Number(selectedFY) - 1}-{selectedFY}
+                  Q1 FY{selectedFY}
+                  {selectedQtr[0]}
                 </th>
                 <th scope="col">
-                  Year on Year FY{selectedFY} - FY{Number(selectedFY) - 1}
+                  Q1 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[1]}
                 </th>
               </tr>
             </thead>

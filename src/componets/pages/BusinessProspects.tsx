@@ -134,7 +134,8 @@ const BusinessProspects = () => {
         <div className={"card "} style={{ padding: "10px" }}>
           <div
             style={{
-              padding: "10px",
+              // padding: "0px 0px",
+              paddingBottom:'10px',
               borderRadius: "0.3px",
               display: "flex",
               flexWrap: "wrap",
@@ -215,7 +216,7 @@ const BusinessProspects = () => {
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
-                <thead>
+                <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
                   <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
@@ -254,7 +255,7 @@ const BusinessProspects = () => {
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
-                <thead>
+                <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
                   <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>

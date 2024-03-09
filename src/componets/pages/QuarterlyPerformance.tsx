@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as XLSX from "xlsx";
 const data = [
   {
     Particulars: "Order Inflow",
@@ -67,24 +68,39 @@ const QuarterlyPerformance = () => {
         return {value: growth, isUp: false};
     }
   }
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(allActivity);
+    XLSX.utils.book_append_sheet(wb, ws1, "Quarterly Performance");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Quarterly_Performance_FY${selectedFY}_${filename}.xlsx`);
+  };
   return (
     <div>
       <h3>Quarterly Performance Report</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
         <div
           style={{
-            // padding: "10px",
-            // borderRadius: "0.3px",
-            // display: "flex",
-            // flexWrap: "wrap",
-            // justifyContent: "space-between",
-            // alignItems: "center",
-            marginBottom:'10px'
+            paddingBottom:'10px',
+              borderRadius: "0.3px",
+              display: "flex",
+              // flexWrap: "wrap",
+              justifyContent: "space-between",
+              alignItems: "center",
           }}
         >
           {/* <div className="row g-2">
             <div className="col-md"> */}
-              <div className="form-floating">
+              <div className="form-floating" style={{ width: "600px" }}>
                 <select
                   className="form-select"
                   id="floatingSelectGrid"
@@ -99,18 +115,33 @@ const QuarterlyPerformance = () => {
                 </select>
                 <label htmlFor="floatingSelectGrid">Select FY</label>
               </div>
-            {/* </div>
-          </div> */}
+              <div style={{ marginTop: "-10px", marginRight: "10px" }}>
+            <button
+                onClick={exportToExcel}
+                style={{ backgroundColor: "white", borderWidth: "0" ,marginRight:'15px'}}
+              >
+                <i
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                  className="fa-solid fa-download fa-fade"
+                ></i>
+              </button>
+              
+            </div>
+            
         </div>
-        {/* <div
-          style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
-        ></div> */}
+        <div
+            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+          ></div>
         <div
           className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
-            <thead>
+            <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
               <tr>
                 <th scope="col">Particulars</th>
                 <th scope="col">FY{Number(selectedFY)-1}</th>
