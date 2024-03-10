@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddDataForProjectUpdate } from "../Layout/AddDataForProjectUpdate";
+import { AddDataForProjectUpdate } from "./AddDataForProjectUpdate";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 
@@ -165,14 +165,14 @@ const ProjectUpdate = () => {
             >
               <table className="table table-bordered">
                 <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
-                  <tr>
-                    <th scope="col">Project Name</th>
-                    <th scope="col">Project details (Short description)</th>
-                    <th scope="col">Original Contract Value (Rs. Cr/Mn USD)</th>
-                    <th scope="col">Start-Date</th>
-                    <th scope="col">Expected / Actual Completion Date</th>
-                    <th scope="col">% of Project Completion</th>
-                    <th scope="col">Status </th>
+                  <tr style={{textAlign:'center'}}>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project Name</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project details (Short description)</th>
+                    <th scope="col" style={{width:'250px',whiteSpace:'wrap'}}>Original Contract Value (Rs. Cr/Mn USD)</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Start-Date</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Expected / Actual Completion Date</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>% of Project Completion</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Status </th>
                   </tr>
                 </thead>
                 <tbody>

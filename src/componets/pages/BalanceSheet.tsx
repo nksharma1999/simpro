@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as XLSX from "xlsx";
-import { AddDataForBalanceSheet } from "../Layout/AddDataForBalanceSheet";
+import { AddDataForBalanceSheet } from "./AddDataForBalanceSheet";
 const data = [
   {
     Particulars: "Net Worth",

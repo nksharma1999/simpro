@@ -51,7 +51,7 @@ const User = () => {
             // alignItems: "center",
           }}
         >
-          <p style={{ fontSize: "20px" }}> Create Activity </p>
+          <p style={{ fontSize: "20px" }}> User List </p>
           <div style={{ marginRight: "10px", marginTop: "0px" }}>
             
             <button
@@ -124,6 +124,8 @@ const User = () => {
                         }}
                       >
                         <button onClick={ () => handleEdit(val)} style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-pen-to-square" ></i></button>
+                        <button  style={{backgroundColor:'white', border:'none',color: "gray",}}><i className="fa-solid fa-trash"></i></button>
+                      
                       </td>
                     </tr>
                   );

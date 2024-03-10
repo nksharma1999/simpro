@@ -335,6 +335,8 @@ const ActionTakenReport: React.FC = () => {
                         }}
                       >
                         <button onClick={ () => handleEdit(val)} style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-pen-to-square" ></i></button>
+                        <button  style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-trash"></i></button>
+                      
                       </td>
                     </tr>
                   );

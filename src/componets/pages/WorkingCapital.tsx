@@ -342,7 +342,7 @@ const WorkingCapital = () => {
               <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
               <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
               <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY)-1}</th>
-              <th rowSpan={2}>Year on Year {Number(selectedFY)}-{Number(selectedFY)-1}</th>
+              <th rowSpan={2} style={{width:'200px',whiteSpace:'wrap'}}>Year on Year {Number(selectedFY)}-{Number(selectedFY)-1}</th>
             </tr>
                 <tr>
                   <th scope="col">Q1 FY{selectedFY}{selectedQtr[0]}</th>
@@ -385,8 +385,8 @@ const WorkingCapital = () => {
         <td>{val.Q4FYCurrent_B}</td>
         <td>{val.FYcurrent_A}</td>
         <td>{val.FYcurrent_B}</td>
-        <td>{info.value}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
-        <td>{fyr_info.value}% {fyr_info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
+        <td>{info.value.toFixed(2)}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
+        <td>{fyr_info.value.toFixed(2)}% {fyr_info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
       </tr>
     );
               })}

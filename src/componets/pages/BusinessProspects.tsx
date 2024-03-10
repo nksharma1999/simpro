@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddDataBusinessProspects } from "../Layout/AddDataBusinessProspects";
+import { AddDataBusinessProspects } from "./AddDataBusinessProspects";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 const data1 = [
@@ -223,7 +223,7 @@ const BusinessProspects = () => {
                     <th scope="col">Value</th>
                     <th scope="col">Bid Submission Qtr.</th>
                     <th scope="col">Order Award Qtr.</th>
-                    <th scope="col">Winning Probability High / Medium / Low</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Winning Probability High / Medium / Low</th>
                     <th scope="col">Status </th>
                   </tr>
                 </thead>
@@ -262,7 +262,7 @@ const BusinessProspects = () => {
                     <th scope="col">Value</th>
                     <th scope="col">Bid Submission Qtr.</th>
                     <th scope="col">Order Award Qtr.</th>
-                    <th scope="col">Winning Probability High / Medium / Low</th>
+                    <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Winning Probability High / Medium / Low</th>
                     <th scope="col">Status </th>
                   </tr>
                 </thead>

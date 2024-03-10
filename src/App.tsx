@@ -7,6 +7,7 @@ import Bank from "./componets/MasterData/Bank";
 import { PageNotFound } from "./componets/PageNotFound";
 import FY from "./componets/MasterData/FY";
 import SACompany from "./componets/MasterData/SACompany";
+import BankingFacilities from "./componets/Module2/BankingFacilities";
 const DashBoard = lazy(() => import('./componets/pages/DashBoard'));
 const ActionTakenReport = lazy(() => import('./componets/pages/ActionTakenReport'));
 const QuarterlyPerformance = lazy(() => import('./componets/pages/QuarterlyPerformance'));
@@ -40,6 +41,7 @@ function App() {
         <Route path="bank" element={<Bank />}/>
         <Route path="financial-year" element={<FY />}/>
         <Route path="sa-company" element={<SACompany />}/>
+        <Route path="banking-facilities" element={<BankingFacilities />}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
       </Suspense>                                                                               
