@@ -347,6 +347,19 @@ export const Sidebar = () => {
                 </NavLink>
               </div>
             </div>
+            <div
+              id="facility-monitoringCollapse"
+              className="accordion-collapse collapse"
+              aria-labelledby="facilityMonitoring"
+              // data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/banking-Gurantee"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                Banking Gurantee
+                </NavLink>
+              </div>
+            </div>
           </div>
         </div>
         
