@@ -16,6 +16,7 @@ const Summaryforecast = lazy(()=> import('./componets/pages/SummaryForecast'));
 const WorkingCapital = lazy(()=> import('./componets/pages/WorkingCapital'));
 const ProjectUpdate = lazy(() => import('./componets/pages/ProjectUpdate'));
 const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
+const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
 const BalanceSheet = lazy(()=> import('./componets/pages/BalanceSheet')); 
 const CashFlowStatement = lazy(()=> import('./componets/pages/CashFlowStatement'));
 const User = lazy(() => import('./componets/AdminPage/User'));
@@ -43,6 +44,8 @@ function App() {
         <Route path="sa-company" element={<SACompany />}/>
         <Route path="banking-facilities" element={<BankingFacilities />}/>
         <Route path="banking-Gurantee" element={<BankGurantee />}/>
+        <Route path="corporate-Guarantee" element={<CorporateGuarantee />}/>
+
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
       </Suspense>                                                                               
