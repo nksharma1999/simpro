@@ -1,4 +1,6 @@
 import React, { Suspense, lazy } from "react";
+import ReactDatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 import MainLayout from "./componets/Layout/MainLayout";
 import { Route, Routes } from "react-router-dom";
 import RoleMapping from "./componets/AdminPage/RoleMapping";
