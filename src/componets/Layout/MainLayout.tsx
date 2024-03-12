@@ -5,7 +5,7 @@ import { Sidebar } from "./Sidebar";
 import { OffCanvas } from "./OffCanvas";
 
 const MainLayout = ({ children }: any) => {
-    const [isShowSidebar,setShowSidebar] = useState<boolean>(true);
+    const [isShowSidebar,setShowSidebar] = useState<boolean>(false);
     const updateSideBarView = () =>{
         setShowSidebar(!isShowSidebar);
     }
