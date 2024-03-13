@@ -341,10 +341,7 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead
-                            style={{
-                              color: "#FC5C7D",
-                              backgroundColor: "#f6f0f7",
-                            }}
+                            className="tableHeader"
                           >
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
@@ -662,10 +659,8 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead
-                            style={{
-                              color: "#FC5C7D",
-                              backgroundColor: "#f6f0f7",
-                            }}
+                          className="tableHeader"
+                            
                           >
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
@@ -1001,10 +996,8 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead
-                            style={{
-                              color: "#FC5C7D",
-                              backgroundColor: "#f6f0f7",
-                            }}
+                          className="tableHeader"
+                           
                           >
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
@@ -1137,10 +1130,8 @@ const BankingFacilities = () => {
             >
               <table className="table table-bordered">
                 <thead
-                  style={{
-                    color: "#FC5C7D",
-                    backgroundColor: "#f6f0f7",
-                  }}
+                className="tableHeader"
+                  
                 >
                   <tr>
                     <th rowSpan={4}>Company Name</th>

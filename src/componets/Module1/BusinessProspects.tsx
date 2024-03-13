@@ -216,7 +216,7 @@ const BusinessProspects = () => {
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
-                <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
+                <thead className="tableHeader">
                   <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
@@ -255,7 +255,7 @@ const BusinessProspects = () => {
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
-                <thead style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
+                <thead className="tableHeader">
                   <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>

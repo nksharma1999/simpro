@@ -8,7 +8,10 @@ th {
   white-space: nowrap;
 }
 
-
+.tableHeader{
+  color: "black";
+  backgroundColor: "#f6f0f7";
+}
 /************** Activity***********/
 .DatePicker{
     /* width: 100%; */

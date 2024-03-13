@@ -71,10 +71,7 @@ const CorporateGuarantee = () => {
                           
               <table className="table table-bordered">
                 <thead
-                  style={{
-                    color: "#FC5C7D",
-                    backgroundColor: "#f6f0f7",
-                  }}
+                  className="tableHeader"
                 >
                 
                 <tr style={{ textAlign: "center" }}>

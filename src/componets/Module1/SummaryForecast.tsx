@@ -306,8 +306,7 @@ const SummaryForecast = () => {
         >
           <table className="table table-bordered table-striped">
             <thead
-              className="table-format"
-              style={{ color: "#FC5C7D", backgroundColor: "#f6f0f7" }}
+              className="table-format tableHeader"
             >
               <tr>
                 <th rowSpan={2}>Particulars</th>

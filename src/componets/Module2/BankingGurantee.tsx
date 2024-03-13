@@ -113,10 +113,7 @@ const BankingGuarantee = () => {
         >
           <table className="table table-bordered">
             <thead
-              style={{
-                color: "#FC5C7D",
-                backgroundColor: "#f6f0f7",
-              }}
+              className="tableHeader"
             >
               <tr style={{ textAlign: "center" }}>
                 <th scope="col">Name of subsidiary company</th>

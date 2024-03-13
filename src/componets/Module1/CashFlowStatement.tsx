@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as XLSX from "xlsx";
-import { AddDataForBalanceSheet } from "./AddDataForBalanceSheet";
 const data = [
   {
     Particulars: "Net Worth",
@@ -54,14 +53,11 @@ const data = [
   },
 ];
 
-const BalanceSheet = () => {
+const CashFlowStatement = () => {
   const [allActivity, setAllActivity] = useState(data);
   const [selectedFY, setSelectedFY] = useState("23");
   const [selectedQtr, setSelectedQtr] = useState(["(A)", "(B)"]);
-  const [showAddNewDataView, setShowAddNewData] = useState(false);
-  const showAddNewDataEntryView = () => {
-    setShowAddNewData(!showAddNewDataView);
-  };
+
   const handleFY = (e: any) => {
     // console.log(e.target.value);
     setSelectedFY(e.target.value);
@@ -88,11 +84,11 @@ const BalanceSheet = () => {
       ":" +
       currentDate.getSeconds();
     const filename = `${formattedDate}.xlsx`;
-    XLSX.writeFile(wb, `Balance_Sheet_FY${selectedFY}_${filename}.xlsx`);
+    XLSX.writeFile(wb, `Cash_Flow_Statement_FY${selectedFY}_${filename}.xlsx`);
   };
-  return (<>
+  return (
     <div>
-      <h3>Balance Sheet</h3>
+      <h3>Cash Flow Statement</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
         <div
           style={{
@@ -124,7 +120,7 @@ const BalanceSheet = () => {
           <div style={{ marginRight: "10px", marginTop: "10px" }}>
             <button
               onClick={exportToExcel}
-              style={{ backgroundColor: "white", borderWidth: "0",marginRight:'40px' }}
+              style={{ backgroundColor: "white", borderWidth: "0" }}
             >
               <i
                 style={{
@@ -135,35 +131,7 @@ const BalanceSheet = () => {
                 className="fa-solid fa-download fa-fade"
               ></i>
             </button>
-            <button
-              onClick={showAddNewDataEntryView}
-              style={{ backgroundColor: "white", borderWidth: "0" }}
-            >
-              <i
-                style={{
-                  fontSize: "25px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-                className="fa-solid fa-plus fa-fade"
-              ></i>
-            </button>
           </div>
-          {/* <div style={{ marginRight: "10px", marginTop: "10px" }}>
-              <button
-                // onClick={showAddNewDataEntryView}
-                style={{ backgroundColor: "white", borderWidth: "0" }}
-              >
-                <i
-                  style={{
-                    fontSize: "25px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                  className="fa-solid fa-plus fa-fade"
-                ></i>
-              </button>
-            </div> */}
         </div>
         <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
@@ -173,7 +141,7 @@ const BalanceSheet = () => {
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
-            <thead className="table-format" style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
+            <thead className="table-format tableHeader" >
               <tr>
                 <th rowSpan={2}>Particulars</th>
                 <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
@@ -266,11 +234,7 @@ const BalanceSheet = () => {
         </div>
       </div>
     </div>
-    {
-      showAddNewDataView && <AddDataForBalanceSheet closeAddComponent={showAddNewDataEntryView} />
-    }
-    </>
   );
 };
 
-export default BalanceSheet;
+export default CashFlowStatement;
