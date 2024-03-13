@@ -365,6 +365,18 @@ export const Sidebar = () => {
                 Corporate Guarantee
                 </NavLink>
               </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/international-Amount"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                International Amount
+                </NavLink>
+              </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/comfort-Gurantee"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+               Comfort Gurantee
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
