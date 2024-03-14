@@ -22,6 +22,7 @@ const InternationalAmount = lazy(() => import('./componets/Module2/International
 const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
 // in App.tsx
 const ComfortGurantee = lazy(() => import('./componets/Module2/ComfortGurantee'));
+const ICBMovement = lazy(() => import('./componets/Module3/ICD-ICBMovement'));
 const BalanceSheet = lazy(()=> import('./componets/Module1/BalanceSheet')); 
 const CashFlowStatement = lazy(()=> import('./componets/Module1/CashFlowStatement'));
 const User = lazy(() => import('./componets/AdminPage/User'));
@@ -52,6 +53,7 @@ function App() {
         <Route path="corporate-Guarantee" element={<CorporateGuarantee />}/>
         <Route path="international-Amount" element={<InternationalAmount />}/>
         <Route path="comfort-Gurantee" element={<ComfortGurantee />}/>
+        <Route path="ICB-Movement" element={<ICBMovement />}/>
 
         <Route path="*" element={<PageNotFound />}/>
       </Routes>

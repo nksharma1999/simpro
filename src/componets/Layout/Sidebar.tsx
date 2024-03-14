@@ -377,6 +377,12 @@ export const Sidebar = () => {
                Comfort Gurantee
                 </NavLink>
               </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/ICB-Movement"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+               ICB-ICD Movement
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
