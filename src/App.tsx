@@ -18,7 +18,10 @@ const Summaryforecast = lazy(()=> import('./componets/Module1/SummaryForecast'))
 const WorkingCapital = lazy(()=> import('./componets/Module1/WorkingCapital'));
 const ProjectUpdate = lazy(() => import('./componets/Module1/ProjectUpdate'));
 const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
+const InternationalAmount = lazy(() => import('./componets/Module2/InternationalAmount'));
 const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
+// in App.tsx
+const ComfortGurantee = lazy(() => import('./componets/Module2/ComfortGurantee'));
 const BalanceSheet = lazy(()=> import('./componets/Module1/BalanceSheet')); 
 const CashFlowStatement = lazy(()=> import('./componets/Module1/CashFlowStatement'));
 const User = lazy(() => import('./componets/AdminPage/User'));
@@ -47,6 +50,8 @@ function App() {
         <Route path="banking-facilities" element={<BankingFacilities />}/>
         <Route path="banking-Gurantee" element={<BankGurantee />}/>
         <Route path="corporate-Guarantee" element={<CorporateGuarantee />}/>
+        <Route path="international-Amount" element={<InternationalAmount />}/>
+        <Route path="comfort-Gurantee" element={<ComfortGurantee />}/>
 
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
