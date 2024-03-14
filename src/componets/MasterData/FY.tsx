@@ -75,7 +75,7 @@ const Bank  = () =>{
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
-            <thead className="table-format" style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
+            <thead className="table-format tableHeader" >
             <tr>
                   <th scope="col">Sl. No.</th>
                   <th scope="col">Year</th>

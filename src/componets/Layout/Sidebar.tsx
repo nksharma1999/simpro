@@ -24,9 +24,9 @@ export const Sidebar = () => {
         />
       </div>
       <div className="sidebar">
-        <NavLink className="nav-link sidebarNavLink" to={"/"}>
+        {/* <NavLink className="nav-link sidebarNavLink" to={"/"}>
           <i className="fa-solid fa-house sidebarIcon"></i>DASHBOARD
-        </NavLink>
+        </NavLink> */}
         <div
           className="accordion"
           id="accordionExample"
@@ -342,7 +342,7 @@ export const Sidebar = () => {
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
               <NavLink className="nav-link sidebarNavLink" to={"/banking-facilities"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                <i className="fa-solid fa-angles-right sidebarIcon"></i>
                 Banking Facilities
                 </NavLink>
               </div>
@@ -355,13 +355,13 @@ export const Sidebar = () => {
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
               <NavLink className="nav-link sidebarNavLink" to={"/banking-Gurantee"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                <i className="fa-solid fa-angles-right sidebarIcon"></i>
                 Banking Gurantee
                 </NavLink>
               </div>
               <div className="accordion-body" style={{ padding: "0px" }}>
               <NavLink className="nav-link sidebarNavLink" to={"/corporate-Guarantee"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                <i className="fa-solid fa-angles-right sidebarIcon"></i>
                 Corporate Guarantee
                 </NavLink>
               </div>

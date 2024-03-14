@@ -331,7 +331,7 @@ const WorkingCapital = () => {
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered table-striped">
-            <thead className="table-format" style={{color:'#FC5C7D', backgroundColor:'#f6f0f7'}}>
+            <thead className="table-format tableHeader" >
             <tr>
               <th rowSpan={2}>Particulars</th>
               <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>

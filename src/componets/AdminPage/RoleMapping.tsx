@@ -58,7 +58,7 @@ const RoleMapping = () => {
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
-            <thead style={{ color: "#FC5C7D", backgroundColor: "#f6f0f7" }}>
+            <thead className="tableHeader">
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Module Name</th>
