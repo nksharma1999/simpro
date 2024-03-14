@@ -103,7 +103,7 @@ export const MailConfig = () => {
           </div>
           <div style={{display:'flex', justifyContent:'center'}}>
 
-          <button className="btn btn-primary">Save</button>
+          <button className="btn" style={{backgroundColor:'#0A6862',color:'white'}}>Save</button>
           </div>
         </div>
       </div>

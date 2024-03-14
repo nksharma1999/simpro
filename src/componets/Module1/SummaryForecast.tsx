@@ -275,7 +275,7 @@ const SummaryForecast = () => {
               <label htmlFor="entityFilter">Select Entity</label>
             </div>
           </div>
-          <button className="clear-button" onClick={clearFilters}>
+          <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
             Clear Filters
           </button>
           <button
@@ -293,7 +293,7 @@ const SummaryForecast = () => {
                 fontWeight: "bold",
                 cursor: "pointer",
               }}
-              className="fa-solid fa-download fa-fade"
+              className="fa-solid fa-download fa-fade buttonColorPrimary"
             ></i>
           </button>
         </div>

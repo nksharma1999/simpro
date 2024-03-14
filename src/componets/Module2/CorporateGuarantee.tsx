@@ -21,7 +21,6 @@ const CorporateGuarantee = () => {
   const handleSanctionInputFormView = (op: boolean) => {
     setShowAddSanction(op);
   };
-  
 
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
@@ -40,18 +39,17 @@ const CorporateGuarantee = () => {
     XLSX.writeFile(wb, filename);
   };
 
-  
   return (
     <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
       <div>
         <div className="d-flex justify-content-end mb-2">
-        <button
+          <button
             onClick={exportToExcel}
             style={{
               backgroundColor: "white",
               borderWidth: "0",
               marginRight: "15px",
-              marginLeft:'10px'
+              marginLeft: "10px",
             }}
           >
             <i
@@ -60,9 +58,9 @@ const CorporateGuarantee = () => {
                 fontWeight: "bold",
                 cursor: "pointer",
               }}
-              className="fa-solid fa-download fa-fade"
+              className="fa-solid fa-download fa-fade buttonColorPrimary"
             ></i>
-        </button>
+          </button>
         </div>
           <div className="" style={{ overflow: "auto",
                             marginTop: "10px",

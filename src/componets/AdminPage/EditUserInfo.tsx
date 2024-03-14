@@ -194,7 +194,7 @@ useEffect(() =>{
                 </button>
               </div>
               <div className="col-lg-6 col-md-6 col-12">
-                <button style={{ width: "100%" }}>Update</button>
+                <button style={{ width: "100%",backgroundColor:'#0A6862' }}>Update</button>
               </div>
             </div>
           </div>

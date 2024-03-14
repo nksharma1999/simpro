@@ -64,7 +64,7 @@ const User = () => {
                   fontWeight: "bold",
                   cursor: "pointer",
                 }}
-                className="fa-solid fa-plus fa-fade"
+                className="fa-solid fa-plus fa-fade buttonColorPrimary"
               ></i>
             </button>
           </div>
@@ -124,7 +124,7 @@ const User = () => {
                         }}
                       >
                         <button onClick={ () => handleEdit(val)} style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-pen-to-square" ></i></button>
-                        <button  style={{backgroundColor:'white', border:'none',color: "gray",}}><i className="fa-solid fa-trash"></i></button>
+                        <button  style={{backgroundColor:'white', border:'none',color: "gray",}}><i className="fa-solid fa-trash buttonColorPrimary"></i></button>
                       
                       </td>
                     </tr>

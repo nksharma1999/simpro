@@ -66,7 +66,7 @@ export const EditRole: React.FC<props> = ({
                 </button>
               </div>
               <div className="col-6">
-                <button style={{ width: "100%" }}>Save</button>
+                <button style={{ width: "100%" ,backgroundColor:'#0A6862'}}>Save</button>
               </div>
             </div>
           </div>

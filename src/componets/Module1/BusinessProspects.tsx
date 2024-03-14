@@ -184,7 +184,7 @@ const BusinessProspects = () => {
                     fontWeight: "bold",
                     cursor: "pointer",
                   }}
-                  className="fa-solid fa-download fa-fade"
+                  className="fa-solid fa-download fa-fade buttonColorPrimary"
                 ></i>
               </button>
             </div>
@@ -199,7 +199,7 @@ const BusinessProspects = () => {
                     fontWeight: "bold",
                     cursor: "pointer",
                   }}
-                  className="fa-solid fa-plus fa-fade"
+                  className="fa-solid fa-plus fa-fade buttonColorPrimary"
                 ></i>
               </button>
             </div>

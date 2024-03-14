@@ -143,7 +143,7 @@ export const EditPopup: React.FC<props> = ({ initialValue, closeEditBox }) => {
                 <button style={{width:'100%', backgroundColor:'red'}} onClick={closeEditBox}>Cancel</button>
                 </div>
                 <div className="col-lg-6 col-md-6 col-12">
-                <button style={{width:'100%'}} onClick={handleSave} >Save</button>
+                <button style={{width:'100%',backgroundColor:'#0A6862'}} onClick={handleSave} >Save</button>
                 </div>
               </div>
           </div>
