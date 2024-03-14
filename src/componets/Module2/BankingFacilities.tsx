@@ -240,7 +240,7 @@ const BankingFacilities = () => {
                 borderRadius: "0px",
                 marginLeft: "15px",
                 border: "1px solid gray",
-                backgroundColor: `${showCmp ? "" : "green"}`,
+                backgroundColor: `${showCmp ? "" : "#0A6862"}`,
               }}
               onClick={() => setShowCmp(false)}
               className="btn"
@@ -255,7 +255,7 @@ const BankingFacilities = () => {
                 width: "100px",
                 borderRadius: "0px",
                 border: "1px solid gray",
-                backgroundColor: `${!showCmp ? "" : "green"}`,
+                backgroundColor: `${!showCmp ? "" : "#0A6862"}`,
               }}
               onClick={() => setShowCmp(true)}
               className="btn "
@@ -324,7 +324,7 @@ const BankingFacilities = () => {
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}
-                    className="fa-solid fa-download fa-fade"
+                    className="fa-solid fa-download fa-fade buttonColorPrimary"
                   ></i>
                 </button>
               </div>
@@ -1166,7 +1166,7 @@ const BankingFacilities = () => {
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}
-                    className="fa-solid fa-download fa-fade"
+                    className="fa-solid fa-download fa-fade buttonColorPrimary"
                   ></i>
                 </button>
               </div>

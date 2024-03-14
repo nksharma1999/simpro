@@ -49,7 +49,7 @@ const RoleMapping = () => {
             <label htmlFor="floatingSelectGrid">Select Role</label>
           </div>
           <div>
-            <button className="btn btn-primary">Save</button>
+            <button className="btn  " style={{backgroundColor:'#0A6862',color:'white'}}>Save</button>
           </div>
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
@@ -64,7 +64,6 @@ const RoleMapping = () => {
                 <th scope="col">Module Name</th>
                 <th scope="col">All</th>
                 <th scope="col">View</th>
-                <th scope="col">Id</th>
                 <th scope="col">Create,View & Update</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -93,14 +92,7 @@ const RoleMapping = () => {
                           id="flexCheckDefault"
                         />
                       </div></th>
-                    <th scope="row"><div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                      </div></th>
+                    
                     <th scope="row"><div className="form-check">
                         <input
                           className="form-check-input"

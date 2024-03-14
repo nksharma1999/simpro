@@ -9,9 +9,9 @@ export const Sidebar = () => {
         width: "280px",
         height: "100vh",
         padding: 10,
-        backgroundColor: "rgb(52 207 200 / 50%)",
-        backgroundImage:
-          "url(https://reduction-admin.github.io/react-reduction/static/media/sidebar-4.80d4a4e5.jpg)",
+        backgroundColor: "rgb(10 104 98)",
+        // backgroundImage:
+        //   "url(https://reduction-admin.github.io/react-reduction/static/media/sidebar-4.80d4a4e5.jpg)",
         backgroundBlendMode: "overlay",
         overflow: "hidden",
         overflowY: "auto",

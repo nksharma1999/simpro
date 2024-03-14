@@ -23,8 +23,8 @@ const ActionTakenReport: React.FC = () => {
   const currentUpdateInput = useRef<any>(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [editData,setEditData] = useState('');
-  const [showEdit, setShowEdit] =useState<boolean>(false);
+  const [editData, setEditData] = useState("");
+  const [showEdit, setShowEdit] = useState<boolean>(false);
 
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
@@ -42,15 +42,15 @@ const ActionTakenReport: React.FC = () => {
     const filename = `${formattedDate}.xlsx`;
     XLSX.writeFile(wb, `Action_Taken_Report_${filename}.xlsx`);
   };
-  const handleEdit = (data:any) =>{
+  const handleEdit = (data: any) => {
     // console.log(data);
     setEditData(data);
     setShowEdit(true);
-  }
-  const closeEditBox = () =>{
+  };
+  const closeEditBox = () => {
     setShowEdit(false);
-    setEditData('');
-  }
+    setEditData("");
+  };
   const handleStartDateChange = (date: any) => {
     setStartDate(date);
   };
@@ -146,8 +146,21 @@ const ActionTakenReport: React.FC = () => {
                       <label htmlFor="floatingPassword3">Current Update</label>
                     </div>
                   </div>
-                  <div className="col-lg-3 col-md-6 mb-3" style={{position:'relative'}}>
-                    <label htmlFor="startDate" className="form-label" style={{position:'absolute',top:4,zIndex:1,fontSize:'13px',left:'25px'}}>
+                  <div
+                    className="col-lg-3 col-md-6 mb-3"
+                    style={{ position: "relative" }}
+                  >
+                    <label
+                      htmlFor="startDate"
+                      className="form-label"
+                      style={{
+                        position: "absolute",
+                        top: 4,
+                        zIndex: 1,
+                        fontSize: "13px",
+                        left: "25px",
+                      }}
+                    >
                       Start Date:
                     </label>
                     <DatePicker
@@ -161,8 +174,21 @@ const ActionTakenReport: React.FC = () => {
                       className="form-control DatePicker"
                     />
                   </div>
-                  <div className="col-lg-3 col-md-6 mb-3" style={{position:'relative'}}>
-                    <label htmlFor="endDate" className="form-label"  style={{position:'absolute',top:4,zIndex:1,fontSize:'13px',left:'25px'}}>
+                  <div
+                    className="col-lg-3 col-md-6 mb-3"
+                    style={{ position: "relative" }}
+                  >
+                    <label
+                      htmlFor="endDate"
+                      className="form-label"
+                      style={{
+                        position: "absolute",
+                        top: 4,
+                        zIndex: 1,
+                        fontSize: "13px",
+                        left: "25px",
+                      }}
+                    >
                       Target Date:
                     </label>
                     <DatePicker
@@ -177,7 +203,6 @@ const ActionTakenReport: React.FC = () => {
                       className="form-control DatePicker"
                     />
                   </div>
-                  
                 </div>
                 <div className="row g-2">
                   <div className="col-md">
@@ -229,7 +254,7 @@ const ActionTakenReport: React.FC = () => {
                   borderRadius: "5px",
                   height: "40px",
                   width: "100%",
-                  backgroundColor: "#FC5C7D",
+                  backgroundColor:'#0A6862',
                   color: "white",
                 }}
               >
@@ -259,9 +284,13 @@ const ActionTakenReport: React.FC = () => {
               
             </div> */}
             <div style={{ marginTop: "-10px", marginRight: "10px" }}>
-            <button
+              <button
                 onClick={exportToExcel}
-                style={{ backgroundColor: "white", borderWidth: "0" ,marginRight:'15px'}}
+                style={{
+                  backgroundColor: "white",
+                  borderWidth: "0",
+                  marginRight: "15px",
+                }}
               >
                 <i
                   style={{
@@ -269,24 +298,24 @@ const ActionTakenReport: React.FC = () => {
                     fontWeight: "bold",
                     cursor: "pointer",
                   }}
-                  className="fa-solid fa-download fa-fade"
+                  className="fa-solid fa-download fa-fade buttonColorPrimary"
                 ></i>
               </button>
               <button
                 onClick={updateAddNewActivityView}
                 style={{ backgroundColor: "white", borderWidth: "0" }}
               >
-                <i
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                  className="fa-solid fa-plus fa-fade"
-                ></i>
+                
+                  <i
+                    className={showAdd? "fa-solid fa-right-to-bracket buttonColorPrimary": "fa-solid fa-plus buttonColorPrimary "}
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                  ></i>
               </button>
             </div>
-            
           </div>
           <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
@@ -330,13 +359,29 @@ const ActionTakenReport: React.FC = () => {
                       <td
                         style={{
                           textAlign: "center",
-                          
+
                           cursor: "pointer",
                         }}
                       >
-                        <button onClick={ () => handleEdit(val)} style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-pen-to-square" ></i></button>
-                        <button  style={{backgroundColor:'white', border:'none',color: "green",}}><i className="fa-solid fa-trash"></i></button>
-                      
+                        <button
+                          onClick={() => handleEdit(val)}
+                          style={{
+                            backgroundColor: "white",
+                            border: "none",
+                            color: "green",
+                          }}
+                        >
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button
+                          style={{
+                            backgroundColor: "white",
+                            border: "none",
+                            color: "green",
+                          }}
+                        >
+                          <i className="fa-solid fa-trash"></i>
+                        </button>
                       </td>
                     </tr>
                   );
@@ -347,7 +392,9 @@ const ActionTakenReport: React.FC = () => {
         </div>
       </div>
 
-      {showEdit && <EditPopup initialValue={editData} closeEditBox={closeEditBox} />}
+      {showEdit && (
+        <EditPopup initialValue={editData} closeEditBox={closeEditBox} />
+      )}
     </div>
   );
 };

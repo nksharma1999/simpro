@@ -217,7 +217,7 @@ export const AddDataForBalanceSheet: React.FC<props> = ({
                 </button>
               </div>
               <div className="col-lg-6 col-md-6 col-12">
-                <button style={{ width: "100%" }}>Save</button>
+                <button style={{ width: "100%",backgroundColor:'#0A6862' }}>Save</button>
               </div>
             </div>
           </div>

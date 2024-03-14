@@ -1,5 +1,7 @@
 
-
+.buttonColorPrimary{
+  color: #0A6862;
+}
 tr td:last-child {
   width: 1%;
   white-space: nowrap;
@@ -11,6 +13,12 @@ th {
 .tableHeader{
   color: "black";
   backgroundColor: "#f6f0f7";
+}
+
+.accordion-button:not(.collapsed) {
+  color: #0A6862;
+  background-color: #9cc8c5;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
 }
 /************** Activity***********/
 .DatePicker{

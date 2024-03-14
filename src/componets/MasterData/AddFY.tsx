@@ -62,7 +62,7 @@ export const AddFY: React.FC<props> = ({
                 </button>
               </div>
               <div className="col-lg-6 col-md-6 col-12">
-                <button style={{ width: "100%" }}>ADD</button>
+                <button style={{ width: "100%",backgroundColor:'#0A6862' }}>ADD</button>
               </div>
             </div>
           </div>
