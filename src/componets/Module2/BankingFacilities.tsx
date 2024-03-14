@@ -207,19 +207,61 @@ const BankingFacilities = () => {
       val.sanction_ncd
     );
   };
+  const exportToExcelCombine = () => {
+    const table = document.getElementById("combineData_BankingFacilities");
+    const ws = XLSX.utils.table_to_sheet(table);
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Banking Facilities");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Banking_Facilities_${filename}.xlsx`);
+  };
   return (
     <>
       <div>
-        <div style={{ display: "flex", justifyContent: 'space-between' }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h3>Banking Facilities</h3>
           <div>
-
-          <button style={{color:`${!showCmp?'white':'black'}`,height:'35px',fontSize:'13px',width:'100px',borderRadius:'0px' ,marginLeft:'15px', border:'1px solid gray', backgroundColor:`${showCmp?'':'green'}`}} onClick={() => setShowCmp(false)} className="btn">
-            View
-          </button>
-          <button style={{color:`${showCmp?'white':'black'}`,height:'35px',fontSize:'13px',width:'100px',borderRadius:'0px', border:'1px solid gray',backgroundColor:`${!showCmp?'':'green'}`}} onClick={() => setShowCmp(true)} className="btn ">
-            Add Info
-          </button>
+            <button
+              style={{
+                color: `${!showCmp ? "white" : "black"}`,
+                height: "35px",
+                fontSize: "13px",
+                width: "100px",
+                borderRadius: "0px",
+                marginLeft: "15px",
+                border: "1px solid gray",
+                backgroundColor: `${showCmp ? "" : "green"}`,
+              }}
+              onClick={() => setShowCmp(false)}
+              className="btn"
+            >
+              View
+            </button>
+            <button
+              style={{
+                color: `${showCmp ? "white" : "black"}`,
+                height: "35px",
+                fontSize: "13px",
+                width: "100px",
+                borderRadius: "0px",
+                border: "1px solid gray",
+                backgroundColor: `${!showCmp ? "" : "green"}`,
+              }}
+              onClick={() => setShowCmp(true)}
+              className="btn "
+            >
+              Add Info
+            </button>
           </div>
         </div>
         {showCmp ? (
@@ -340,9 +382,7 @@ const BankingFacilities = () => {
                         }}
                       >
                         <table className="table table-bordered">
-                          <thead
-                            className="tableHeader"
-                          >
+                          <thead className="tableHeader">
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
@@ -658,10 +698,7 @@ const BankingFacilities = () => {
                         }}
                       >
                         <table className="table table-bordered">
-                          <thead
-                          className="tableHeader"
-                            
-                          >
+                          <thead className="tableHeader">
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
@@ -995,10 +1032,7 @@ const BankingFacilities = () => {
                         }}
                       >
                         <table className="table table-bordered">
-                          <thead
-                          className="tableHeader"
-                           
-                          >
+                          <thead className="tableHeader">
                             <tr>
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
@@ -1120,6 +1154,23 @@ const BankingFacilities = () => {
             className={"card "}
             style={{ maxHeight: "80vh", padding: "10px" }}
           >
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <div style={{ marginRight: "10px", marginTop: "10px" }}>
+                <button
+                  onClick={exportToExcelCombine}
+                  style={{ backgroundColor: "white", borderWidth: "0" }}
+                >
+                  <i
+                    style={{
+                      fontSize: "25px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                    className="fa-solid fa-download fa-fade"
+                  ></i>
+                </button>
+              </div>
+            </div>
             <div
               className="ActionTakenDashboard"
               style={{
@@ -1128,11 +1179,11 @@ const BankingFacilities = () => {
                 maxHeight: "80vh",
               }}
             >
-              <table className="table table-bordered">
-                <thead
-                className="tableHeader"
-                  
-                >
+              <table
+                className="table table-bordered"
+                id="combineData_BankingFacilities"
+              >
+                <thead className="tableHeader">
                   <tr>
                     <th rowSpan={4}>Company Name</th>
                     <th rowSpan={4}>Bank Name</th>
@@ -1386,16 +1437,26 @@ const BankingFacilities = () => {
                         <td>{totaUtilisation}</td>
                         <td>{val.sanction_od - val.utilisation_od}</td>
                         <td>{val.sanction_wcd - val.utilisation_wcd}</td>
-                        <td>{val.sanction_buyerCredit -val.utilisation_buyerCredit}</td>
-                        <td>{val.sanction_packingCredit-val.utilisation_packingCredit}</td>
-                        <td>{val.sanction_bg-val.utilisation_bg}</td>
-                        <td>{val.sanction_lc-val.utilisation_lc}</td>
-                        <td>{val.sanction_fxLimit - val.utilisation_fxLimit}</td>
-                        <td>{val.sanction_cp -val.utilisation_cp}</td>
-                        <td>{val.sanction_termLoan  - val.utilisation_termLoan}</td>
+                        <td>
+                          {val.sanction_buyerCredit -
+                            val.utilisation_buyerCredit}
+                        </td>
+                        <td>
+                          {val.sanction_packingCredit -
+                            val.utilisation_packingCredit}
+                        </td>
+                        <td>{val.sanction_bg - val.utilisation_bg}</td>
+                        <td>{val.sanction_lc - val.utilisation_lc}</td>
+                        <td>
+                          {val.sanction_fxLimit - val.utilisation_fxLimit}
+                        </td>
+                        <td>{val.sanction_cp - val.utilisation_cp}</td>
+                        <td>
+                          {val.sanction_termLoan - val.utilisation_termLoan}
+                        </td>
                         <td>{val.sanction_ncd - val.utilisation_ncd}</td>
                         <td>{val.sanction_ecb - val.utilisation_ecb}</td>
-                        <td>{totaSanction-totaUtilisation}</td>
+                        <td>{totaSanction - totaUtilisation}</td>
                       </tr>
                     );
                   })}
