@@ -87,7 +87,7 @@ const InternationalAmount = () => {
           <table className="table table-bordered">
             <thead
               style={{
-                color: "#FC5C7D",
+                color: "",
                 backgroundColor: "#f6f0f7",
               }}
             >
@@ -239,6 +239,7 @@ const InternationalAmount = () => {
                       <button
                         onClick={() => handleSanctionInputFormView(false)}
                         className="btn btn-primary"
+                        style={{ marginRight: '5px' }} // Add margin to the right of the button
                       >
                         <i className="fa-solid fa-xmark"></i>
                       </button>
@@ -246,10 +247,11 @@ const InternationalAmount = () => {
                         onClick={handleSanctionSaveBtn}
                         className="btn btn-primary"
                       >
-                        <i className="fa-regular fa-floppy-disk"></i>
+                        <i className="fa-regular fa-floppy-disk fa-shake" style={{fontSize:'25px',color:''}}></i>
                       </button>
                     </div>
                   </td>
+
                 </tr>
               ) : (
                 <tr>
