@@ -1,26 +1,58 @@
 import React, { useRef, useState } from "react";
 import * as XLSX from "xlsx";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const CorporateGuarantee = () => {
+const ICBMovement = () => {
   const [sData, setSData] = useState<any>([]);
   const [isShowAddSanction, setShowAddSanction] = useState(false);
-  const nameInput = useRef<any>("");
-  const startInput = useRef<any>("");
-  const endInput = useRef<any>("");
+  const [selectedCompanyName, setSelectedCompanyName] = useState("");
+  const [selectedstartDate, setSelectedstartDate] = useState<Date | null>(null);
+  const [selectedendDate, setSelectedEndDate] = useState<Date | null>(null);
+  const [selectedSsl, setSelectedSsl] = useState("1");
+  const [selectedUsl, setSelectedUsl] = useState("1");
+  const icdInput = useRef<any>("");
+  const companyInput = useRef<any>("");
+  const valueInput = useRef<any>("");
   const maturityInput = useRef<any>("");
 
   const handleSanctionSaveBtn = () => {
     const data: any = {
-      name: nameInput.current.value,
+      ICD: icdInput.current.value,
+      company: companyInput.current.value,
+      value: valueInput.current.value,
       maturity: maturityInput.current.value,
-      start: startInput.current.value,
-      end: endInput.current.value,
     };
     setSData((prev: any) => [...prev, data]);
+  };
+
+  const handleSsl = (e: any) => {
+    setSelectedSsl(e.target.value);
+  };
+  const handleUsl = (e: any) => {
+    setSelectedUsl(e.target.value);
+  };
+
+  const handleCompanyInputFormView = (op: boolean) => {
+    setShowAddSanction(op);
+  };
+
+  const handleCompanyNameChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedCompanyName(e.target.value);
   };
   const handleSanctionInputFormView = (op: boolean) => {
     setShowAddSanction(op);
   };
+  const handlestartDateChange = (date: Date | null) => {
+    setSelectedstartDate(date);
+  };
+
+  const handleEndDateChange = (date: Date | null) => {
+    setSelectedEndDate(date);
+  };
+  
 
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
@@ -39,17 +71,18 @@ const CorporateGuarantee = () => {
     XLSX.writeFile(wb, filename);
   };
 
+  
   return (
     <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
       <div>
         <div className="d-flex justify-content-end mb-2">
-          <button
+        <button
             onClick={exportToExcel}
             style={{
               backgroundColor: "white",
               borderWidth: "0",
               marginRight: "15px",
-              marginLeft: "10px",
+              marginLeft:'10px'
             }}
           >
             <i
@@ -58,9 +91,9 @@ const CorporateGuarantee = () => {
                 fontWeight: "bold",
                 cursor: "pointer",
               }}
-              className="fa-solid fa-download fa-fade buttonColorPrimary"
+              className="fa-solid fa-download fa-fade"
             ></i>
-          </button>
+        </button>
         </div>
           <div className="" style={{ overflow: "auto",
                             marginTop: "10px",
@@ -73,47 +106,70 @@ const CorporateGuarantee = () => {
                 >
                 
                 <tr style={{ textAlign: "center" }}>
-                  <th scope="col">Name of Subsidary company</th>
-                  <th scope="col">As at</th>
-                  <th scope="col">As at</th>
-                  <th scope="col">Maturity date of the borrowing</th>
+                  <th scope="col">ICD</th>
+                  <th scope="col">S&A Company</th>
+                  <th scope="col">Values in Rs Cr.</th>
+                  <th scope="col">Maturity day</th>
                 </tr>
                 </thead>
                 <tbody>
                   {isShowAddSanction ? (
                     <tr>
                       <td>
-                        <input
-                          ref={nameInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
+                      <select
+                                  className="form-select"
+                                  onChange={handleSsl}
+                                  value={selectedSsl}
+                                  style={{ width: "200px" }}
+                                >
+                                  <option value="" disabled></option>
+                                  <option>---Select-Type--</option>
+                                  <option value="1">2301356</option>
+                                  <option value="2">2301358</option>
+                                  <option value="3">2300816</option>
+                                </select>
                       </td>
                      
                       <td>
+                      <select
+                      value={selectedCompanyName}
+                      onChange={handleCompanyNameChange}
+                      className="form-select"
+                      style={{ width: "200px" }}
+                    >
+                      <option value="" disabled>
+                        ---Select Company---
+                      </option>
+                      <option value="Nabha Power Limited">
+                        L&T Sapura Shipping
+                      </option>
+                      <option value="L&T Geostructure Pvt. Ltd.">
+                        L&T HE LLC
+                      </option>
+                      <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
+                        L&T Special Steel 
+                      </option>
+                      <option value="L&T Innovation Campus">
+                        L&T Geostructure P.Ltd
+                      </option>
+                    </select>
+                      </td>
+                      <td>
                         <input
-                          ref={startInput}
+                          ref={valueInput}
                           type="text"
                           className="form-control"
                           style={{ minWidth: "100px" }}
                         />
                       </td>
                       <td>
-                        <input
-                          ref={endInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          ref={maturityInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
+                      <DatePicker
+                      selected={selectedstartDate}
+                      onChange={handlestartDateChange}
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control"
+                      wrapperClassName="date-picker-wrapper" 
+                    />
                         </td>
                         <td>
                         <div
@@ -161,9 +217,9 @@ const CorporateGuarantee = () => {
                   {sData.map((val: any, index: any) => {
                     return (
                       <tr key={index}>
-                        <td>{val.name}</td>
-                        <td>{val.start}</td>
-                        <td>{val.end}</td>
+                        <td>{val.icd}</td>
+                        <td>{val.company}</td>
+                        <td>{val.value}</td>
                         <td>{val.maturity}</td>
                       </tr>
                     );
@@ -177,4 +233,4 @@ const CorporateGuarantee = () => {
   );
 };
 
-export default CorporateGuarantee;
+export default ICBMovement;
