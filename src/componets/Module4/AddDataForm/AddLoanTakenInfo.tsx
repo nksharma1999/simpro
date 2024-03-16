@@ -1,22 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 interface props {
-  closeAddComponent: () => void;
+  handleShowBtn: (event: boolean) => void;
+  type: string;
 }
-export const AddDataForProjectUpdate: React.FC<props> = ({
-  closeAddComponent,
-}) => {
-  const [selectedStatus, setSelectedStatus] = useState("Ongoing");
-  const projectNameInput = useRef<any>("");
-  const projectDetailsInput = useRef<any>("");
-  const Original_Contract_ValueInput = useRef<any>("");
-  const Project_Completion_pre = useRef<any>("");
+export const AddLoanTakenInfo: React.FC<props> = ({ handleShowBtn, type }) => {
+  const [selectedType, setSelectedType] = useState<string>("ICB");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-
-  const handleStatusSelection = (e: any) => {
-    // console.log(e.target.value);
-    setSelectedStatus(e.target.value);
+  const handleTypeSelection = (e: any) => {
+    setSelectedType(e.target.value);
   };
   const handleStartDateChange = (date: any) => {
     setStartDate(date);
@@ -24,6 +17,16 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
 
   const handleEndDateChange = (date: any) => {
     setEndDate(date);
+  };
+  const handleFileChange = (event: any) => {
+    const file = event.target.files[0];
+    if (file.type === "application/pdf") {
+      // File is a PDF, you can perform further actions here
+      console.log("Selected PDF file:", file);
+    } else {
+      // File is not a PDF, you can provide feedback to the user
+      console.error("Please select a PDF file.");
+    }
   };
   return (
     <div className="popup">
@@ -47,7 +50,7 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
               ></i>
             </div>
             <div style={{ marginLeft: "10px" }}>
-              <p style={{ fontSize: "20px" }}> Add New Data </p>
+              <p style={{ fontSize: "20px" }}> {type} </p>
             </div>
           </div>
           <div
@@ -55,56 +58,33 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
           ></div>
           <div style={{ marginTop: "10px" }}>
             <div className="row">
-              <div className="col-lg-6 col-md-12">
+              <div className="col-lg-6 col-md-12 col-sm-12">
                 <div className="form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="floatingInput1"
-                    placeholder="Enter Customer Name"
-                    ref={projectNameInput}
-                  />
-                  <label htmlFor="floatingInput1">Project Name</label>
+                  <select
+                    className="form-select"
+                    id="floatingSelectGrid2"
+                    aria-label="Floating label select example"
+                    onChange={handleTypeSelection}
+                    value={selectedType}
+                  >
+                    <option value="ICB">ICB</option>
+                  </select>
+                  <label htmlFor="floatingSelectGrid2">Type</label>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-12">
+              <div className="col-lg-6 col-md-12 col-sm-12">
                 <div className="form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="floatingPassword2"
-                    placeholder="Project"
-                    ref={projectDetailsInput}
-                  />
-                  <label htmlFor="floatingPassword2">Project Details</label>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12">
-                <div className="form-floating mb-3">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="floatingPassword3"
-                    placeholder="Value"
-                    ref={Original_Contract_ValueInput}
-                  />
-                  <label htmlFor="floatingPassword3">
-                    Original Contract Value
-                  </label>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12">
-                <div className="form-floating mb-3">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="floatingPassword4"
-                    placeholder="Bid Submission Qtr."
-                    ref={Project_Completion_pre}
-                  />
-                  <label htmlFor="floatingPassword4">
-                    % of Project Completion
-                  </label>
+                  <select
+                    className="form-select"
+                    id="floatingSelectGrid2"
+                    aria-label="Floating label select example"
+                    // onChange={handleTypeSelection}
+                    // value={selectedType}
+                  >
+                    <option value="Simpro">Simpro</option>
+                    <option value="L&T">L&T</option>
+                  </select>
+                  <label htmlFor="floatingSelectGrid2">Company Name</label>
                 </div>
               </div>
             </div>
@@ -124,7 +104,7 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
                     left: "25px",
                   }}
                 >
-                  Start Date:
+                  {selectedType === "NCD" ? "Issue Date" : "Loan Start Date:"}
                 </label>
                 <DatePicker
                   id="startDate"
@@ -152,7 +132,7 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
                     left: "25px",
                   }}
                 >
-                  Target Date:
+                  Maturity Date:
                 </label>
                 <DatePicker
                   id="endDate"
@@ -166,20 +146,29 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
                   className="form-control DatePicker"
                 />
               </div>
-              <div className="col-md">
-                <div className="form-floating">
-                  <select
-                    className="form-select"
-                    id="floatingSelectGrid2"
-                    aria-label="Floating label select example"
-                    onChange={handleStatusSelection}
-                    value={selectedStatus}
-                  >
-                    <option disabled>---Select---</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Ongoing">Ongoing</option>
-                  </select>
-                  <label htmlFor="floatingSelectGrid2">Status</label>
+
+              <div className="col-lg-6 col-md-12">
+                <div className="form-floating mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="floatingPassword2"
+                    placeholder="ROI"
+                    // ref={roiInput}
+                  />
+                  <label htmlFor="floatingPassword2">ROI (Average)</label>
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="input-group">
+                  
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile01"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                  />
                 </div>
               </div>
             </div>
@@ -187,7 +176,7 @@ export const AddDataForProjectUpdate: React.FC<props> = ({
               <div className="col-lg-6 col-md-6 col-12">
                 <button
                   style={{ width: "100%", backgroundColor: "red" }}
-                  onClick={closeAddComponent}
+                  onClick={() => handleShowBtn(false)}
                 >
                   Cancel
                 </button>

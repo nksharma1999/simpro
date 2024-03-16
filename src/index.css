@@ -1,7 +1,7 @@
-
-.buttonColorPrimary{
-  color: #0A6862;
+.buttonColorPrimary {
+  color: #0a6862;
 }
+
 tr td:last-child {
   width: 1%;
   white-space: nowrap;
@@ -10,87 +10,117 @@ th {
   white-space: nowrap;
 }
 
-.tableHeader{
+.tableHeader {
   color: "black";
-  backgroundColor: "#f6f0f7";
+  background-color: "#f6f0f7";
 }
 
 .accordion-button:not(.collapsed) {
-  color: #0A6862;
+  color: #0a6862;
   background-color: #9cc8c5;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
 /************** Activity***********/
-.DatePicker{
-    /* width: 100%; */
+.DatePicker {
+  /* width: 100%; */
 
-    /* border: none; */
-    height: 58px;
-    /* padding: 2px; */
+  /* border: none; */
+  height: 58px;
+  /* padding: 2px; */
 }
-.react-datepicker-wrapper{
-    width: 100%;
+.react-datepicker-wrapper {
+  width: 100%;
 }
-
+/* popup animation start */
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* animation: slideIn 0.6s ease, bounce 1s ease 0.6s; */
+  animation: slideIn 0.5s cubic-bezier(0.645, 0.045, 0.355, 1), bounce 1s cubic-bezier(0.42, 0, 0.58, 1) 0.5s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%); /* Start above the viewport */
   }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Slide down to the center of the viewport */
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px); /* Bounce effect */
+  }
+}
+/* .popup-inner {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
   
-  .popup-inner {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* box shadow for a popup effect */
-  }
-  
-  .popup-inner h2 {
-    margin-top: 0;
-  }
-  
-  .popup-inner input {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .popup-inner button {
-    padding: 8px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .popup-inner button:hover {
-    background-color: #0056b3;
-  }
-  /* .accordion-button.collapsed {
+} */
+
+.popup-inner h2 {
+  margin-top: 0;
+}
+
+.popup-inner input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-inner button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-inner button:hover {
+  background-color: #0056b3;
+}
+
+/* popup animation end */
+/* .accordion-button.collapsed {
     color: red;
   } */
-  
-  /* .accordion-button.collapsed::after {
+
+/* .accordion-button.collapsed::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   }
   .accordion-button.collapsed::before {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   } */
-  .accordionBtnStyle:after {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
-  }
+.accordionBtnStyle:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
 /**************Dashboard **********/
-.dashboardTileStyle{
-    border: 1px solid gray;
+.dashboardTileStyle {
+  border: 1px solid gray;
 }
 /***********************************/
 
@@ -98,11 +128,11 @@ th {
   display: none;
 }
 .ActionTakenDashboard::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 .sidebar {
   /* position: fixed;  */
-margin-top: 10px;
+  margin-top: 10px;
   /* height: 100vh;  */
   /* z-index: 1;  */
   /* top: 0; */
@@ -112,8 +142,8 @@ margin-top: 10px;
   width: 220px;
   /* -ms-overflow-style: none; */
 }
-.sidebarNavLink{
-    margin-top:5px ;
+.sidebarNavLink {
+  margin-top: 5px;
 }
 /* The links inside the sidebar */
 .sidebar a {
@@ -132,21 +162,20 @@ margin-top: 10px;
 }
 .sidebar .nav-link.active {
   color: #f1f1f1;
-  background-color: #cb4343;;
+  background-color: #cb4343;
 }
 
 .sidebarIcon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-.Entity-filter{
+.Entity-filter {
   margin-left: 10px;
   margin-right: 10px;
 }
-.clear-buttonn{
+.clear-buttonn {
   margin-left: 10px;
 }
-.table-format{
+.table-format {
   /* background-color: #0056b3; */
   text-align: center;
-
 }
