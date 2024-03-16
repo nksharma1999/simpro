@@ -119,6 +119,7 @@ const ProjectUpdate = () => {
                   type="file"
                   className="form-control"
                   id="inputGroupFile01"
+                  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                   onChange={handleFileChange}
                 />
               </div>
