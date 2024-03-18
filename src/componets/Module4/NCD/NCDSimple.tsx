@@ -1,14 +1,7 @@
-import { useState } from "react";
-import { AddLoanGivenInfo } from "./AddDataForm/AddLoanGivenInfo";
-
-export const LoanGiven = () => {
-  const [showAddNew, setShowAddNew] = useState<boolean>(false);
-  const handleShowBtn = (action: boolean) => {
-    setShowAddNew(action);
-  };
+export const NCDSimple = () => {
   return (
     <>
-      <h3>Loan Given During The Year</h3>
+      <h3>NCD</h3>
       <div className={"card "} style={{ maxHeight: "83vh", padding: "10px" }}>
         <div
           style={{
@@ -59,7 +52,7 @@ export const LoanGiven = () => {
               ></i>
             </button>
             <button
-              onClick={() => handleShowBtn(true)}
+              //   onClick={() => handleShowBtn(true)}
               style={{ backgroundColor: "white", borderWidth: "0" }}
             >
               <i
@@ -82,53 +75,51 @@ export const LoanGiven = () => {
             maxHeight: "80vh",
           }}
         >
-          <p
-            style={{
-              color: "#0A6862",
-              fontWeight: "bold",
-              marginLeft: "10px",
-              marginTop: "-5px",
-              marginBottom: "0px",
-            }}
-          >
-            ICD <i className="fa-solid fa-arrow-right"></i>
-          </p>
-
           <table className="table table-bordered">
-            <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
-                <th scope="col">Company Name</th>
-                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
-                  Loan Start Data
-                </th>
-                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
-                  Maturity Date
-                </th>
-                <th scope="col">ROI (Average)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {uData.map((val, index) => {
-                            return (
-                              <tr key={index}>
-                                <td>{val.sl}</td>
-                                <td>{val.onbehalf}</td>
-                                <td>{val.to}</td>
-                                <td>{val.for}</td>
-                                <td>{val.facility}</td>
-                              </tr>
-                            );
-                          })} */}
-            </tbody>
-          </table>
+              <thead className="tableHeader">
+                <tr style={{ textAlign: "center" }}>
+                  <th
+                    scope="col"
+                    style={{ width: "250px", whiteSpace: "wrap" }}
+                  >
+                    ISIN No.
+                  </th>
+                  <th
+                    scope="col"
+                    style={{ width: "200px", whiteSpace: "wrap" }}
+                  >
+                    Bond Description
+                  </th>
+                  <th
+                    scope="col"
+                    style={{ width: "200px", whiteSpace: "wrap" }}
+                  >
+                    Issue Date
+                  </th>
+                  <th scope="col">Maturity Date</th>
+                  <th scope="col">Principle</th>
+                  <th scope="col">Debenture Units</th>
+                  <th scope="col">Interest Rate</th>
+                  <th scope="col">Payment Frequency</th>
+                  <th scope="col">Future Cashflows</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* {sData.map((val, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{val.sl}</td>
+                              <td>{val.onbehalf}</td>
+                              <td>{val.to}</td>
+                              <td>{val.for}</td>
+                              <td>{val.facility}</td>
+                            </tr>
+                          );
+                        })} */}
+              </tbody>
+            </table>
         </div>
       </div>
-      {showAddNew && (
-        <AddLoanGivenInfo
-          handleShowBtn={handleShowBtn}
-          type="Add Loan Given Info"
-        />
-      )}
     </>
   );
 };

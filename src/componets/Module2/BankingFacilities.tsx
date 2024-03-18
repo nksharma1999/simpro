@@ -298,9 +298,7 @@ const BankingFacilities = () => {
               </div>
               <div style={{ marginTop: "10px" }}>
                 <div className="input-group">
-                  {/* <label className="input-group-text" htmlFor="inputGroupFile01">
-                Upload
-              </label> */}
+                  
                   <input
                     type="file"
                     className="form-control"

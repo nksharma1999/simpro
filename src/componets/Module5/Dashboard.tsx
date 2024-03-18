@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { AddLoanGivenInfo } from "./AddDataForm/AddLoanGivenInfo";
 
-export const LoanGiven = () => {
+export const DividendDashborad = () => {
   const [showAddNew, setShowAddNew] = useState<boolean>(false);
   const handleShowBtn = (action: boolean) => {
     setShowAddNew(action);
   };
   return (
     <>
-      <h3>Loan Given During The Year</h3>
+      <h3>Dividend Income</h3>
       <div className={"card "} style={{ maxHeight: "83vh", padding: "10px" }}>
         <div
           style={{
@@ -82,29 +81,21 @@ export const LoanGiven = () => {
             maxHeight: "80vh",
           }}
         >
-          <p
-            style={{
-              color: "#0A6862",
-              fontWeight: "bold",
-              marginLeft: "10px",
-              marginTop: "-5px",
-              marginBottom: "0px",
-            }}
-          >
-            ICD <i className="fa-solid fa-arrow-right"></i>
-          </p>
-
           <table className="table table-bordered">
             <thead className="tableHeader">
               <tr style={{ textAlign: "center" }}>
                 <th scope="col">Company Name</th>
-                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
-                  Loan Start Data
-                </th>
-                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
-                  Maturity Date
-                </th>
-                <th scope="col">ROI (Average)</th>
+                <th scope="col">Type</th>
+                <th scope="col">Type of holding</th>
+                <th scope="col">Type of dividend</th>
+                <th scope="col">Share holding %</th>
+                <th scope="col">No. of Shares</th>
+                <th scope="col">Dividend per share</th>
+                <th scope="col">Gross Dividend</th>
+                <th scope="col">Div. Dist. Tax</th>
+                <th scope="col">Net Dividend</th>
+                <th scope="col">Date of receipt</th>
+                <th scope="col">Quarter</th>
               </tr>
             </thead>
             <tbody>
@@ -123,12 +114,6 @@ export const LoanGiven = () => {
           </table>
         </div>
       </div>
-      {showAddNew && (
-        <AddLoanGivenInfo
-          handleShowBtn={handleShowBtn}
-          type="Add Loan Given Info"
-        />
-      )}
     </>
   );
 };

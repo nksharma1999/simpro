@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import ReactDatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 import MainLayout from "./componets/Layout/MainLayout";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import RoleMapping from "./componets/AdminPage/RoleMapping";
 import { MailConfig } from "./componets/AdminPage/MailConfig";
 import Bank from "./componets/MasterData/Bank";
@@ -19,23 +19,42 @@ import { InterestReceived } from "./componets/Module4/InterestReceived";
 import { LoanGiven } from "./componets/Module4/LoanGiven";
 import { LoansTaken } from "./componets/Module4/LoansTaken";
 import { Maturities } from "./componets/Module4/Maturities";
-const DashBoard = lazy(() => import('./componets/Module1/DashBoard'));
-const ActionTakenReport = lazy(() => import('./componets/Module1/ActionTakenReport'));
-const QuarterlyPerformance = lazy(() => import('./componets/Module1/QuarterlyPerformance'));
-const BusinessProspects = lazy(() => import('./componets/Module1/BusinessProspects'));
-const Summaryforecast = lazy(() => import('./componets/Module1/SummaryForecast'));
-const WorkingCapital = lazy(() => import('./componets/Module1/WorkingCapital'));
-const ProjectUpdate = lazy(() => import('./componets/Module1/ProjectUpdate'));
-const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
-const InternationalAmount = lazy(() => import('./componets/Module2/InternationalAmount'));
-const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
+import { NCDSimple } from "./componets/Module4/NCD/NCDSimple";
+import { DividendDashborad } from "./componets/Module5/Dashboard";
+import { DividendMainDashboard } from "./componets/Module5/MainDashboard";
+const DashBoard = lazy(() => import("./componets/Module1/DashBoard"));
+const ActionTakenReport = lazy(
+  () => import("./componets/Module1/ActionTakenReport")
+);
+const QuarterlyPerformance = lazy(
+  () => import("./componets/Module1/QuarterlyPerformance")
+);
+const BusinessProspects = lazy(
+  () => import("./componets/Module1/BusinessProspects")
+);
+const Summaryforecast = lazy(
+  () => import("./componets/Module1/SummaryForecast")
+);
+const WorkingCapital = lazy(() => import("./componets/Module1/WorkingCapital"));
+const ProjectUpdate = lazy(() => import("./componets/Module1/ProjectUpdate"));
+const BankGurantee = lazy(() => import("./componets/Module2/BankingGurantee"));
+const InternationalAmount = lazy(
+  () => import("./componets/Module2/InternationalAmount")
+);
+const CorporateGuarantee = lazy(
+  () => import("./componets/Module2/CorporateGuarantee")
+);
 // in App.tsx
-const ComfortGurantee = lazy(() => import('./componets/Module2/ComfortGurantee'));
-const ICBMovement = lazy(() => import('./componets/Module3/ICD-ICBMovement'));
-const BalanceSheet = lazy(() => import('./componets/Module1/BalanceSheet'));
-const CashFlowStatement = lazy(() => import('./componets/Module1/CashFlowStatement'));
-const User = lazy(() => import('./componets/AdminPage/User'));
-const Role = lazy(() => import('./componets/AdminPage/Role'));
+const ComfortGurantee = lazy(
+  () => import("./componets/Module2/ComfortGurantee")
+);
+const ICBMovement = lazy(() => import("./componets/Module3/ICD-ICBMovement"));
+const BalanceSheet = lazy(() => import("./componets/Module1/BalanceSheet"));
+const CashFlowStatement = lazy(
+  () => import("./componets/Module1/CashFlowStatement")
+);
+const User = lazy(() => import("./componets/AdminPage/User"));
+const Role = lazy(() => import("./componets/AdminPage/Role"));
 function App() {
   return (
     <MainLayout>
@@ -43,7 +62,10 @@ function App() {
         <Routes>
           <Route path="/" element={<DashBoard />} />
           <Route path="page2" element={<ActionTakenReport />} />
-          <Route path="quarterly-performance" element={<QuarterlyPerformance />} />
+          <Route
+            path="quarterly-performance"
+            element={<QuarterlyPerformance />}
+          />
           <Route path="business-prospects" element={<BusinessProspects />} />
           <Route path="project-update" element={<ProjectUpdate />} />
           <Route path="summary-forecast" element={<Summaryforecast />} />
@@ -60,7 +82,10 @@ function App() {
           <Route path="banking-facilities" element={<BankingFacilities />} />
           <Route path="banking-Gurantee" element={<BankGurantee />} />
           <Route path="corporate-Guarantee" element={<CorporateGuarantee />} />
-          <Route path="international-Amount" element={<InternationalAmount />} />
+          <Route
+            path="international-Amount"
+            element={<InternationalAmount />}
+          />
           <Route path="comfort-Gurantee" element={<ComfortGurantee />} />
           <Route path="ICB-Movement" element={<ICBMovement />} />
           <Route path="/borrowing" element={<Borrowing />}>
@@ -73,6 +98,12 @@ function App() {
             <Route path="maturities" element={<Maturities />} />
             <Route path="interest-received" element={<InterestReceived />} />
             <Route path="interest-payment" element={<InterestPayment />} />
+            <Route path="ncd-simple" element={<NCDSimple />} />
+          </Route>
+          <Route path="/dividend-income" element={<Outlet />}>
+            <Route index element={<DividendDashborad />} />
+            <Route path="dashboard" element={<DividendDashborad />} />
+            <Route path="main-dashboard" element={<DividendMainDashboard />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
