@@ -20,6 +20,10 @@ const ProjectUpdate = lazy(() => import('./componets/Module1/ProjectUpdate'));
 const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
 const InternationalAmount = lazy(() => import('./componets/Module2/InternationalAmount'));
 const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
+const NCDTracker = lazy(() => import('./componets/Module4/NCDTracker'));
+const NCD = lazy(() => import('./componets/Module6/NCD_FY22'));
+const CommercialPaper = lazy(() => import('./componets/Module6/CommercialPaper'));
+
 // in App.tsx
 const ComfortGurantee = lazy(() => import('./componets/Module2/ComfortGurantee'));
 const ICBMovement = lazy(() => import('./componets/Module3/ICD-ICBMovement'));
@@ -54,6 +58,9 @@ function App() {
         <Route path="international-Amount" element={<InternationalAmount />}/>
         <Route path="comfort-Gurantee" element={<ComfortGurantee />}/>
         <Route path="ICB-Movement" element={<ICBMovement />}/>
+        <Route path="NCD-Tracker" element={<NCDTracker />}/>
+        <Route path="NCD-FY22" element={<NCD />}/>
+        <Route path="Commercial-Paper" element={<CommercialPaper />}/>
 
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
