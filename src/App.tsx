@@ -10,6 +10,7 @@ import { PageNotFound } from "./componets/PageNotFound";
 import FY from "./componets/MasterData/FY";
 import SACompany from "./componets/MasterData/SACompany";
 import BankingFacilities from "./componets/Module2/BankingFacilities";
+import CommercialPaper from "./componets/Module6/CommercialPaper";
 const DashBoard = lazy(() => import('./componets/Module1/DashBoard'));
 const ActionTakenReport = lazy(() => import('./componets/Module1/ActionTakenReport'));
 const QuarterlyPerformance = lazy(() => import('./componets/Module1/QuarterlyPerformance'));
@@ -20,7 +21,7 @@ const ProjectUpdate = lazy(() => import('./componets/Module1/ProjectUpdate'));
 const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
 const InternationalAmount = lazy(() => import('./componets/Module2/InternationalAmount'));
 const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
-// in App.tsx
+const NCD = lazy(() => import('./componets/Module6/NCD_FY22'));// in App.tsx
 const ComfortGurantee = lazy(
   () => import("./componets/Module2/ComfortGurantee")
 );
@@ -58,7 +59,8 @@ function App() {
         <Route path="international-Amount" element={<InternationalAmount />}/>
         <Route path="comfort-Gurantee" element={<ComfortGurantee />}/>
         <Route path="ICB-Movement" element={<ICBMovement />}/>
-
+        <Route path="Commercial-Paper" element={<CommercialPaper />}/>
+        <Route path="NCD-FY22" element={<NCD />}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
       </Suspense>                                                                               
