@@ -298,13 +298,12 @@ const BankingFacilities = () => {
               </div>
               <div style={{ marginTop: "10px" }}>
                 <div className="input-group">
-                  {/* <label className="input-group-text" htmlFor="inputGroupFile01">
-                Upload
-              </label> */}
+                  
                   <input
                     type="file"
                     className="form-control"
                     id="inputGroupFile01"
+                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     onChange={handleFileChange}
                   />
                 </div>

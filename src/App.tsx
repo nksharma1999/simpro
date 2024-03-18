@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import ReactDatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 import MainLayout from "./componets/Layout/MainLayout";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import RoleMapping from "./componets/AdminPage/RoleMapping";
 import { MailConfig } from "./componets/AdminPage/MailConfig";
 import Bank from "./componets/MasterData/Bank";
@@ -20,17 +20,17 @@ const ProjectUpdate = lazy(() => import('./componets/Module1/ProjectUpdate'));
 const BankGurantee = lazy(() => import('./componets/Module2/BankingGurantee'));
 const InternationalAmount = lazy(() => import('./componets/Module2/InternationalAmount'));
 const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuarantee'));
-const NCDTracker = lazy(() => import('./componets/Module4/NCDTracker'));
-const NCD = lazy(() => import('./componets/Module6/NCD_FY22'));
-const CommercialPaper = lazy(() => import('./componets/Module6/CommercialPaper'));
-
 // in App.tsx
-const ComfortGurantee = lazy(() => import('./componets/Module2/ComfortGurantee'));
-const ICBMovement = lazy(() => import('./componets/Module3/ICD-ICBMovement'));
-const BalanceSheet = lazy(()=> import('./componets/Module1/BalanceSheet')); 
-const CashFlowStatement = lazy(()=> import('./componets/Module1/CashFlowStatement'));
-const User = lazy(() => import('./componets/AdminPage/User'));
-const Role = lazy(() => import('./componets/AdminPage/Role'));
+const ComfortGurantee = lazy(
+  () => import("./componets/Module2/ComfortGurantee")
+);
+const ICBMovement = lazy(() => import("./componets/Module3/ICD-ICBMovement"));
+const BalanceSheet = lazy(() => import("./componets/Module1/BalanceSheet"));
+const CashFlowStatement = lazy(
+  () => import("./componets/Module1/CashFlowStatement")
+);
+const User = lazy(() => import("./componets/AdminPage/User"));
+const Role = lazy(() => import("./componets/AdminPage/Role"));
 function App() {
   return (
     <MainLayout>
@@ -58,9 +58,6 @@ function App() {
         <Route path="international-Amount" element={<InternationalAmount />}/>
         <Route path="comfort-Gurantee" element={<ComfortGurantee />}/>
         <Route path="ICB-Movement" element={<ICBMovement />}/>
-        <Route path="NCD-Tracker" element={<NCDTracker />}/>
-        <Route path="NCD-FY22" element={<NCD />}/>
-        <Route path="Commercial-Paper" element={<CommercialPaper />}/>
 
         <Route path="*" element={<PageNotFound />}/>
       </Routes>

@@ -15,7 +15,7 @@ const MainLayout = ({ children }: any) => {
      <OffCanvas />
       <div style={{width:'100%', height:'100vh', overflow:'auto'}}>
         <Header updateSideBarView={updateSideBarView}/>
-        <div style={{padding:"20px"}}>
+        <div style={{padding:"10px"}}>
 
         {children}
         </div>
