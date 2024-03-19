@@ -420,6 +420,12 @@ export const Sidebar = () => {
                Commercial Paper 
                 </NavLink>
               </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/NCD_Dashboards"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+               NCD Dashboards
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
@@ -611,6 +617,12 @@ export const Sidebar = () => {
                         >
                           <i className="fa-solid fa-angles-right sidebarIcon"></i>
                           NCD Simple
+                        </NavLink>
+                      </div>
+                      <div className="accordion-body" style={{ padding: "0px" }}>
+                      <NavLink className="nav-link sidebarNavLink" to={"/NCD-Tracker"}>
+                        <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                       NCD Tracker
                         </NavLink>
                       </div>
                     </div>
