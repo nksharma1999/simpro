@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from "react";
-import ReactDatePicker from "react-datepicker";
+import { Suspense, lazy } from "react";
+import { Loading } from "./utils/Loading";
 import "react-datepicker/dist/react-datepicker.css";
 import MainLayout from "./componets/Layout/MainLayout";
 import { Outlet, Route, Routes } from "react-router-dom";
@@ -24,7 +24,6 @@ const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuara
 const NCD = lazy(() => import('./componets/Module6/NCD_FY22'));// in App.tsx
 const ComfortGurantee = lazy(() => import("./componets/Module2/ComfortGurantee"));
 const NCDTracker = lazy(() => import("./componets/Module4/NCD/NCDTracker"));
-const NCDDashboard = lazy(() => import("./componets/Module4/NCD/NCDDashboard"));
 const ICBMovement = lazy(() => import("./componets/Module3/ICD-ICBMovement"));
 const BalanceSheet = lazy(() => import("./componets/Module1/BalanceSheet"));
 const CashFlowStatement = lazy(
@@ -61,7 +60,6 @@ function App() {
         <Route path="ICB-Movement" element={<ICBMovement />}/>
         <Route path="Commercial-Paper" element={<CommercialPaper />}/>
         <Route path="NCD-FY22" element={<NCD />}/>
-        <Route path="NCD-Dashboard" element={<NCDDashboard />}/>
         <Route path="NCD-Tracker" element={<NCDTracker />}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
