@@ -419,9 +419,9 @@ export const Sidebar = () => {
                 </NavLink>
               </div>
               <div className="accordion-body" style={{ padding: "0px" }}>
-              <NavLink className="nav-link sidebarNavLink" to={"/NCD_Dashboards"}>
+              <NavLink className="nav-link sidebarNavLink" to={"/NCD_Dashboard"}>
                 <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-               NCD Dashboards
+               NCD Dashboard
                 </NavLink>
               </div>
             </div>
