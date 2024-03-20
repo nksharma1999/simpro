@@ -67,7 +67,7 @@ export const DividendMainDashboard = () => {
   };
   return (
     <>
-      <h3>Main Dashboard</h3>
+      <h3>Dividend Income</h3>
       <div className={"card "} style={{ maxHeight: "83vh", padding: "10px" }}>
         <div
           style={{
