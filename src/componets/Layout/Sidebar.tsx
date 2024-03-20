@@ -62,24 +62,24 @@ export const Sidebar = () => {
               // data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink className="nav-link sidebarNavLink" to={"/user"}>
+                <NavLink className="nav-link sidebarNavLink" to={"admin/user"}>
                   <i className="fa-solid fa-user-plus sidebarIcon"></i>
                   User
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"/role"}>
+                <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
                   <i className="fa-solid fa-user-shield sidebarIcon"></i>
                   Role
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/role-mapping"}
+                  to={"admin/role-mapping"}
                 >
                   <i className="fa-solid fa-user-shield sidebarIcon"></i>
                   Role Mapping
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/mail-config"}
+                  to={"admin/mail-config"}
                 >
                   <i className="fa-solid fa-user-shield sidebarIcon"></i>
                   Mail Config
@@ -125,17 +125,17 @@ export const Sidebar = () => {
               // data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink className="nav-link sidebarNavLink" to={"/sa-company"}>
+                <NavLink className="nav-link sidebarNavLink" to={"master-data/sa-company"}>
                   <i className="fa-regular fa-calendar-days sidebarIcon"></i>
                   S&A Company
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"/bank"}>
+                <NavLink className="nav-link sidebarNavLink" to={"master-data/bank"}>
                   <i className="fa-solid fa-building-columns sidebarIcon"></i>
                   Bank
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/financial-year"}
+                  to={"master-data/financial-year"}
                 >
                   <i className="fa-regular fa-calendar-days sidebarIcon"></i>
                   Financial Year
@@ -215,28 +215,28 @@ export const Sidebar = () => {
                     <div className="accordion-body" style={{ padding: "0px" }}>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/page2"}
+                        to={"pms/business/action-taken"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Action Taken Report
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/quarterly-performance"}
+                        to={"pms/business/quarterly-performance"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Quarterly Performance
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/business-prospects"}
+                        to={"pms/business/business-prospects"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Business Prospects
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/project-update"}
+                        to={"pms/business/project-update"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Project Update
@@ -278,28 +278,28 @@ export const Sidebar = () => {
                     <div className="accordion-body" style={{ padding: "0px" }}>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/summary-forecast"}
+                        to={"pms/financial/summary-forecast"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         P&L summary&forecast
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/working-capital"}
+                        to={"pms/financial/working-capital"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Working Capital
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/balance-sheet"}
+                        to={"pms/financial/balance-sheet"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Balance Sheet
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
-                        to={"/cashFlow-statement"}
+                        to={"pms/financial/cashFlow-statement"}
                       >
                         <i className="fa-solid fa-angles-right sidebarIcon"></i>
                         Cash Flow Statement
@@ -334,10 +334,8 @@ export const Sidebar = () => {
                   paddingLeft: "10px",
                 }}
               >
-                <i
-                  className="fa-solid fa-chart-simple"
-                  style={{ marginRight: "10px" }}
-                ></i>{" "}
+                <i className="fa-solid fa-table-columns" 
+                  style={{ marginRight: "10px" }}></i>
                 Facility Monitoring
               </button>
             </h2>
@@ -350,7 +348,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/banking-facilities"}
+                  to={"facility-monitoring/banking-facilities"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   Banking Facilities
@@ -366,7 +364,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/banking-Gurantee"}
+                  to={"facility-monitoring/banking-Gurantee"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   Banking Guarantee
@@ -375,7 +373,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/corporate-Guarantee"}
+                  to={"facility-monitoring/corporate-Guarantee"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   Corporate Guarantee
@@ -384,7 +382,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/international-Amount"}
+                  to={"facility-monitoring/international-Amount"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   International Amount
@@ -393,7 +391,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/comfort-Gurantee"}
+                  to={"facility-monitoring/comfort-Gurantee"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   Comfort Gurantee
@@ -402,7 +400,7 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"/ICB-Movement"}
+                  to={"facility-monitoring/ICB-Movement"}
                 >
                   <i className="fa-solid fa-angles-right sidebarIcon"></i>
                   ICB-ICD Movement
@@ -633,63 +631,105 @@ export const Sidebar = () => {
           </div>
         </div>
         <div
-                  className="accordion"
-                  id="accordionExample"
-                  style={{ backgroundColor: "transparent" }}
-                >
-                  <div
-                    className="accordion-item"
-                    style={{ backgroundColor: "transparent", border: "0px" }}
-                  >
-                    <h2 className="accordion-header" id="dividend-income-m4">
-                      <button
-                        className="accordion-button accordionBtnStyle collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#dividend-income-m4-Collapse"
-                        aria-expanded="true"
-                        aria-controls="dividend-income-m4-Collapse"
-                        style={{
-                          backgroundColor: "transparent",
-                          color: "white",
-                          paddingLeft: "10px",
-                        }}
-                      >
-                        <i
-                          className="fa-solid fa-user-tie"
-                          style={{ marginRight: "10px" }}
-                        ></i>
-                        Dividend Income
-                      </button>
-                    </h2>
-                    <div
-                      id="dividend-income-m4-Collapse"
-                      className="accordion-collapse collapse"
-                      aria-labelledby="dividend-income-m4"
-                      // data-bs-parent="#accordionExample"
-                    >
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
-                        <NavLink
+          className="accordion"
+          id="accordionExample"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div
+            className="accordion-item"
+            style={{ backgroundColor: "transparent", border: "0px" }}
+          >
+            <h2 className="accordion-header" id="dividend-income-m4">
+              <button
+                className="accordion-button accordionBtnStyle collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#dividend-income-m4-Collapse"
+                aria-expanded="true"
+                aria-controls="dividend-income-m4-Collapse"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  paddingLeft: "10px",
+                }}
+              >
+                <i className="fa-solid fa-sack-dollar" 
+                  style={{ marginRight: "10px" }}></i>
+                Dividend Income
+              </button>
+            </h2>
+            <div
+              id="dividend-income-m4-Collapse"
+              className="accordion-collapse collapse"
+              aria-labelledby="dividend-income-m4"
+              // data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                {/* <NavLink
                           className="nav-link sidebarNavLink"
                           to={"dividend-income/dashboard"}
                         >
                           <i className="fa-solid fa-angles-right sidebarIcon"></i>
                           Dashboard
-                        </NavLink>
-                        <NavLink
-                          className="nav-link sidebarNavLink"
-                          to={"dividend-income/main-dashboard"}
-                        >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
-                          Main Dashboard
-                        </NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        </NavLink> */}
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"dividend-income/main-dashboard"}
+                >
+                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  Main Dashboard
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="accordion"
+          id="accordionExample"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div
+            className="accordion-item"
+            style={{ backgroundColor: "transparent", border: "0px" }}
+          >
+            <h2 className="accordion-header" id="strategic-m7">
+              <button
+                className="accordion-button accordionBtnStyle collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#strategic-m7-Collapse"
+                aria-expanded="true"
+                aria-controls="strategic-m7-Collapse"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  paddingLeft: "10px",
+                }}
+              >
+                <i className="fa-solid fa-bullseye" 
+                  style={{ marginRight: "10px" }}></i>
+                Strategic Transaction
+              </button>
+            </h2>
+            <div
+              id="strategic-m7-Collapse"
+              className="accordion-collapse collapse"
+              aria-labelledby="strategic-m7"
+              // data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"strategic-transaction/dashboard"}
+                >
+                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  Dashboard
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

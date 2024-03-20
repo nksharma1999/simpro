@@ -1,6 +1,8 @@
 import { useState } from "react";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { AddDataDividendIncome } from "./AddDataDividendIncome";
+import { DividendExcelTemplate } from "../../utils/DividendExcelTemplate";
 const data = [
   {
     companyName: "L&T Power Developers Ltd.",
@@ -18,6 +20,11 @@ const data = [
 export const DividendMainDashboard = () => {
   const [dataList, setDataList] = useState(data);
   const [excelData, setExcelData] = useState<any[]>([]);
+  const [excelDataPreview, setExcelDataPreview] = useState<boolean>(false);
+  const [showAddNew, setShowAddNew] = useState<boolean>(false);
+  const handleShowBtn = (action: boolean) => {
+    setShowAddNew(action);
+  };
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -33,6 +40,7 @@ export const DividendMainDashboard = () => {
       // console.log(inportedData1);
       const jsonResult1: any[] = excelFileDataToJson(inportedData1);
       setExcelData(jsonResult1);
+      setExcelDataPreview(true);
       // console.log(jsonResult1[0]);
       // setSData((prev) => [...prev, ...jsonResult1]);
       // const jsonResult2: metaData[] = excelFileDataToJson(inportedData2);
@@ -40,6 +48,22 @@ export const DividendMainDashboard = () => {
     };
 
     reader.readAsBinaryString(file);
+  };
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.json_to_sheet(DividendExcelTemplate);
+    XLSX.utils.book_append_sheet(wb, ws1, "Dividend Income");
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
+      "_" +
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+    const filename = `${formattedDate}.xlsx`;
+    XLSX.writeFile(wb, `Dividend_Income_Template_${filename}.xlsx`);
   };
   return (
     <>
@@ -86,12 +110,13 @@ export const DividendMainDashboard = () => {
           </div>
           <div style={{ marginRight: "10px", marginTop: "0px" }}>
             <button
-              //   onClick={exportToExcel}
+                onClick={exportToExcel}
               style={{
                 backgroundColor: "white",
                 borderWidth: "0",
                 marginRight: "10px",
               }}
+              title="Download Template"
             >
               <i
                 style={{
@@ -103,7 +128,7 @@ export const DividendMainDashboard = () => {
               ></i>
             </button>
             <button
-              //   onClick={() => handleShowBtn(true)}
+                onClick={() => handleShowBtn(true)}
               style={{ backgroundColor: "white", borderWidth: "0" }}
             >
               <i
@@ -126,80 +151,6 @@ export const DividendMainDashboard = () => {
             maxHeight: "80vh",
           }}
         >
-          <h5>Excel Data</h5>
-          {excelData.length > 0 && (
-            <table className="table table-bordered">
-              <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
-                  <th scope="col">Company Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Type Of Holding</th>
-                  <th scope="col">Type Of Dividend</th>
-                  <th scope="col">Shareholding %</th>
-                  <th
-                    scope="col"
-                    style={{ width: "200px", whiteSpace: "wrap" }}
-                  >
-                    No. of shares
-                  </th>
-                  <th scope="col">Dividend Per Share</th>
-                  <th
-                    scope="col"
-                    style={{ width: "200px", whiteSpace: "wrap" }}
-                  >
-                    Gross Dividend
-                  </th>
-                  <th
-                    scope="col"
-                    style={{ width: "100px", whiteSpace: "wrap" }}
-                  >
-                    Div. Dist. Tax
-                  </th>
-                  <th
-                    scope="col"
-                    style={{ width: "100px", whiteSpace: "wrap" }}
-                  >
-                    Net Dividend
-                  </th>
-                  <th
-                    scope="col"
-                    style={{ width: "100px", whiteSpace: "wrap" }}
-                  >
-                    Date of Receipt
-                  </th>
-                  <th scope="col">Quarter</th>
-                  <th scope="col">Received in Bank</th>
-                  <th scope="col">Receipt</th>
-                  <th scope="col">UTR</th>
-                  <th scope="col">Email intimation from</th>
-                  <th scope="col">Email intimation Date</th>
-                  <th scope="col">Next Dividend Date</th>
-                  <th scope="col">S&A Contact</th>
-                </tr>
-              </thead>
-              <tbody>
-                {excelData.map((val, index) => {
-                  return (
-                    <tr key={index} style={{ textAlign: "center" }}>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        {val.companyName}
-                      </td>
-                      <td>{val.Type}</td>
-                      <td>{val.typeOfHolding}</td>
-                      <td>{val.typeOfDividend}</td>
-                      <td>{val.q2}</td>
-                      <td>{val.equity_shares}</td>
-                      <td>{val.pref_shares}</td>
-                      <td>{val.final_dividend}</td>
-                      <td>{val.interim_dividend}</td>
-                      <td>{val.special_dividend}</td>
-                      <td>{val.special_dividend}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          )}
           <table className="table table-bordered">
             <thead className="tableHeader">
               <tr style={{ textAlign: "center" }}>
@@ -246,6 +197,141 @@ export const DividendMainDashboard = () => {
           </table>
         </div>
       </div>
+      {excelDataPreview && (
+        <div className="popup">
+          <div className="popup-inner" style={{ maxHeight: "100vh"}}>
+            <h5>Excel Data</h5>
+            <div
+              className="card"
+              style={{ maxHeight:'80vh',padding: "10px", maxWidth: "80vw", overflow: "auto",overflowY:'auto' }}
+            >
+              <table className="table table-bordered">
+                <thead
+                  className="tableHeader"
+                  style={{ backgroundColor: "#007bff", color: "white" }}
+                >
+                  <tr style={{ textAlign: "center" }}>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Type Of Holding</th>
+                    <th scope="col">Type Of Dividend</th>
+                    <th scope="col">Shareholding %</th>
+                    <th
+                      scope="col"
+                      style={{ width: "200px", whiteSpace: "wrap" }}
+                    >
+                      No. of shares
+                    </th>
+                    <th scope="col">Dividend Per Share</th>
+                    <th
+                      scope="col"
+                      style={{ width: "200px", whiteSpace: "wrap" }}
+                    >
+                      Gross Dividend
+                    </th>
+                    <th
+                      scope="col"
+                      style={{ width: "100px", whiteSpace: "wrap" }}
+                    >
+                      Div. Dist. Tax
+                    </th>
+                    <th
+                      scope="col"
+                      style={{ width: "100px", whiteSpace: "wrap" }}
+                    >
+                      Net Dividend
+                    </th>
+                    <th
+                      scope="col"
+                      style={{ width: "100px", whiteSpace: "wrap" }}
+                    >
+                      Date of Receipt
+                    </th>
+                    <th scope="col">Quarter</th>
+                    <th scope="col">Received in Bank</th>
+                    <th scope="col">Receipt</th>
+                    <th scope="col">UTR</th>
+                    <th scope="col">Email intimation from</th>
+                    <th scope="col">Email intimation Date</th>
+                    <th scope="col">Next Dividend Date</th>
+                    <th scope="col">S&A Contact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {excelData.map((val, index) => {
+                    if (val.companyName) {
+                      return (
+                        <tr key={index} style={{ textAlign: "center" }}>
+                          <td style={{ whiteSpace: "nowrap" }}>
+                            {val.companyName}
+                          </td>
+                          <td>{val.Type}</td>
+                          <td>{val.typeOfHolding}</td>
+                          <td>{val.typeOfDividend}</td>
+                          <td>{val.shareholding_Pre}</td>
+                          <td>{val.noOfShares}</td>
+                          <td>{val.dividendPerShare}</td>
+                          <td>
+                            {(
+                              Number(val.noOfShares) *
+                              Number(val.dividendPerShare)
+                            ).toFixed(2)}
+                          </td>
+                          <td>
+                            {(
+                              Number(val.noOfShares) *
+                              Number(val.dividendPerShare) *
+                              0.1
+                            ).toFixed(2)}
+                          </td>
+                          <td>
+                            {(
+                              Number(val.noOfShares) *
+                                Number(val.dividendPerShare) -
+                              Number(val.noOfShares) *
+                                Number(val.dividendPerShare) *
+                                0.1
+                            ).toFixed(2)}
+                          </td>
+                          <td>{new Date(val.dateOfReceipt).toString()}</td>
+                          <td>{val.quarter}</td>
+                          <td>{val.receivedInBank}</td>
+                          <td>{val.receipt}</td>
+                          <td>{val.UTR}</td>
+                          <td>{val.emailInitimationFrom}</td>
+                          <td>
+                            {new Date(val.emailIntimationDate).toString()}
+                          </td>
+                          <td>{new Date(val.nextDividendDate).toString()}</td>
+                          <td>{val.sAndaContact}</td>
+                        </tr>
+                      );
+                    }
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="row" style={{ marginTop: "10px" }}>
+              <div className="col-lg-6 col-md-6 col-12">
+                <button
+                  style={{ width: "100%", backgroundColor: "red" }}
+                  onClick={() => setExcelDataPreview(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+              <div className="col-lg-6 col-md-6 col-12">
+                <button style={{ width: "100%", backgroundColor: "#0A6862" }}>
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showAddNew && (
+        <AddDataDividendIncome handleShowBtn={handleShowBtn} />
+      )}
     </>
   );
 };
