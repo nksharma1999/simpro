@@ -7,7 +7,7 @@ export const OffCanvas = () => {
       style={{
         width: "250px",
         height: "100vh",
-        padding: 10,
+        // padding: 10,
         backgroundColor: "rgb(10 104 98)",
         backgroundBlendMode: "overlay",
         overflow: "hidden",
@@ -30,7 +30,7 @@ export const OffCanvas = () => {
         {/* <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
       </div>
       <div className="offcanvas-body">
-        <div className="sidebar">
+      <div className="sidebar">
         <div
           className="accordion"
           id="accordionExample"
@@ -638,6 +638,31 @@ export const OffCanvas = () => {
                           NCD Dashboard
                         </NavLink>
                       </div>
+
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/Primary-Investor"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          Primary Investor
+                        </NavLink>
+                      </div>
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/Secondary-Investor"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          Secondary Investor
+                        </NavLink>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -766,15 +791,6 @@ export const OffCanvas = () => {
                   Commercial Paper
                 </NavLink>
               </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink
-                  className="nav-link sidebarNavLink"
-                  to={"/NCD_Dashboards"}
-                >
-                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
-                  NCD Dashboards
-                </NavLink>
-              </div>
             </div>
           </div>
         </div>
@@ -826,7 +842,7 @@ export const OffCanvas = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
       </div>
     </div>
   );
