@@ -632,6 +632,31 @@ export const Sidebar = () => {
                           NCD Dashboard
                         </NavLink>
                       </div>
+
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/Primary-Investor"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          Primary Investor
+                        </NavLink>
+                      </div>
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/Secondary-Investor"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          Secondary Investor
+                        </NavLink>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -751,15 +776,6 @@ export const Sidebar = () => {
                 >
                   {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   Commercial Paper
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink
-                  className="nav-link sidebarNavLink"
-                  to={"/NCD_Dashboards"}
-                >
-                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
-                  NCD Dashboards
                 </NavLink>
               </div>
             </div>

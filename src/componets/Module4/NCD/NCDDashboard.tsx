@@ -186,11 +186,11 @@ const removeSInput = () => {
                     data-bs-target="#Sanctioned-Collapse"
                     aria-expanded="true"
                     aria-controls="Sanctioned-Collapse"
-                    // style={{
-                    //   backgroundColor: "transparent",
-                    //   color: "white",
-                    //   paddingLeft: "10px",
-                    // }}
+                    style={{
+                      backgroundColor: "transparent",
+                      color: "Black",
+                      paddingLeft: "10px",
+                    }}
                   >
                     <i
                       className="fa-solid fa-chart-simple"
@@ -217,7 +217,7 @@ const removeSInput = () => {
                       <table className="table table-bordered">
                         <thead
                           style={{
-                            color: "#FC5C7D",
+                            color: "black",
                             backgroundColor: "#f6f0f7",
                           }}
                         >
@@ -382,6 +382,11 @@ const removeSInput = () => {
                     data-bs-target="#Utilisation-Collapse"
                     aria-expanded="true"
                     aria-controls="Utilisation-Collapse"
+                     style={{
+                      backgroundColor: "transparent",
+                      color: "Black",
+                      paddingLeft: "10px",
+                    }}
                   >
                     <i
                       className="fa-solid fa-chart-simple"
@@ -408,7 +413,7 @@ const removeSInput = () => {
                       <table className="table table-bordered">
                         <thead
                           style={{
-                            color: "#FC5C7D",
+                            color: "#black",
                             backgroundColor: "#f6f0f7",
                           }}
                         >
@@ -571,6 +576,11 @@ const removeSInput = () => {
                     data-bs-target="#available-Collapse"
                     aria-expanded="true"
                     aria-controls="available-Collapse"
+                     style={{
+                      backgroundColor: "transparent",
+                      color: "Black",
+                      paddingLeft: "10px",
+                    }}
                   >
                     <i
                       className="fa-solid fa-chart-simple"
@@ -596,7 +606,7 @@ const removeSInput = () => {
                       <table className="table table-bordered">
                         <thead
                           style={{
-                            color: "#FC5C7D",
+                            color: "#black",
                             backgroundColor: "#f6f0f7",
                           }}
                         >

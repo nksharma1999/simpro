@@ -136,18 +136,12 @@ const NCD = () => {
                     />
                       </td>
                       <td>
-                      <select
-                                  className="form-select"
-                                  onChange={handleSsl}
-                                  value={selectedSsl}
-                                  style={{ width: "200px" }}
-                                >
-                                  <option value="" disabled></option>
-                                  <option>---Select-Type--</option>
-                                  <option value="1">450</option>
-                                  <option value="2">250</option>
-                                  <option value="3">100</option>
-                                </select>
+                      <input
+                          ref={amountInput}
+                          type="text"
+                          className="form-control"
+                          style={{ minWidth: "100px" }}
+                        />
                       </td>
                       <td>
                       <input

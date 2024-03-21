@@ -158,18 +158,12 @@ const CommercialPaper = () => {
                         />
                         </td>
                         <td>
-                        <select
-                                  className="form-select"
-                                  onChange={handleSsl}
-                                  value={selectedSsl}
-                                  style={{ width: "200px" }}
-                                >
-                                  <option value="" disabled></option>
-                                  <option>---Select-Type--</option>
-                                  <option value="1">1625</option>
-                                  <option value="2">1150</option>
-                                  <option value="3">1500</option>
-                                </select>
+                        <input
+                          ref={amtInput}
+                          type="text"
+                          className="form-control"
+                          style={{ minWidth: "100px" }}
+                        />
                         </td>
                         <td>
                         <input

@@ -63,6 +63,9 @@ const CashFlowStatement = lazy(
 );
 const User = lazy(() => import("./componets/AdminPage/User"));
 const Role = lazy(() => import("./componets/AdminPage/Role"));
+const PrimaryInvestor = lazy(() => import("./componets/Module4/NCD/PrimaryInvestor"));
+const SecondaryInvestor = lazy(() => import("./componets/Module4/NCD/SecondaryInvestor"));
+
 function App() {
   return (
     <MainLayout>
@@ -146,6 +149,8 @@ function App() {
           </Route>
           <Route path="NCD-FY22" element={<NCD />}></Route>
           <Route path="Commercial-Paper" element={<CommercialPaper />}></Route>
+          <Route path="Primary-Investor" element={<PrimaryInvestor />}></Route>
+          <Route path="Secondary-Investor" element={<SecondaryInvestor />}></Route>
           <Route path="/strategic-transaction" element={<Outlet />}>
             <Route index element={<StrategicTransactionDashbord />} />
             <Route
