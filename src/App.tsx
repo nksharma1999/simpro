@@ -26,6 +26,7 @@ import { DividendMainDashboard } from "./componets/Module5/MainDashboard";
 import NCDTracker from "./componets/Module4/NCD/NCDTracker";
 import TermLoan from "./componets/Module4/TermLoan/TermLoan";
 import NCDDashboard from "./componets/Module4/NCD/NCDDashboard";
+import NCD from "./componets/Module6/NCD_FY22";
 const StrategicTransactionDashbord = lazy(
   () => import("./componets/Module7/StrategicTransaction")
 );
@@ -120,7 +121,7 @@ function App() {
               path="international-Amount"
               element={<InternationalAmount />}
             />
-            <Route path="comfort-Gurantee" element={<ComfortGurantee />} />
+            <Route path="comfort-Guarantee" element={<ComfortGurantee />} />
             <Route path="ICB-Movement" element={<ICBMovement />} />
           </Route>
           <Route path="/borrowing" element={<Borrowing />}>
@@ -143,6 +144,8 @@ function App() {
             <Route path="dashboard" element={<DividendDashborad />} />
             <Route path="main-dashboard" element={<DividendMainDashboard />} />
           </Route>
+          <Route path="NCD-FY22" element={<NCD />}></Route>
+          <Route path="Commercial-Paper" element={<CommercialPaper />}></Route>
           <Route path="/strategic-transaction" element={<Outlet />}>
             <Route index element={<StrategicTransactionDashbord />} />
             <Route

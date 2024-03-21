@@ -399,10 +399,10 @@ export const Sidebar = () => {
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"facility-monitoring/comfort-Gurantee"}
+                  to={"facility-monitoring/comfort-Guarantee"}
                 >
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
-                  Comfort Gurantee
+                  Comfort Guarantee
                 </NavLink>
               </div>
               <div className="accordion-body" style={{ padding: "0px" }}>
@@ -414,30 +414,7 @@ export const Sidebar = () => {
                   ICB-ICD Movement
                 </NavLink>
               </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
-                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
-                  NCD
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink
-                  className="nav-link sidebarNavLink"
-                  to={"/Commercial-Paper"}
-                >
-                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
-                  Commercial Paper
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink
-                  className="nav-link sidebarNavLink"
-                  to={"/NCD_Dashboards"}
-                >
-                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
-                  NCD Dashboards
-                </NavLink>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -719,6 +696,70 @@ export const Sidebar = () => {
                 >
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Main Dashboard
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="accordion"
+          id="accordionExample"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div
+            className="accordion-item"
+            style={{ backgroundColor: "transparent", border: "0px" }}
+          >
+            <h2 className="accordion-header" id="Cost-ofborrowing-m6">
+              <button
+                className="accordion-button accordionBtnStyle collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#Cost-ofborrowing-m6-Collapse"
+                aria-expanded="true"
+                aria-controls="Cost-ofborrowing-m6-Collapse"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  paddingLeft: "10px",
+                }}
+              >
+                <i
+                  className="fa-solid fa-sack-dollar"
+                  style={{ marginRight: "10px" }}
+                ></i>
+                Cost of borrowing
+              </button>
+            </h2>
+            <div
+              id="Cost-ofborrowing-m6-Collapse"
+              className="accordion-collapse collapse"
+              aria-labelledby="Cost-ofborrowing-m6"
+              // data-bs-parent="#accordionExample"
+            >
+              
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  NCD
+                </NavLink>
+              </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"/Commercial-Paper"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  Commercial Paper
+                </NavLink>
+              </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"/NCD_Dashboards"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  NCD Dashboards
                 </NavLink>
               </div>
             </div>

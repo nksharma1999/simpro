@@ -79,7 +79,8 @@ const BankingGuarantee = () => {
     xlsx.writeFile(wb, filename);
   };
 
-  return (
+  return (<>
+  <h3>Banking Guarantee</h3>
     <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
       <div>
         <div className="d-flex justify-content-end mb-2">
@@ -338,6 +339,7 @@ const BankingGuarantee = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
