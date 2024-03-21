@@ -24,6 +24,7 @@ const CorporateGuarantee = lazy(() => import('./componets/Module2/CorporateGuara
 const NCD = lazy(() => import('./componets/Module6/NCD_FY22'));// in App.tsx
 const ComfortGurantee = lazy(() => import("./componets/Module2/ComfortGurantee"));
 const NCDTracker = lazy(() => import("./componets/Module4/NCD/NCDTracker"));
+const PrimaryInvestor = lazy(() => import("./componets/Module4/NCDInvestor/PrimaryInvestor"));
 const NCDDashboard = lazy(() => import("./componets/Module4/NCD/NCDDashboard"));
 const ICBMovement = lazy(() => import("./componets/Module3/ICD-ICBMovement"));
 const BalanceSheet = lazy(() => import("./componets/Module1/BalanceSheet"));
@@ -53,7 +54,7 @@ function App() {
         <Route path="bank" element={<Bank />}/>
         <Route path="financial-year" element={<FY />}/>
         <Route path="sa-company" element={<SACompany />}/>
-        <Route path="banking-facilities" element={<BankingFacilities />}/>
+        <Route path="facility-monitoring/banking-facilities" element={<BankingFacilities />}/>
         <Route path="banking-Gurantee" element={<BankGurantee />}/>
         <Route path="corporate-Guarantee" element={<CorporateGuarantee />}/>
         <Route path="international-Amount" element={<InternationalAmount />}/>
@@ -63,6 +64,7 @@ function App() {
         <Route path="NCD-FY22" element={<NCD />}/>
         <Route path="NCD-Tracker" element={<NCDTracker />}/>
         <Route path="NCD-Dashboard" element={<NCDDashboard />}/>
+        <Route path="Primary-Investor" element={<PrimaryInvestor />}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
       </Suspense>                                                                               

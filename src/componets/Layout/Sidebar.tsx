@@ -424,6 +424,12 @@ export const Sidebar = () => {
                NCD Dashboard
                 </NavLink>
               </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+              <NavLink className="nav-link sidebarNavLink" to={"/Primary-Investor"}>
+                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+               Primary Investor
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
