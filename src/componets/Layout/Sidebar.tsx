@@ -2,11 +2,12 @@ import { url } from "inspector";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
+  const baseUrl = window.location.origin;
   return (
     <div
       className="sideBarBox"
       style={{
-        width: "280px",
+        width: "290px",
         height: "100vh",
         padding: 10,
         backgroundColor: "rgb(10 104 98)",
@@ -19,9 +20,10 @@ export const Sidebar = () => {
     >
       <div>
         <img
-          style={{ mixBlendMode: "color-burn" }}
-          src="http://simpro.co.in/wp-content/uploads/2022/06/simpro-logo1-1.png"
-          alt=""
+          style={{  width:'200px'}}
+          // src="http://simpro.co.in/wp-content/uploads/2022/06/simpro-logo1-1.png"
+          src={baseUrl+ "/logo.jpeg"}
+          alt="Logo"
         />
       </div>
       <div className="sidebar">
@@ -666,6 +668,13 @@ export const Sidebar = () => {
                 >
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Term Loan
+                </NavLink>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"borrowing/ECBDashboard"}
+                >
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
+                  ECB Dashboard
                 </NavLink>
               </div>
             </div>

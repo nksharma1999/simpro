@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { AddDataTermLoan } from "./AddDataTermLoan";
+import { AddDataECB } from "./AddDataECB";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../../utils/excelFileDataToJson";
 const data = [
   {
     bankName: "HDFC",
+    LRN:'LRN335',
     dealDate: "12/12/2023",
     startDate: "13/12/2023",
     endDate: "13/12/2026",
@@ -14,7 +15,7 @@ const data = [
     terms: "na",
   },
 ];
-const TermLoan = () => {
+const ECBDashboard = () => {
   const [list, setList] = useState(data);
   const [showAddNew, setShowAddNew] = useState<boolean>(false);
   const handleShowBtn = (action: boolean) => {
@@ -46,7 +47,7 @@ const TermLoan = () => {
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
     const ws1 = XLSX.utils.json_to_sheet(data);
-    XLSX.utils.book_append_sheet(wb, ws1, "Term Loan");
+    XLSX.utils.book_append_sheet(wb, ws1, "ECB Info");
     const currentDate = new Date();
     const formattedDate =
       currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
@@ -57,11 +58,11 @@ const TermLoan = () => {
       ":" +
       currentDate.getSeconds();
     const filename = `${formattedDate}.xlsx`;
-    XLSX.writeFile(wb, `Term_Loan_Template_${filename}.xlsx`);
+    XLSX.writeFile(wb, `ECB_Template_${filename}.xlsx`);
   };
   return (
     <>
-      <h3>Term Loan</h3>
+      <h3>ECB Dashboard </h3>
       <div className={"card "} style={{ maxHeight: "83vh", padding: "10px" }}>
         <div
           style={{
@@ -73,8 +74,6 @@ const TermLoan = () => {
             alignItems: "center",
           }}
         >
-          {/* <div className="row g-2">
-            <div className="col-md"> */}
           <div className="form-floating" style={{ width: "170px" }}>
             <select
               className="form-select"
@@ -91,9 +90,25 @@ const TermLoan = () => {
               <option value="Axis">Axis</option>
               <option value="SBI">SBI</option>
             </select>
-            {/* <label htmlFor="floatingSelectGrid">Select FY</label> */}
           </div>
-          <div style={{marginRight:'10px'}}>
+          <div className="form-floating" style={{ width: "170px" }}>
+            <select
+              className="form-select"
+              id="floatingSelectGrid"
+              aria-label="Floating label select example"
+              style={{ height: "36px", paddingTop: "5px" }}
+              //   onChange={handleFY}
+              //   value={selectedFY}
+            >
+              <option value="selectFY" selected>
+                ---Select LRN---
+              </option>
+              <option value="235">LRN235</option>
+              <option value="23523">LRN23523</option>
+              <option value="436">LRN436</option>
+            </select>
+          </div>
+          <div style={{ marginRight: "10px" }}>
             <div className="input-group">
               <input
                 type="file"
@@ -106,12 +121,13 @@ const TermLoan = () => {
           </div>
           <div style={{ marginRight: "10px", marginTop: "0px" }}>
             <button
-              onClick={exportToExcel}
+                onClick={exportToExcel}
               style={{
                 backgroundColor: "white",
                 borderWidth: "0",
                 marginRight: "10px",
               }}
+              title="Download Template"
             >
               <i
                 style={{
@@ -123,7 +139,7 @@ const TermLoan = () => {
               ></i>
             </button>
             <button
-              onClick={() => handleShowBtn(true)}
+                onClick={() => handleShowBtn(true)}
               style={{ backgroundColor: "white", borderWidth: "0" }}
             >
               <i
@@ -150,6 +166,7 @@ const TermLoan = () => {
             <thead className="tableHeader">
               <tr style={{ textAlign: "center" }}>
                 <th scope="col">Bank Name</th>
+                <th scope="col">LRN</th>
                 <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
                   Deal Date
                 </th>
@@ -167,26 +184,26 @@ const TermLoan = () => {
             </thead>
             <tbody>
               {list.map((val, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{val.bankName}</td>
-                    <td>{val.dealDate}</td>
-                    <td>{val.startDate}</td>
-                    <td>{val.endDate}</td>
-                    <td>{val.principal}</td>
-                    <td>{val.interestRate}</td>
-                    <td>{val.interestPaymentFreq}</td>
-                    <td>{val.terms}</td>
-                  </tr>
-                );
-              })}
+            return (
+              <tr key={index}>
+                <td>{val.bankName}</td>
+                <td>{val.LRN}</td>
+                <td>{val.dealDate}</td>
+                <td>{val.startDate}</td>
+                <td>{val.endDate}</td>
+                <td>{val.principal}</td>
+                <td>{val.interestRate}</td>
+                <td>{val.interestPaymentFreq}</td>
+                <td>{val.terms}</td>
+              </tr>
+            );
+          })}
             </tbody>
           </table>
         </div>
       </div>
-      {showAddNew && <AddDataTermLoan handleShowBtn={handleShowBtn} />}
+      {showAddNew && <AddDataECB handleShowBtn={handleShowBtn} />}
     </>
   );
 };
-
-export default TermLoan;
+export default ECBDashboard;

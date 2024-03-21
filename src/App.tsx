@@ -27,6 +27,7 @@ import NCDTracker from "./componets/Module4/NCD/NCDTracker";
 import TermLoan from "./componets/Module4/TermLoan/TermLoan";
 import NCDDashboard from "./componets/Module4/NCD/NCDDashboard";
 import NCD from "./componets/Module6/NCD_FY22";
+import ECBDashboard from "./componets/Module4/ECB/ECBDashboard";
 const StrategicTransactionDashbord = lazy(
   () => import("./componets/Module7/StrategicTransaction")
 );
@@ -139,6 +140,7 @@ function App() {
             <Route path="interest-payment" element={<InterestPayment />} />
             <Route path="ncd-simple" element={<NCDSimple />} />
             <Route path="term-loan" element={<TermLoan />} />
+            <Route path="ECBDashboard" element={<ECBDashboard />} />
           </Route>
           <Route path="NCD-Tracker" element={<NCDTracker />}></Route>
           <Route path="NCD-Dashboard" element={<NCDDashboard />}></Route>

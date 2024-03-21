@@ -3,21 +3,22 @@ import { OffCanvas } from "./OffCanvas";
 
 interface props {
   updateSideBarView: () => void;
+  widthLow:boolean;
 }
-export const Header: React.FC<props> = ({ updateSideBarView }) => {
+export const Header: React.FC<props> = ({ updateSideBarView,widthLow }) => {
   return (
     <nav className="navbar navbar-light" style={{backgroundColor:'rgb(10 104 98)'}}>
       <div className="container-fluid">
         <div>
-          <button
+        {!widthLow ? <button
             onClick={updateSideBarView}
             className="btn "
             type="submit"
             style={{ width: "50px",color:'#198754' ,borderColor:'#da1818'}}
           >
             <i className="fa-solid fa-bars" style={{color:'white'}}></i>
-          </button>
-          {/* <button
+          </button> :
+          <button
             className="btn btn-outline-success"
             type="button"
             style={{ width: "50px" }}
@@ -26,7 +27,7 @@ export const Header: React.FC<props> = ({ updateSideBarView }) => {
             aria-controls="offcanvasExample"
           >
             <i className="fa-solid fa-bars"></i>
-          </button> */}
+          </button>}
         </div>
         <OffCanvas />
         <form className="d-flex">
