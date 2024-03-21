@@ -136,7 +136,7 @@ const ComfortGurantee = () => {
   return (
     <>
       <div>
-        <h3>Comfort Gurantee</h3>
+        <h3>Comfort Guarantee</h3>
         <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
           <div
             style={{

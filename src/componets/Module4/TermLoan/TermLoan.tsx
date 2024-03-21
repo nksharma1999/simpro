@@ -1,49 +1,20 @@
 import { useState } from "react";
-import { AddDataStrategicTransaction } from "./AddDataStrategicTransaction";
+import { AddDataTermLoan } from "./AddDataTermLoan";
 import * as XLSX from "xlsx";
-import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { excelFileDataToJson } from "../../../utils/excelFileDataToJson";
 const data = [
   {
-    companyName: "L&T",
-    type: "Mergers",
-    dealDate: "20-10-2024",
-    shareType: "Equity share",
-    noOfShares: 2323,
-    ratioOfShare: "1:2",
-    sharePrice: 422,
-    dealValue: 43434,
-    erstWhileEntityName: "Old L&T",
-    newEntityName: "New L&T",
-    remark: "OK",
-  },
-  {
-    companyName: "L&T",
-    type: "Mergers",
-    dealDate: "20-10-2024",
-    shareType: "Equity share",
-    noOfShares: 2323,
-    ratioOfShare: "1:2",
-    sharePrice: 422,
-    dealValue: 43434,
-    erstWhileEntityName: "Old L&T",
-    newEntityName: "New L&T",
-    remark: "OK",
-  },
-  {
-    companyName: "L&T",
-    type: "Mergers",
-    dealDate: "20-10-2024",
-    shareType: "Equity share",
-    noOfShares: 2323,
-    ratioOfShare: "1:2",
-    sharePrice: 422,
-    dealValue: 43434,
-    erstWhileEntityName: "Old L&T",
-    newEntityName: "New L&T",
-    remark: "OK",
+    bankName: "HDFC",
+    dealDate: "12/12/2023",
+    startDate: "13/12/2023",
+    endDate: "13/12/2026",
+    principal: 363463,
+    interestRate: 10,
+    interestPaymentFreq: "M",
+    terms: "na",
   },
 ];
-const StrategicTransactionDashbord = () => {
+const TermLoan = () => {
   const [list, setList] = useState(data);
   const [showAddNew, setShowAddNew] = useState<boolean>(false);
   const handleShowBtn = (action: boolean) => {
@@ -75,7 +46,7 @@ const StrategicTransactionDashbord = () => {
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
     const ws1 = XLSX.utils.json_to_sheet(data);
-    XLSX.utils.book_append_sheet(wb, ws1, "Strategic Transaction");
+    XLSX.utils.book_append_sheet(wb, ws1, "Term Loan");
     const currentDate = new Date();
     const formattedDate =
       currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
@@ -86,14 +57,11 @@ const StrategicTransactionDashbord = () => {
       ":" +
       currentDate.getSeconds();
     const filename = `${formattedDate}.xlsx`;
-    XLSX.writeFile(
-      wb,
-      `StrategicTransactionDashbord_Template_${filename}.xlsx`
-    );
+    XLSX.writeFile(wb, `Term_Loan_Template_${filename}.xlsx`);
   };
   return (
     <>
-      <h3>Strategic Transaction</h3>
+      <h3>Term Loan</h3>
       <div className={"card "} style={{ maxHeight: "83vh", padding: "10px" }}>
         <div
           style={{
@@ -101,10 +69,30 @@ const StrategicTransactionDashbord = () => {
             borderRadius: "0.3px",
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
+          {/* <div className="row g-2">
+            <div className="col-md"> */}
+          <div className="form-floating" style={{ width: "170px" }}>
+            <select
+              className="form-select"
+              id="floatingSelectGrid"
+              aria-label="Floating label select example"
+              style={{ height: "36px", paddingTop: "5px" }}
+              //   onChange={handleFY}
+              //   value={selectedFY}
+            >
+              <option value="selectFY" selected>
+                ---Select Bank---
+              </option>
+              <option value="HDFC">HDFC</option>
+              <option value="Axis">Axis</option>
+              <option value="SBI">SBI</option>
+            </select>
+            {/* <label htmlFor="floatingSelectGrid">Select FY</label> */}
+          </div>
           <div style={{marginRight:'10px'}}>
             <div className="input-group">
               <input
@@ -124,7 +112,6 @@ const StrategicTransactionDashbord = () => {
                 borderWidth: "0",
                 marginRight: "10px",
               }}
-              title="Download Template"
             >
               <i
                 style={{
@@ -162,34 +149,34 @@ const StrategicTransactionDashbord = () => {
           <table className="table table-bordered">
             <thead className="tableHeader">
               <tr style={{ textAlign: "center" }}>
-                <th scope="col">Company Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Deal Date</th>
-                <th scope="col">Share Type</th>
-                <th scope="col">No. of Shares</th>
-                <th scope="col">Ratio of Shares</th>
-                <th scope="col">Share Price</th>
-                <th scope="col">Deal Value</th>
-                <th scope="col">ErstWhile Entity Names</th>
-                <th scope="col">New Entity Name</th>
-                <th scope="col">Remark</th>
+                <th scope="col">Bank Name</th>
+                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
+                  Deal Date
+                </th>
+                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
+                  Start Date
+                </th>
+                <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
+                  End Date
+                </th>
+                <th scope="col">Principal</th>
+                <th scope="col">Interest Rate</th>
+                <th scope="col">Interest Payment Frequency</th>
+                <th scope="col">Terms </th>
               </tr>
             </thead>
             <tbody>
               {list.map((val, index) => {
                 return (
                   <tr key={index}>
-                    <td>{val.companyName}</td>
-                    <td>{val.type}</td>
+                    <td>{val.bankName}</td>
                     <td>{val.dealDate}</td>
-                    <td>{val.shareType}</td>
-                    <td>{val.noOfShares}</td>
-                    <td>{val.ratioOfShare}</td>
-                    <td>{val.sharePrice}</td>
-                    <td>{val.dealValue}</td>
-                    <td>{val.erstWhileEntityName}</td>
-                    <td>{val.newEntityName}</td>
-                    <td>{val.remark}</td>
+                    <td>{val.startDate}</td>
+                    <td>{val.endDate}</td>
+                    <td>{val.principal}</td>
+                    <td>{val.interestRate}</td>
+                    <td>{val.interestPaymentFreq}</td>
+                    <td>{val.terms}</td>
                   </tr>
                 );
               })}
@@ -197,11 +184,9 @@ const StrategicTransactionDashbord = () => {
           </table>
         </div>
       </div>
-      {showAddNew && (
-        <AddDataStrategicTransaction handleShowBtn={handleShowBtn} />
-      )}
+      {showAddNew && <AddDataTermLoan handleShowBtn={handleShowBtn} />}
     </>
   );
 };
 
-export default StrategicTransactionDashbord;
+export default TermLoan;

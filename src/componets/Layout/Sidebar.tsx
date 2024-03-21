@@ -63,25 +63,25 @@ export const Sidebar = () => {
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink className="nav-link sidebarNavLink" to={"admin/user"}>
-                  <i className="fa-solid fa-user-plus sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-user-plus sidebarIcon"></i> */}
                   User
                 </NavLink>
                 <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
-                  <i className="fa-solid fa-user-shield sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
                   Role
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"admin/role-mapping"}
                 >
-                  <i className="fa-solid fa-user-shield sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
                   Role Mapping
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"admin/mail-config"}
                 >
-                  <i className="fa-solid fa-user-shield sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
                   Mail Config
                 </NavLink>
               </div>
@@ -125,19 +125,25 @@ export const Sidebar = () => {
               // data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
-                <NavLink className="nav-link sidebarNavLink" to={"master-data/sa-company"}>
-                  <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"master-data/sa-company"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   S&A Company
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"master-data/bank"}>
-                  <i className="fa-solid fa-building-columns sidebarIcon"></i>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"master-data/bank"}
+                >
+                  {/* <i className="fa-solid fa-building-columns sidebarIcon"></i> */}
                   Bank
                 </NavLink>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"master-data/financial-year"}
                 >
-                  <i className="fa-regular fa-calendar-days sidebarIcon"></i>
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   Financial Year
                 </NavLink>
               </div>
@@ -217,28 +223,28 @@ export const Sidebar = () => {
                         className="nav-link sidebarNavLink"
                         to={"pms/business/action-taken"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Action Taken Report
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/business/quarterly-performance"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Quarterly Performance
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/business/business-prospects"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Business Prospects
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/business/project-update"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Project Update
                       </NavLink>
                     </div>
@@ -280,28 +286,28 @@ export const Sidebar = () => {
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/summary-forecast"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         P&L summary&forecast
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/working-capital"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Working Capital
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/balance-sheet"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Balance Sheet
                       </NavLink>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/cashFlow-statement"}
                       >
-                        <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                        {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                         Cash Flow Statement
                       </NavLink>
                     </div>
@@ -334,8 +340,10 @@ export const Sidebar = () => {
                   paddingLeft: "10px",
                 }}
               >
-                <i className="fa-solid fa-table-columns" 
-                  style={{ marginRight: "10px" }}></i>
+                <i
+                  className="fa-solid fa-table-columns"
+                  style={{ marginRight: "10px" }}
+                ></i>
                 Facility Monitoring
               </button>
             </h2>
@@ -350,7 +358,7 @@ export const Sidebar = () => {
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-facilities"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Facilities
                 </NavLink>
               </div>
@@ -366,7 +374,7 @@ export const Sidebar = () => {
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-Gurantee"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Guarantee
                 </NavLink>
               </div>
@@ -375,7 +383,7 @@ export const Sidebar = () => {
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/corporate-Guarantee"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Corporate Guarantee
                 </NavLink>
               </div>
@@ -384,17 +392,17 @@ export const Sidebar = () => {
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/international-Amount"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   International Amount
                 </NavLink>
               </div>
               <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
-                  to={"facility-monitoring/comfort-Gurantee"}
+                  to={"facility-monitoring/comfort-Guarantee"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
-                  Comfort Gurantee
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
+                  Comfort Guarantee
                 </NavLink>
               </div>
               <div className="accordion-body" style={{ padding: "0px" }}>
@@ -402,34 +410,11 @@ export const Sidebar = () => {
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/ICB-Movement"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   ICB-ICD Movement
                 </NavLink>
               </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-              <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-               NCD 
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-              <NavLink className="nav-link sidebarNavLink" to={"/Commercial-Paper"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-               Commercial Paper 
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-              <NavLink className="nav-link sidebarNavLink" to={"/NCD_Dashboard"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-               NCD Dashboard
-                </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
-              <NavLink className="nav-link sidebarNavLink" to={"/Primary-Investor"}>
-                <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-               Primary Investor
-                </NavLink>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -519,56 +504,56 @@ export const Sidebar = () => {
                           className="nav-link sidebarNavLink"
                           to={"borrowing/long-term-reports"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Long-Term Reports
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/fund-raising"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Fund Raising
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/maturities"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Maturities
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/loans-taken"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Loans Taken
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/interest-payment"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Interest Payment
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/loan-given"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Loan Given
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/interest-received"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Interest Received
                         </NavLink>
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/equity"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           Equity
                         </NavLink>
                       </div>
@@ -619,25 +604,44 @@ export const Sidebar = () => {
                           className="nav-link sidebarNavLink"
                           to={"borrowing/ncd-simple"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                           NCD Simple
                         </NavLink>
                       </div>
-                      <div className="accordion-body" style={{ padding: "0px" }}>
-                      <NavLink className="nav-link sidebarNavLink" to={"/NCD-Tracker"}>
-                        <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-                       NCD Tracker
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/NCD-Tracker"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          NCD Tracker
                         </NavLink>
                       </div>
-                      <div className="accordion-body" style={{ padding: "0px" }}>
-                      <NavLink className="nav-link sidebarNavLink" to={"/NCD-Dashboard"}>
-                        <i className="fa-regular fa-calendar-days sidebarIcon"></i>
-                       NCD Dashboard
+                      <div
+                        className="accordion-body"
+                        style={{ padding: "0px" }}
+                      >
+                        <NavLink
+                          className="nav-link sidebarNavLink"
+                          to={"/NCD-Dashboard"}
+                        >
+                          {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                          NCD Dashboard
                         </NavLink>
                       </div>
                     </div>
                   </div>
                 </div>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"borrowing/term-loan"}
+                >
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
+                  Term Loan
+                </NavLink>
               </div>
             </div>
           </div>
@@ -665,8 +669,10 @@ export const Sidebar = () => {
                   paddingLeft: "10px",
                 }}
               >
-                <i className="fa-solid fa-sack-dollar" 
-                  style={{ marginRight: "10px" }}></i>
+                <i
+                  className="fa-solid fa-sack-dollar"
+                  style={{ marginRight: "10px" }}
+                ></i>
                 Dividend Income
               </button>
             </h2>
@@ -681,15 +687,79 @@ export const Sidebar = () => {
                           className="nav-link sidebarNavLink"
                           to={"dividend-income/dashboard"}
                         >
-                          <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                          // <i className="fa-solid fa-angles-right sidebarIcon"></i>
                           Dashboard
                         </NavLink> */}
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"dividend-income/main-dashboard"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Main Dashboard
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="accordion"
+          id="accordionExample"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div
+            className="accordion-item"
+            style={{ backgroundColor: "transparent", border: "0px" }}
+          >
+            <h2 className="accordion-header" id="Cost-ofborrowing-m6">
+              <button
+                className="accordion-button accordionBtnStyle collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#Cost-ofborrowing-m6-Collapse"
+                aria-expanded="true"
+                aria-controls="Cost-ofborrowing-m6-Collapse"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  paddingLeft: "10px",
+                }}
+              >
+                <i
+                  className="fa-solid fa-sack-dollar"
+                  style={{ marginRight: "10px" }}
+                ></i>
+                Cost of borrowing
+              </button>
+            </h2>
+            <div
+              id="Cost-ofborrowing-m6-Collapse"
+              className="accordion-collapse collapse"
+              aria-labelledby="Cost-ofborrowing-m6"
+              // data-bs-parent="#accordionExample"
+            >
+              
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  NCD
+                </NavLink>
+              </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"/Commercial-Paper"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  Commercial Paper
+                </NavLink>
+              </div>
+              <div className="accordion-body" style={{ padding: "0px" }}>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"/NCD_Dashboards"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  NCD Dashboards
                 </NavLink>
               </div>
             </div>
@@ -718,8 +788,10 @@ export const Sidebar = () => {
                   paddingLeft: "10px",
                 }}
               >
-                <i className="fa-solid fa-bullseye" 
-                  style={{ marginRight: "10px" }}></i>
+                <i
+                  className="fa-solid fa-bullseye"
+                  style={{ marginRight: "10px" }}
+                ></i>
                 Strategic Transaction
               </button>
             </h2>
@@ -730,12 +802,11 @@ export const Sidebar = () => {
               // data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={{ padding: "0px" }}>
-                
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"strategic-transaction/dashboard"}
                 >
-                  <i className="fa-solid fa-angles-right sidebarIcon"></i>
+                  {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Dashboard
                 </NavLink>
               </div>

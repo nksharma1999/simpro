@@ -39,7 +39,8 @@ const CorporateGuarantee = () => {
     XLSX.writeFile(wb, filename);
   };
 
-  return (
+  return (<>
+  <h3>Corporate Guarantee</h3>
     <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
       <div>
         <div className="d-flex justify-content-end mb-2">
@@ -174,6 +175,7 @@ const CorporateGuarantee = () => {
 
       </div>
     </div>
+    </>
   );
 };
 
