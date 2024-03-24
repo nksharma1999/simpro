@@ -29,12 +29,12 @@ export const OffCanvas = () => {
         />
         {/* <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
       </div>
-      <div className="offcanvas-body">
+      <div className="offcanvas-body" style={{padding:0}}>
       <div className="sidebar">
         <div
           className="accordion"
           id="accordionExample"
-          style={{ backgroundColor: "transparent" }}
+          // style={{ backgroundColor: "transparent" }}
         >
           <div
             className="accordion-item"
@@ -67,15 +67,14 @@ export const OffCanvas = () => {
               aria-labelledby="adminHeader"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink className="nav-link sidebarNavLink" to={"admin/user"}>
                   {/* <i className="fa-solid fa-user-plus sidebarIcon"></i> */}
                   User
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
-                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
+                {/* <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
                   Role
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"admin/role-mapping"}
@@ -130,7 +129,7 @@ export const OffCanvas = () => {
               aria-labelledby="masterDataHeader"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"master-data/sa-company"}
@@ -224,7 +223,7 @@ export const OffCanvas = () => {
                     aria-labelledby="pms-businessHeader"
                     // data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body" style={{ padding: "0px" }}>
+                    <div className="accordion-body" style={{ padding: "0px" ,background:'darkcyan'}}>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/business/action-taken"}
@@ -258,7 +257,7 @@ export const OffCanvas = () => {
                 </div>
                 <div
                   className="accordion-item"
-                  style={{ backgroundColor: "transparent", border: "0px" }}
+                  style={{ backgroundColor: "transparent", border: "0px", }}
                 >
                   <h2 className="accordion-header" id="pms-FinancialHeader">
                     <button
@@ -287,7 +286,7 @@ export const OffCanvas = () => {
                     aria-labelledby="pms-FinancialHeader"
                     // data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body" style={{ padding: "0px" }}>
+                    <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/summary-forecast"}
@@ -359,7 +358,7 @@ export const OffCanvas = () => {
               aria-labelledby="facilityMonitoring"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-facilities"}
@@ -367,15 +366,6 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Facilities
                 </NavLink>
-              </div>
-            </div>
-            <div
-              id="facility-monitoringCollapse"
-              className="accordion-collapse collapse"
-              aria-labelledby="facilityMonitoring"
-              // data-bs-parent="#accordionExample"
-            >
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-Gurantee"}
@@ -383,8 +373,6 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/corporate-Guarantee"}
@@ -392,8 +380,6 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Corporate Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/international-Amount"}
@@ -401,8 +387,6 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   International Amount
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/comfort-Guarantee"}
@@ -410,8 +394,6 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Comfort Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/ICB-Movement"}
@@ -420,8 +402,8 @@ export const OffCanvas = () => {
                   ICB-ICD Movement
                 </NavLink>
               </div>
-              
             </div>
+            
           </div>
         </div>
 
@@ -465,7 +447,7 @@ export const OffCanvas = () => {
               aria-labelledby="longTermBorrowing"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px", }}>
                 <div
                   className="accordion"
                   id="accordionExample"
@@ -504,7 +486,7 @@ export const OffCanvas = () => {
                     >
                       <div
                         className="accordion-body"
-                        style={{ padding: "0px" }}
+                        style={{ padding: "0px" ,background:'darkcyan' }}
                       >
                         <NavLink
                           className="nav-link sidebarNavLink"
@@ -608,28 +590,12 @@ export const OffCanvas = () => {
                       >
                         <NavLink
                           className="nav-link sidebarNavLink"
-                          to={"borrowing/ncd-simple"}
-                        >
-                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
-                          NCD Simple
-                        </NavLink>
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
-                        <NavLink
-                          className="nav-link sidebarNavLink"
                           to={"/NCD-Tracker"}
                         >
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           NCD Tracker
                         </NavLink>
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/NCD-Dashboard"}
@@ -637,12 +603,7 @@ export const OffCanvas = () => {
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           NCD Dashboard
                         </NavLink>
-                      </div>
-
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/Primary-Investor"}
@@ -650,11 +611,7 @@ export const OffCanvas = () => {
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           Primary Investor
                         </NavLink>
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/Secondary-Investor"}
@@ -666,6 +623,7 @@ export const OffCanvas = () => {
                     </div>
                   </div>
                 </div>
+                <div style={{background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"borrowing/term-loan"}
@@ -680,6 +638,7 @@ export const OffCanvas = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   ECB Dashboard
                 </NavLink>
+                </div>
               </div>
             </div>
           </div>
@@ -720,7 +679,7 @@ export const OffCanvas = () => {
               aria-labelledby="dividend-income-m4"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 {/* <NavLink
                           className="nav-link sidebarNavLink"
                           to={"dividend-income/dashboard"}
@@ -776,13 +735,11 @@ export const OffCanvas = () => {
               // data-bs-parent="#accordionExample"
             >
               
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
                   {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   NCD
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"/Commercial-Paper"}
@@ -830,7 +787,7 @@ export const OffCanvas = () => {
               aria-labelledby="strategic-m7"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"strategic-transaction/dashboard"}

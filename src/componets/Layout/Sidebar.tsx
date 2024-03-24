@@ -68,10 +68,9 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-user-plus sidebarIcon"></i> */}
                   User
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
-                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
+                {/* <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
                   Role
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"admin/role-mapping"}
