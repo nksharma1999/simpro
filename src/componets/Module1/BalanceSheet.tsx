@@ -238,9 +238,9 @@ const BalanceSheet = () => {
                 return (
                   <tr key={index}>
                     <th scope="row">{val.Particulars}</th>
-                    <td>{val.FYpre}</td>
-                    <td>{val.FYcurrent}</td>
-                    <td>
+                    <td style={{ textAlign: "right" }}>{val.FYpre}</td>
+                    <td style={{ textAlign: "right" }}>{val.FYcurrent}</td>
+                    <td style={{ textAlign: "center" }}>
                       {info.value}%{" "}
                       {info.isUp ? (
                         <i
@@ -254,10 +254,10 @@ const BalanceSheet = () => {
                         ></i>
                       )}
                     </td>
-                    <td>{val.Q1FYCurrent}</td>
-                    <td>{val.Q2FYCurrent}</td>
-                    <td>{val.Q3FYCurrent}</td>
-                    <td>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
                   </tr>
                 );
               })}

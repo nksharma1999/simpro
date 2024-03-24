@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AddUser } from "./AddUser";
 import { EditUserInfo } from "./EditUserInfo";
+
 const data =[{
   userId:'2324',
   name:'Kishor',
@@ -26,17 +27,26 @@ const User = () => {
   const [showAddNewDataView, setShowAddNewData] = useState(false);
   const [userEditInfo,setUserEditInfo] = useState(null);
   const [isShowEditPage,setToShowEditPage] = useState<boolean>(false);
+  
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
   };
+ 
   const handleEdit = (info: any) =>{
     setUserEditInfo(info)
     setToShowEditPage(true);
-  }
+  };
  const closeEditPage = () =>{
   setToShowEditPage(false);
   setUserEditInfo(null);
- }
+ };
+
+ const updateUser = (updatedUserInfo: any) => {
+  // Update user information in the list
+  const updatedUserList = userList.map(user => user.userId === updatedUserInfo.userId ? updatedUserInfo : user);
+  setUserList(updatedUserList);
+  closeEditPage(); // Close the edit modal
+};
   return (<>
     <div>
       <h3>User</h3>
@@ -139,7 +149,7 @@ const User = () => {
       showAddNewDataView && <AddUser closeAddComponent={showAddNewDataEntryView} />
     }
     {
-      isShowEditPage && <EditUserInfo closeAddComponent={closeEditPage} userInfo ={userEditInfo} />
+      isShowEditPage && <EditUserInfo closeEditComponent={closeEditPage} userInfo ={userEditInfo} updateUser={updateUser}  />
     }
     </>
   );

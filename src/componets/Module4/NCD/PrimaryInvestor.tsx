@@ -81,6 +81,8 @@ const PrimaryInvestor = () => {
   const exemptionInput = useRef<any>("");
   const sectionInput = useRef<any>("");
   const clauseInput = useRef<any>("");
+  const PANInput = useRef<any>("");
+  const companyInput = useRef<any>("");
   
 
   const handleSanctionSaveBtn = () => {
@@ -90,6 +92,8 @@ const PrimaryInvestor = () => {
       exemption: exemptionInput.current.value,
       section: sectionInput.current.value,
       clause: clauseInput.current.value,
+      PAN: PANInput.current.value,
+      company: companyInput.current.value,
      
     };
     setSData((prev: any) => [...prev, data]);
@@ -219,6 +223,8 @@ const PrimaryInvestor = () => {
                 <th scope="col">IT Exemption</th>
                 <th scope="col">IT section</th>
                 <th scope="col">DTAA clause</th>
+                <th scope="col">PAN</th>
+                <th scope="col">Company Name</th>
               </tr>
             </thead>
             <tbody>
@@ -264,6 +270,22 @@ const PrimaryInvestor = () => {
                       style={{ minWidth: "100px" }}
                     />
                   </td>
+                  <td>
+                    <input
+                      ref={PANInput}
+                      type="text"
+                      className="form-control"
+                      style={{ minWidth: "100px" }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      ref={companyInput}
+                      type="text"
+                      className="form-control"
+                      style={{ minWidth: "100px" }}
+                    />
+                  </td>
                  
                   <td>
 
@@ -303,7 +325,7 @@ const PrimaryInvestor = () => {
                 </tr>
               ) : (
                 <tr>
-                  <td colSpan={5}>
+                  <td colSpan={8}>
                     <div
                       style={{
                         display: "flex",
@@ -328,6 +350,8 @@ const PrimaryInvestor = () => {
                     <td>{val.exemption}</td>
                     <td>{val.section}</td>
                     <td>{val.clause}</td>
+                    <td>{val.PAN}</td>
+                    <td>{val.company}</td>
                   </tr>
                 );
               })}

@@ -3,16 +3,16 @@ import { useEffect, useRef, useState } from "react";
 
 interface Props {
   closeEditComponent: () => void;
-  userInfo : any;
-  updateUser: (updatedUserInfo: any) => void;
+  EditUser : any;
+  updateUser: (updatedUser: any) => void;
 }
 
-export const EditUserInfo: React.FC<Props> = ({
+export const EditUser: React.FC<Props> = ({
   closeEditComponent,
-  userInfo,
+  EditUser,
   updateUser
 }) => {
-  const [editedUserInfo, setEditedUserInfo] = useState(userInfo);
+  const [editedUser, setEditedUser] = useState(EditUser);
   const userNameInput = useRef<HTMLInputElement>(null);
   const emailIdInput = useRef<HTMLInputElement>(null);
   const positionInput = useRef<HTMLInputElement>(null);
@@ -25,17 +25,17 @@ export const EditUserInfo: React.FC<Props> = ({
   }, []);
 
   const initializeData = () => {
-    if (userNameInput.current) userNameInput.current.value = userInfo.name;
-    if (emailIdInput.current) emailIdInput.current.value = userInfo.emailId;
-    if (positionInput.current) positionInput.current.value = userInfo.position;
-    if (employeeIdInput.current) employeeIdInput.current.value = userInfo.employeeId;
-    if (isActiveInput.current) isActiveInput.current.value = userInfo.isActive.toString();
-    if (roleInput.current) roleInput.current.value = userInfo.role;
+    if (userNameInput.current) userNameInput.current.value = EditUser.name;
+    if (emailIdInput.current) emailIdInput.current.value = EditUser.emailId;
+    if (positionInput.current) positionInput.current.value = EditUser.position;
+    if (employeeIdInput.current) employeeIdInput.current.value = EditUser.employeeId;
+    if (isActiveInput.current) isActiveInput.current.value = EditUser.isActive.toString();
+    if (roleInput.current) roleInput.current.value = EditUser.role;
   };
 
   const handleUpdateUser = () => {
-    const updatedUserInfo = {
-      ...editedUserInfo,
+    const updatedUser = {
+      ...editedUser,
       name: userNameInput.current?.value || '',
       emailId: emailIdInput.current?.value || '',
       position: positionInput.current?.value || '',
@@ -44,7 +44,7 @@ export const EditUserInfo: React.FC<Props> = ({
       role: roleInput.current?.value || ''
     };
 
-    updateUser(updatedUserInfo);
+    updateUser(updatedUser);
   };
 
   return (

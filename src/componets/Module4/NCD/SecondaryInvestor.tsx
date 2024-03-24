@@ -10,6 +10,7 @@ const data1= [
       exemption: '23-Apr-20',
       section: '23-Apr-30',
       clause: 1800,
+      PAN: "NOPUYRT567",
       
     },
     {
@@ -81,6 +82,8 @@ const SecondaryInvestor = () => {
   const KYCInput = useRef<any>("");
   const registrationInput = useRef<any>("");
   const LEINInput = useRef<any>("");
+  const PANInput = useRef<any>("");
+  const companyInput = useRef<any>("");
   
 
   const handleSanctionSaveBtn = () => {
@@ -90,6 +93,8 @@ const SecondaryInvestor = () => {
       KYC: KYCInput.current.value,
       registration: registrationInput.current.value,
       LEIN: LEINInput.current.value,
+      PAN: PANInput.current.value,
+      company: companyInput.current.value,
      
     };
     setSData((prev: any) => [...prev, data]);
@@ -119,7 +124,7 @@ const SecondaryInvestor = () => {
       currentDate.getMinutes() +
       ":" +
       currentDate.getSeconds();
-    const filename = `Primary_Investor_${formattedDate}.xlsx`;
+    const filename = `Secondary_Investor_${formattedDate}.xlsx`;
     XLSX.writeFile(wb, filename);
   };
   const handleFileChange = (e: any) => {
@@ -219,6 +224,8 @@ const SecondaryInvestor = () => {
                 <th scope="col">KYC documents</th>
                 <th scope="col">SEBI/IRDAI Registration</th>
                 <th scope="col">LEIN</th>
+                <th scope="col">PAN</th>
+                <th scope="col">Comapny Name</th>
               </tr>
             </thead>
             <tbody>
@@ -264,6 +271,22 @@ const SecondaryInvestor = () => {
                       style={{ minWidth: "100px" }}
                     />
                   </td>
+                  <td>
+                    <input
+                      ref={PANInput}
+                      type="text"
+                      className="form-control"
+                      style={{ minWidth: "100px" }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      ref={companyInput}
+                      type="text"
+                      className="form-control"
+                      style={{ minWidth: "100px" }}
+                    />
+                  </td>
                  
                   <td>
 
@@ -303,7 +326,7 @@ const SecondaryInvestor = () => {
                 </tr>
               ) : (
                 <tr>
-                  <td colSpan={5}>
+                  <td colSpan={7}>
                     <div
                       style={{
                         display: "flex",
@@ -328,6 +351,8 @@ const SecondaryInvestor = () => {
                     <td>{val.KYC}</td>
                     <td>{val.registration}</td>
                     <td>{val.LEIN}</td>
+                    <td>{val.PAN}</td>
+                    <td>{val.company}</td>
                   </tr>
                 );
               })}

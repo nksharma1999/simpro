@@ -602,13 +602,13 @@ export const Sidebar = () => {
                         className="accordion-body"
                         style={{ padding: "0px" }}
                       >
-                        <NavLink
+                        {/* <NavLink
                           className="nav-link sidebarNavLink"
                           to={"borrowing/ncd-simple"}
-                        >
+                        > */}
                           {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
-                          NCD Simple
-                        </NavLink>
+                          {/* NCD Simple
+                        </NavLink> */}
                       </div>
                       <div
                         className="accordion-body"

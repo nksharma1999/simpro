@@ -182,12 +182,12 @@ const ProjectUpdate = () => {
                       return (
                         <tr key={index}>
                           <th>{val.Project_name}</th>
-                          <td>{val.Project_details}</td>
-                          <td>{val.Original_Contract_Value}</td>
+                          <td style={{ textAlign: "center" }}>{val.Project_details}</td>
+                          <td style={{ textAlign: "right" }}>{val.Original_Contract_Value}</td>
 
-                          <td>{val.Start_Date}</td>
-                          <td>{val.Completion_Date}</td>
-                          <td>{val.Project_Completion_pre}</td>
+                          <td style={{ textAlign: "right" }}>{val.Start_Date}</td>
+                          <td style={{ textAlign: "right" }}>{val.Completion_Date}</td>
+                          <td style={{ textAlign: "right" }}>{val.Project_Completion_pre}</td>
                           <td style={{ textAlign: "center", color: "green" }}>
                             {val.Status}
                           </td>

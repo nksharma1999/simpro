@@ -233,13 +233,13 @@ const BusinessProspects = () => {
                     return (
                       <tr key={index}>
                         <th>{val.Customer}</th>
-                        <td>{val.Project}</td>
-                        <td>{val.Value}</td>
+                        <td style={{ textAlign: "center" }}>{val.Project}</td>
+                        <td style={{ textAlign: "right" }}>{val.Value}</td>
 
-                        <td>{val.Bid_Submission_Qtr}</td>
-                        <td>{val.Order_Award_Qtr}</td>
-                        <td>{val.Winning_Probability}</td>
-                        <td>{val.Status}</td>
+                        <td style={{ textAlign: "right" }}>{val.Bid_Submission_Qtr}</td>
+                        <td style={{ textAlign: "right" }}>{val.Order_Award_Qtr}</td>
+                        <td style={{ textAlign: "right" }}>{val.Winning_Probability}</td>
+                        <td style={{ textAlign: "center" }}>{val.Status}</td>
                       </tr>
                     );
                   })}
@@ -273,13 +273,13 @@ const BusinessProspects = () => {
                       return (
                         <tr key={index}>
                           <th>{val.Customer}</th>
-                          <td>{val.Project}</td>
-                          <td>{val.Value}</td>
+                          <td style={{ textAlign: "center" }}>{val.Project}</td>
+                          <td style={{ textAlign: "right" }}>{val.Value}</td>
 
-                          <td>{val.Bid_Submission_Qtr}</td>
-                          <td>{val.Order_Award_Qtr}</td>
-                          <td>{val.Winning_Probability}</td>
-                          <td>{val.Status}</td>
+                          <td style={{ textAlign: "right" }}>{val.Bid_Submission_Qtr}</td>
+                          <td style={{ textAlign: "right" }}>{val.Order_Award_Qtr}</td>
+                          <td style={{ textAlign: "right" }}>{val.Winning_Probability}</td>
+                          <td style={{ textAlign: "center" }}>{val.Status}</td>
                         </tr>
                       );
                     }

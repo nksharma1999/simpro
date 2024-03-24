@@ -189,6 +189,8 @@ const SummaryForecast = () => {
   const [selectedFY, setSelectedFY] = useState("2023");
   const [selectedQtr, setSelectedQtr] = useState(["(A)", "(B)"]);
   const [selectedEntity, setSelectedEntity] = useState("");
+  const [selectedCompanyName, setSelectedCompanyName] = useState("");
+
 
   const handleFY = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedFY(e.target.value);
@@ -196,6 +198,11 @@ const SummaryForecast = () => {
 
   const handleEntityFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedEntity(e.target.value);
+  };
+  const handleCompanyNameChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedCompanyName(e.target.value);
   };
 
   const clearFilters = () => {
@@ -258,26 +265,34 @@ const SummaryForecast = () => {
           </div>
           <div className="Entity-filter">
             <div className="form-floating">
-              <select
-                className="form-select"
-                id="entityFilter"
-                aria-label="Floating label select example"
-                onChange={handleEntityFilter}
-                value={selectedEntity}
-              >
-                <option value="">All Entities</option>
-                {data.map((item) => (
-                  <option key={item.Particulars} value={item.Particulars}>
-                    {item.Particulars}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="entityFilter">Select Entity</label>
+            <select
+                      value={selectedCompanyName}
+                      onChange={handleCompanyNameChange}
+                      className="form-select"
+                      style={{ width: "200px" }}
+                    >
+                      <option value="" disabled>
+                        ---Select Company---
+                      </option>
+                      <option value="Nabha Power Limited">
+                        Nabha Power Limited
+                      </option>
+                      <option value="L&T Geostructure Pvt. Ltd.">
+                        L&T Geostructure Pvt. Ltd.
+                      </option>
+                      <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
+                        L&T Special Steel & Heavy Forgings Pvt. Ltd.
+                      </option>
+                      <option value="L&T Innovation Campus">
+                        L&T Innovation Campus
+                      </option>
+                    </select>
+              <label htmlFor="entityFilter">Company</label>
             </div>
           </div>
-          <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
+          {/* <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
             Clear Filters
-          </button>
+          </button> */}
           <button
             onClick={exportToExcel}
             style={{
@@ -382,16 +397,16 @@ const SummaryForecast = () => {
                         val.Particulars
                       )}
                     </th>
-                    <td>{val.FYpre}</td>
-                    <td>{val.Q1FYCurrent_A}</td>
-                    <td>{val.Q2FYCurrent_A}</td>
-                    <td>{val.Q3FYCurrent_A}</td>
-                    <td>{val.Q4FYCurrent_A}</td>
-                    <td>{val.Q1FYCurrent_B}</td>
-                    <td>{val.Q2FYCurrent_B}</td>
-                    <td>{val.Q3FYCurrent_B}</td>
-                    <td>{val.Q4FYCurrent_B}</td>
-                    <td>{val.FYcurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.FYpre}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_B}</td>
+                    <td style={{ textAlign: "center" }}>{val.FYcurrent}</td>
                     <td>
                       {info.value}%{" "}
                       {info.isUp ? (
