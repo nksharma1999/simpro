@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { AddDataForQuarterlyPerformance } from "./AddDataForQuarterlyPerformance";
 
 
 
@@ -65,6 +66,9 @@ const QuarterlyPerformance = () => {
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const [projectUpdateData, setprojectUpdateData] = useState(data);
   const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const showAddNewDataEntryView = () => {
+    setShowAddNewData(!showAddNewDataView);
+  };
 
   const handleFY = (e: any) => {
     // console.log(e.target.value);
@@ -113,9 +117,6 @@ const QuarterlyPerformance = () => {
 
     reader.readAsBinaryString(file);
   };
-  const showAddNewDataEntryView = () => {
-    setShowAddNewData(!showAddNewDataView);
-  };
   const handleEdit = (data: any) => {
     // console.log(data);
     setEditData(data);
@@ -126,6 +127,7 @@ const QuarterlyPerformance = () => {
     setEditData("");
   };
   return (
+    <>
     <div>
       <h3>Quarterly Performance Report</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
@@ -182,18 +184,19 @@ const QuarterlyPerformance = () => {
               </div>
               <div style={{ marginRight: "10px", marginTop: "10px",float:"right" }}>
               <button
-                onClick={showAddNewDataEntryView}
-                style={{ backgroundColor: "white", borderWidth: "0" ,marginTop:"10px"}}
-              >
-                <i
-                  style={{
-                    fontSize: "25px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                  className="fa-solid fa-plus fa-fade buttonColorPrimary"
-                ></i>
-              </button>
+            onClick={showAddNewDataEntryView}
+            style={{ backgroundColor: "white", borderWidth: "0" }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                marginTop:"10px",
+              }}
+              className="fa-solid fa-plus fa-fade buttonColorPrimary"
+            ></i>
+          </button>
             </div>
 
             </div>
@@ -270,6 +273,10 @@ const QuarterlyPerformance = () => {
         </div>
       </div>
     </div>
+     {
+      showAddNewDataView && <AddDataForQuarterlyPerformance closeAddComponent={showAddNewDataEntryView} />
+   }
+    </>
   );
 };
 export default QuarterlyPerformance;

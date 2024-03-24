@@ -1,5 +1,22 @@
-import React, { useState ,ChangeEvent} from "react";
+import React, { useState, ChangeEvent } from "react";
+import { AddDataForWorkingCapital } from "./AddDataForWorkingCapital"
+import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 import * as XLSX from "xlsx";
+interface metaData {
+  company: string;
+  bank: string;
+  od: number;
+  wcd: number;
+  buyerCredit: number;
+  packingCredit: number;
+  bg: number;
+  lc: number;
+  fxLimit: number;
+  cp: number;
+  termLoan: number;
+  ncd: number;
+  ecb: number;
+}
 const data = [
   {
     Particulars: "Sales",
@@ -13,7 +30,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 110,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Current Assets",
@@ -27,7 +44,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 280,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Accounts Receivable",
@@ -41,7 +58,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 390,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Inventory",
@@ -55,7 +72,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 240,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "WIP",
@@ -69,11 +86,11 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 220,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Other Current Assets",
-    FYpre: 100, 
+    FYpre: 100,
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -83,7 +100,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 270,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "GWC",
@@ -97,7 +114,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 210,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "GWC days",
@@ -111,7 +128,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 300,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Current Liabilities",
@@ -125,7 +142,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 320,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Vendor Balance",
@@ -139,11 +156,11 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 340,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Customer Advances",
-    FYpre: 100, 
+    FYpre: 100,
     Q1FYCurrent_A: 25,
     Q2FYCurrent_A: 25,
     Q3FYCurrent_A: 25,
@@ -153,7 +170,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 350,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "Other Current  Liabilities",
@@ -167,7 +184,7 @@ const data = [
     Q3FYCurrent_B: 25,
     Q4FYCurrent_B: 25,
     FYcurrent_A: 360,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "NWC",
@@ -181,7 +198,7 @@ const data = [
     Q3FYCurrent_B: 50,
     Q4FYCurrent_B: 50,
     FYcurrent_A: 150,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
   {
     Particulars: "NWC %",
@@ -195,9 +212,9 @@ const data = [
     Q3FYCurrent_B: 50,
     Q4FYCurrent_B: 50,
     FYcurrent_A: 170,
-    FYcurrent_B:200,
+    FYcurrent_B: 200,
   },
-  
+
 ];
 
 
@@ -206,6 +223,12 @@ const WorkingCapital = () => {
   const [selectedQtr, setSelectedQtr] = useState(["(A)", "(B)"]);
   const [selectedEntity, setSelectedEntity] = useState("");
   const [selectedCompanyName, setSelectedCompanyName] = useState("");
+  const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const [sData, setSData] = useState<metaData[]>([]);
+  const [uData, setUData] = useState<metaData[]>([]);
+  const showAddNewDataEntryView = () => {
+    setShowAddNewData(!showAddNewDataView);
+  };
 
   const handleFY = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedFY(e.target.value);
@@ -240,21 +263,48 @@ const WorkingCapital = () => {
     const filename = `${formattedDate}.xlsx`;
     XLSX.writeFile(wb, `Working_Capital_${selectedFY}_${filename}.xlsx`);
   };
-  const findBudgetQtr = (fyA:number,fyB:number) =>{
-    const budget = (((fyA-fyB)/fyB)*100);
-    if(budget>=0){
-        return {value: budget, isUp: true};
-    }else{
-        return {value: budget, isUp: false};
+
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => {
+      const binaryString = event.target.result;
+      const workbook = XLSX.read(binaryString, { type: "binary" });
+      const sheetName1 = workbook.SheetNames[0];
+      const worksheet1 = workbook.Sheets[sheetName1];
+      const sheetName2 = workbook.SheetNames[1];
+      const worksheet2 = workbook.Sheets[sheetName2];
+      const inportedData1: any[] = XLSX.utils.sheet_to_json(worksheet1, {
+        header: 1,
+      });
+      const inportedData2: any[] = XLSX.utils.sheet_to_json(worksheet2, {
+        header: 1,
+      });
+
+      const jsonResult1: metaData[] = excelFileDataToJson(inportedData1);
+      setSData((prev) => [...prev, ...jsonResult1]);
+      const jsonResult2: metaData[] = excelFileDataToJson(inportedData2);
+      setUData((prev) => [...prev, ...jsonResult2]);
+    };
+
+    reader.readAsBinaryString(file);
+  };
+  const findBudgetQtr = (fyA: number, fyB: number) => {
+    const budget = (((fyA - fyB) / fyB) * 100);
+    if (budget >= 0) {
+      return { value: budget, isUp: true };
+    } else {
+      return { value: budget, isUp: false };
     }
   };
 
-  const findBudgetFyr = (fyA:number,fyB:number) =>{
-    const budget = (((fyA-fyB)/fyA)*100);
-    if(budget>=0){
-        return {value: budget, isUp: true};
-    }else{
-        return {value: budget, isUp: false};
+  const findBudgetFyr = (fyA: number, fyB: number) => {
+    const budget = (((fyA - fyB) / fyA) * 100);
+    if (budget >= 0) {
+      return { value: budget, isUp: true };
+    } else {
+      return { value: budget, isUp: false };
     }
   };
 
@@ -269,6 +319,7 @@ const WorkingCapital = () => {
   };
 
   return (
+    <>
     <div>
       <h3>Subsidiary wise working capital</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
@@ -288,43 +339,54 @@ const WorkingCapital = () => {
             </select>
             <label htmlFor="floatingSelectGrid">Select FY</label>
           </div>
-        <div className="Entity-filter">  
-          <div className="form-floating">
-                  <select
-                      value={selectedCompanyName}
-                      onChange={handleCompanyNameChange}
-                      className="form-select"
-                      style={{ width: "200px" }}
-                    >
-                      <option value="" disabled>
-                        ---Select Company---
-                      </option>
-                      <option value="Nabha Power Limited">
-                        Nabha Power Limited
-                      </option>
-                      <option value="L&T Geostructure Pvt. Ltd.">
-                        L&T Geostructure Pvt. Ltd.
-                      </option>
-                      <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
-                        L&T Special Steel & Heavy Forgings Pvt. Ltd.
-                      </option>
-                      <option value="L&T Innovation Campus">
-                        L&T Innovation Campus
-                      </option>
-                    </select>
-            <label htmlFor="entityFilter" >Select Entity</label>
+          <div className="Entity-filter">
+            <div className="form-floating">
+              <select
+                value={selectedCompanyName}
+                onChange={handleCompanyNameChange}
+                className="form-select"
+                style={{ width: "200px" }}
+              >
+                <option value="" disabled>
+                  ---Select Company---
+                </option>
+                <option value="Nabha Power Limited">
+                  Nabha Power Limited
+                </option>
+                <option value="L&T Geostructure Pvt. Ltd.">
+                  L&T Geostructure Pvt. Ltd.
+                </option>
+                <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
+                  L&T Special Steel & Heavy Forgings Pvt. Ltd.
+                </option>
+                <option value="L&T Innovation Campus">
+                  L&T Innovation Campus
+                </option>
+              </select>
+              <label htmlFor="entityFilter" >Select Entity</label>
+            </div>
           </div>
-        </div>          
           {/* <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
             Clear Filters
           </button> */}
+          <div style={{ marginTop: "10px" }}></div>
+          <div>
+          <input
+            type="file"
+            className="form-control"
+            id="inputGroupFile01"
+            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            onChange={handleFileChange}
+            style={{marginTop:"10px"}}
+          />
+        </div>
           <button
             onClick={exportToExcel}
             style={{
               backgroundColor: "white",
               borderWidth: "0",
               marginRight: "15px",
-              marginLeft:'10px'
+              marginLeft: '10px'
             }}
           >
             <i
@@ -336,79 +398,96 @@ const WorkingCapital = () => {
               className="fa-solid fa-download fa-fade buttonColorPrimary"
             ></i>
           </button>
+          <button
+            onClick={showAddNewDataEntryView}
+            style={{ backgroundColor: "white", borderWidth: "0" }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              className="fa-solid fa-plus fa-fade buttonColorPrimary"
+            ></i>
+          </button>
         </div>
         <div
-            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
-          ></div>
+          style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+        ></div>
         <div
           className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered table-striped">
             <thead className="table-format tableHeader" >
-            <tr>
-              <th rowSpan={2}>Particulars</th>
-              <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
-              <th colSpan={2}>Q1 FY{selectedFY}</th>
-              <th colSpan={2}>Q2 FY{selectedFY}</th>
-              <th colSpan={2}>Q3 FY{selectedFY}</th>
-              <th colSpan={2}>Q4 FY{selectedFY}</th>
-              <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
-              <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
-              <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY)-1}</th>
-              <th rowSpan={2} style={{width:'200px',whiteSpace:'wrap'}}>Year on Year {Number(selectedFY)}-{Number(selectedFY)-1}</th>
-            </tr>
-                <tr>
-                  <th scope="col">Q1 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q2 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q3 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
-                  <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
-                  <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
-                 
-                </tr>
+              <tr>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}>Q1 FY{selectedFY}</th>
+                <th colSpan={2}>Q2 FY{selectedFY}</th>
+                <th colSpan={2}>Q3 FY{selectedFY}</th>
+                <th colSpan={2}>Q4 FY{selectedFY}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
+                <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+              </tr>
+              <tr>
+                <th scope="col">Q1 FY{selectedFY}{selectedQtr[0]}</th>
+                <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
+                <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
+                <th scope="col">Q2 FY{selectedFY}{selectedQtr[1]}</th>
+                <th scope="col">Q3 FY{selectedFY}{selectedQtr[0]}</th>
+                <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
+                <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
+                <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
+
+              </tr>
             </thead>
             <tbody>
               {filterData().map((val, index) => {
-                    const info = findBudgetQtr(val.FYcurrent_A, val.FYcurrent_B);
-                    const fyr_info = findBudgetFyr(val.FYpre, val.FYcurrent_A)
-    //const isSalesOrMargin = val.Particulars === "GWC" || val.Particulars === "GWC days" ||val.Particulars === "NWC"||val.Particulars === "NWC %";
-    //const isSelectedEntity = val.Particulars.toLowerCase().includes(selectedEntity.toLowerCase());
+                const info = findBudgetQtr(val.FYcurrent_A, val.FYcurrent_B);
+                const fyr_info = findBudgetFyr(val.FYpre, val.FYcurrent_A)
+                //const isSalesOrMargin = val.Particulars === "GWC" || val.Particulars === "GWC days" ||val.Particulars === "NWC"||val.Particulars === "NWC %";
+                //const isSelectedEntity = val.Particulars.toLowerCase().includes(selectedEntity.toLowerCase());
 
-    return (
-      <tr key={index} /*className={isSelectedEntity ? "highlight-row" : ""}*/>
-        <th scope="row" /*className={isSalesOrMargin ? "bold-text" : ""}*/>
-          {val.Particulars.includes("Margin") ? (
-            <>
-              % Margin <sub style={{ fontSize: "smaller" }}>(including other income)</sub>
-            </>
-          ) : (
-            val.Particulars
-          )}
-        </th>
-        <td style={{ textAlign: "right" }}>{val.FYpre}</td>
-        <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_A}</td>
-        <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_A}</td>
-        <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_A}</td>
-        <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_A}</td>
-        <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_B}</td>
-        <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_B}</td>
-        <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_B}</td>
-        <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_B}</td>
-        <td style={{ textAlign: "right" }}>{val.FYcurrent_A}</td>
-        <td style={{ textAlign: "right" }}>{val.FYcurrent_B}</td>
-        <td style={{ textAlign: "center" }}>{info.value.toFixed(2)}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
-        <td style={{ textAlign: "center" }}>{fyr_info.value.toFixed(2)}% {fyr_info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
-      </tr>
-    );
+                return (
+                  <tr key={index} /*className={isSelectedEntity ? "highlight-row" : ""}*/>
+                    <th scope="row" /*className={isSalesOrMargin ? "bold-text" : ""}*/>
+                      {val.Particulars.includes("Margin") ? (
+                        <>
+                          % Margin <sub style={{ fontSize: "smaller" }}>(including other income)</sub>
+                        </>
+                      ) : (
+                        val.Particulars
+                      )}
+                    </th>
+                    <td style={{ textAlign: "right" }}>{val.FYpre}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.FYcurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.FYcurrent_B}</td>
+                    <td style={{ textAlign: "center" }}>{info.value.toFixed(2)}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
+                    <td style={{ textAlign: "center" }}>{fyr_info.value.toFixed(2)}% {fyr_info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>
         </div>
       </div>
     </div>
+    {
+      showAddNewDataView && <AddDataForWorkingCapital closeAddComponent={showAddNewDataEntryView} />
+   }
+    </>
   );
 };
 
