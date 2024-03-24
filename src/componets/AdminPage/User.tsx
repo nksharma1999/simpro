@@ -5,18 +5,24 @@ import { EditUserInfo } from "./EditUserInfo";
 const data =[{
   userId:'2324',
   name:'Kishor',
+  phone:242423232,
+  companyName:'simpro',
   emailId:'abc@gmail.com',
   position:'emp',
   employeeId:'88n3h',
+  userClassification:'Maker',
   isActive:false,
   role:'Admin'
 },
 {
   userId:'5309',
   name:'Abhs',
+  phone:242423232,
+  companyName:'simpro',
   emailId:'abcf@gmail.com',
   position:'emdfddp',
   employeeId:'88454n3h',
+  userClassification:'Checker',
   isActive:true,
   role:'Role2'
 },
@@ -91,7 +97,10 @@ const User = () => {
             <tr>
                   <th scope="col">Sl. No.</th>
                   <th scope="col">User Id</th>
+              
                   <th scope="col">Name</th>
+                  <th scope="col">Phone No.</th>
+                  <th scope="col">Company Name</th>
                   <th scope="col">Email Id</th>
                   <th scope="col">Position</th>
                   <th scope="col" >
@@ -99,6 +108,9 @@ const User = () => {
                   </th>
                   <th scope="col" >
                     Role
+                  </th>
+                  <th scope="col" >
+                    User Classification
                   </th>
                   <th scope="col" >
                     Is Active
@@ -115,10 +127,13 @@ const User = () => {
                       <th scope="row">{index + 1}</th>
                       <td>{val.userId}</td>
                       <td>{val.name}</td>
+                      <td>{val.phone}</td>
+                      <td>{val.companyName}</td>
                       <td>{val.emailId}</td>
                       <td>{val.position}</td>
                       <td>{val.employeeId}</td>
                       <td>{val.role}</td>
+                      <td>{val.userClassification}</td>
                       <td style={{ textAlign: "center", color: "green" }}>
                         {val.isActive ? (
                           <i className="fa-solid fa-circle" style={{color:'green'}}></i>

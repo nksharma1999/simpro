@@ -9,7 +9,7 @@ export const Sidebar = () => {
       style={{
         width: "290px",
         height: "100vh",
-        padding: 10,
+        // padding: 10,
         backgroundColor: "rgb(10 104 98)",
         // backgroundImage:
         //   "url(https://reduction-admin.github.io/react-reduction/static/media/sidebar-4.80d4a4e5.jpg)",
@@ -18,7 +18,7 @@ export const Sidebar = () => {
         overflowY: "auto",
       }}
     >
-      <div>
+      <div style={{padding:10}}>
         <img
           style={{  width:'200px'}}
           // src="http://simpro.co.in/wp-content/uploads/2022/06/simpro-logo1-1.png"
@@ -30,7 +30,7 @@ export const Sidebar = () => {
         <div
           className="accordion"
           id="accordionExample"
-          style={{ backgroundColor: "transparent" }}
+          // style={{ backgroundColor: "transparent" }}
         >
           <div
             className="accordion-item"
@@ -63,7 +63,7 @@ export const Sidebar = () => {
               aria-labelledby="adminHeader"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink className="nav-link sidebarNavLink" to={"admin/user"}>
                   {/* <i className="fa-solid fa-user-plus sidebarIcon"></i> */}
                   User
@@ -126,7 +126,7 @@ export const Sidebar = () => {
               aria-labelledby="masterDataHeader"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"master-data/sa-company"}
@@ -220,7 +220,7 @@ export const Sidebar = () => {
                     aria-labelledby="pms-businessHeader"
                     // data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body" style={{ padding: "0px" }}>
+                    <div className="accordion-body" style={{ padding: "0px" ,background:'darkcyan'}}>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/business/action-taken"}
@@ -254,7 +254,7 @@ export const Sidebar = () => {
                 </div>
                 <div
                   className="accordion-item"
-                  style={{ backgroundColor: "transparent", border: "0px" }}
+                  style={{ backgroundColor: "transparent", border: "0px", }}
                 >
                   <h2 className="accordion-header" id="pms-FinancialHeader">
                     <button
@@ -283,7 +283,7 @@ export const Sidebar = () => {
                     aria-labelledby="pms-FinancialHeader"
                     // data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body" style={{ padding: "0px" }}>
+                    <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                       <NavLink
                         className="nav-link sidebarNavLink"
                         to={"pms/financial/summary-forecast"}
@@ -355,7 +355,7 @@ export const Sidebar = () => {
               aria-labelledby="facilityMonitoring"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-facilities"}
@@ -363,15 +363,6 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Facilities
                 </NavLink>
-              </div>
-            </div>
-            <div
-              id="facility-monitoringCollapse"
-              className="accordion-collapse collapse"
-              aria-labelledby="facilityMonitoring"
-              // data-bs-parent="#accordionExample"
-            >
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/banking-Gurantee"}
@@ -379,8 +370,6 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Banking Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/corporate-Guarantee"}
@@ -388,8 +377,6 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Corporate Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/international-Amount"}
@@ -397,8 +384,6 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   International Amount
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/comfort-Guarantee"}
@@ -406,8 +391,6 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   Comfort Guarantee
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"facility-monitoring/ICB-Movement"}
@@ -416,8 +399,8 @@ export const Sidebar = () => {
                   ICB-ICD Movement
                 </NavLink>
               </div>
-              
             </div>
+            
           </div>
         </div>
 
@@ -461,7 +444,7 @@ export const Sidebar = () => {
               aria-labelledby="longTermBorrowing"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px", }}>
                 <div
                   className="accordion"
                   id="accordionExample"
@@ -500,7 +483,7 @@ export const Sidebar = () => {
                     >
                       <div
                         className="accordion-body"
-                        style={{ padding: "0px" }}
+                        style={{ padding: "0px" ,background:'darkcyan' }}
                       >
                         <NavLink
                           className="nav-link sidebarNavLink"
@@ -602,18 +585,6 @@ export const Sidebar = () => {
                         className="accordion-body"
                         style={{ padding: "0px" }}
                       >
-                        {/* <NavLink
-                          className="nav-link sidebarNavLink"
-                          to={"borrowing/ncd-simple"}
-                        > */}
-                          {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
-                          {/* NCD Simple
-                        </NavLink> */}
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/NCD-Tracker"}
@@ -621,11 +592,7 @@ export const Sidebar = () => {
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           NCD Tracker
                         </NavLink>
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/NCD-Dashboard"}
@@ -633,12 +600,7 @@ export const Sidebar = () => {
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           NCD Dashboard
                         </NavLink>
-                      </div>
-
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/Primary-Investor"}
@@ -646,11 +608,7 @@ export const Sidebar = () => {
                           {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                           Primary Investor
                         </NavLink>
-                      </div>
-                      <div
-                        className="accordion-body"
-                        style={{ padding: "0px" }}
-                      >
+                      
                         <NavLink
                           className="nav-link sidebarNavLink"
                           to={"/Secondary-Investor"}
@@ -662,6 +620,7 @@ export const Sidebar = () => {
                     </div>
                   </div>
                 </div>
+                <div style={{background:'darkcyan' }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"borrowing/term-loan"}
@@ -676,6 +635,7 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-angles-right sidebarIcon"></i> */}
                   ECB Dashboard
                 </NavLink>
+                </div>
               </div>
             </div>
           </div>
@@ -716,7 +676,7 @@ export const Sidebar = () => {
               aria-labelledby="dividend-income-m4"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 {/* <NavLink
                           className="nav-link sidebarNavLink"
                           to={"dividend-income/dashboard"}
@@ -772,13 +732,11 @@ export const Sidebar = () => {
               // data-bs-parent="#accordionExample"
             >
               
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 <NavLink className="nav-link sidebarNavLink" to={"/NCD-FY22"}>
                   {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   NCD
                 </NavLink>
-              </div>
-              <div className="accordion-body" style={{ padding: "0px" }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"/Commercial-Paper"}
@@ -826,7 +784,7 @@ export const Sidebar = () => {
               aria-labelledby="strategic-m7"
               // data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body" style={{ padding: "0px" }}>
+              <div className="accordion-body" style={{ padding: "0px",background:'darkcyan'  }}>
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"strategic-transaction/dashboard"}

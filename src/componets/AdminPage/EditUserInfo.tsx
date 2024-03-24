@@ -44,7 +44,7 @@ export const EditUserInfo: React.FC<Props> = ({
       role: roleInput.current?.value || ''
     };
 
-    updateUser(updatedUserInfo);
+    // updateUser(updatedUserInfo);
   };
 
   return (
@@ -75,6 +75,19 @@ export const EditUserInfo: React.FC<Props> = ({
           ></div>
           <div style={{ marginTop: "10px" }}>
             <div className="row">
+            <div className="col-lg-6 col-md-12">
+                <div className="form-floating mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="floatingPassword2"
+                    placeholder="User Id"
+                    // ref={userIdInput}
+                    disabled
+                  />
+                  <label htmlFor="floatingPassword2">User Id</label>
+                </div>
+              </div>
               <div className="col-lg-6 col-md-12">
                 <div className="form-floating mb-3">
                   <input
@@ -87,17 +100,17 @@ export const EditUserInfo: React.FC<Props> = ({
                   <label htmlFor="floatingInput1">Name</label>
                 </div>
               </div>
+              
               <div className="col-lg-6 col-md-12">
                 <div className="form-floating mb-3">
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     id="floatingPassword2"
                     placeholder="User Id"
-                    ref={emailIdInput}
-                    disabled
+                    // ref={userIdInput}
                   />
-                  <label htmlFor="floatingPassword2">User Id</label>
+                  <label htmlFor="floatingPassword3">Phone No.</label>
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
@@ -148,31 +161,71 @@ export const EditUserInfo: React.FC<Props> = ({
                   <label htmlFor="floatingPassword7">Employee ID</label>
                 </div>
               </div>
+              <div className="col-lg-6 col-md-12">
+              <div className="form-floating">
+                <select
+                  className="form-select"
+                  id="floatingSelectGrid"
+                  aria-label="Floating label select example"
+                >
+                  <option>---Select---</option>
+                  <option value="Simpro">Simpro</option>
+                  <option value="BACGD">BACGD</option>
+                  <option value="BSJGD">BSJGD</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">Company</label>
+              </div>
+              </div>
             </div>
             <div className="row ">
               <div className="col-md">
                 <div className="form-floating">
-                <input
-                    type="text"
-                    className="form-control"
-                    id="floatingPassword6"
-                    placeholder="Emp ID"
-                    ref={employeeIdInput}
-                  />
+                  <select
+                    className="form-select"
+                    id="floatingSelectGrid2"
+                    aria-label="Floating label select example"
+                    // onChange={handleActiveStatus}
+                    // value={isActiveUser}
+                  >
+                    <option disabled>---Select---</option>
+                    <option value="Active">Active</option>
+                    <option value="In-Active">In Active</option>
+                  </select>
                   <label htmlFor="floatingSelectGrid2">Status</label>
                 </div>
               </div>
               <div className="col-md">
                 <div className="form-floating">
-                <input
-                    type="text"
-                    className="form-control"
-                    id="floatingPassword6"
-                    placeholder="Emp ID"
-                    ref={employeeIdInput}
-                  />
+                  <select
+                    className="form-select"
+                    id="floatingSelectGrid3"
+                    aria-label="Floating label select example"
+                    // onChange={handleRoleSelection}
+                    // value={role}
+                  >
+                    <option disabled>---Select---</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Role2">Role 2</option>
+                    <option value="Role3">Role 3</option>
+                    <option value="Role4">Role 4</option>
+                  </select>
                   <label htmlFor="floatingSelectGrid3">Role</label>
                 </div>
+              </div>
+              <div className="col-lg-6 col-md-12">
+              <div className="form-floating">
+                <select
+                  className="form-select"
+                  id="floatingSelectGrid"
+                  aria-label="Floating label select example"
+                >
+                  <option>---Select---</option>
+                  <option value="Maker">Maker</option>
+                  <option value="Checker">Checker</option>
+                  <option value="Approver">Approver</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">User Classification</label>
+              </div>
               </div>
             </div>
             <div className="row" style={{ marginTop: "10px" }}>

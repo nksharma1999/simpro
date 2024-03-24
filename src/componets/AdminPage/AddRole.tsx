@@ -54,7 +54,7 @@ export const AddRole: React.FC<props> = ({
             <div className="row" style={{ marginTop: "10px" }}>
               <div className="col-lg-6 col-md-6 col-12">
                 <button
-                  style={{ width: "100%", backgroundColor: "red" }}
+                  style={{ width: "100%", backgroundColor: "red",whiteSpace:'nowrap' }}
                   onClick={closeAddComponent}
                 >
                   Cancel

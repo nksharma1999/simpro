@@ -5,6 +5,7 @@ import {
   BankingFacilitiesTemplate,
   viewData,
 } from "../../utils/BankingFacilitiesTemplate";
+import { AddBankingFacilitiesInfo } from "./AddDataForm/AddBankingFacilitiesInfo";
 interface metaData {
   company: string;
   bank: string;
@@ -30,6 +31,10 @@ const BankingFacilities = () => {
   const [selectedSBank, setSelectedSBank] = useState("HDFC");
   const [selectedUBank, setSelectedUBank] = useState("HDFC");
   const [selectedCompany, setSelectedCompany] = useState("Simpro");
+  const [showAddNew, setShowAddNew] = useState<boolean>(false);
+  const handleShowBtn = (action: boolean) => {
+    setShowAddNew(action);
+  };
   //Sanction Input
   const sODInput = useRef<any>("");
   const sWCDLInput = useRef<any>("");
@@ -172,6 +177,9 @@ const BankingFacilities = () => {
     setSelectedCompany(e.target.value);
   };
   const handleSanctionInputFormView = (op: boolean) => {
+    if (sODInput.current) {
+      sODInput.current.focus();
+    }
     setShowAddSanction(op);
   };
   const handleUtilizedInputFormView = (op: boolean) => {
@@ -298,7 +306,6 @@ const BankingFacilities = () => {
               </div>
               <div style={{ marginTop: "10px" }}>
                 <div className="input-group">
-                  
                   <input
                     type="file"
                     className="form-control"
@@ -324,6 +331,19 @@ const BankingFacilities = () => {
                       cursor: "pointer",
                     }}
                     className="fa-solid fa-download fa-fade buttonColorPrimary"
+                  ></i>
+                </button>
+                <button
+                  onClick={() => handleShowBtn(true)}
+                  style={{ backgroundColor: "white", borderWidth: "0" }}
+                >
+                  <i
+                    style={{
+                      fontSize: "25px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                    className="fa-solid fa-plus fa-fade buttonColorPrimary"
                   ></i>
                 </button>
               </div>
@@ -427,7 +447,10 @@ const BankingFacilities = () => {
                               >
                                 Buyers Credit
                               </th>
-                              <th scope="col">
+                              <th
+                                scope="col"
+                                style={{ whiteSpace: "break-spaces" }}
+                              >
                                 Packing Credit( PCFC/PCRE) /FCNR
                               </th>
                               <th scope="col" style={{ width: "200px" }}>
@@ -743,7 +766,10 @@ const BankingFacilities = () => {
                               >
                                 Buyers Credit
                               </th>
-                              <th scope="col">
+                              <th
+                                scope="col"
+                                style={{ whiteSpace: "break-spaces" }}
+                              >
                                 Packing Credit( PCFC/PCRE) /FCNR
                               </th>
                               <th
@@ -1072,7 +1098,10 @@ const BankingFacilities = () => {
                               >
                                 Buyers Credit
                               </th>
-                              <th scope="col">
+                              <th
+                                scope="col"
+                                style={{ whiteSpace: "break-spaces" }}
+                              >
                                 Packing Credit( PCFC/PCRE) /FCNR
                               </th>
                               <th
@@ -1465,6 +1494,7 @@ const BankingFacilities = () => {
           </div>
         )}
       </div>
+      {showAddNew && <AddBankingFacilitiesInfo handleShowBtn={handleShowBtn} />}
     </>
   );
 };

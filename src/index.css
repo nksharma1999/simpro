@@ -9,10 +9,24 @@ tr td:last-child {
 th {
   white-space: nowrap;
 }
-
+/* th:first-child{
+  position: sticky;
+  left: 0;
+  background-color: white;
+  z-index: 2; 
+}
+.freezeTable{
+  position: sticky;
+  left: 0;
+  background-color: white;
+  z-index: 2; 
+} */
 .tableHeader {
+  /* position: sticky; */
   color: "black";
-  background-color: "#f6f0f7";
+  background: white;
+  top: 0;
+  /* background-color: "#f6f0f7"; */
 }
 
 .accordion-button:not(.collapsed) {
@@ -30,6 +44,9 @@ th {
 }
 .react-datepicker-wrapper {
   width: 100%;
+}
+.react-datepicker-popper{
+  z-index: 1000 !important;
 }
 /* popup animation start */
 .popup {
@@ -139,7 +156,7 @@ th {
   /* left: 10; */
   /* overflow: auto;  */
   /* padding-top: 20px; */
-  width: 220px;
+  max-width: 290px;
   /* -ms-overflow-style: none; */
 }
 .sidebarNavLink {

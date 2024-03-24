@@ -82,6 +82,18 @@ const [role,setRole] = useState<string>('');
               <div className="col-lg-6 col-md-12">
                 <div className="form-floating mb-3">
                   <input
+                    type="number"
+                    className="form-control"
+                    id="floatingPassword3"
+                    placeholder="email"
+                    // ref={phoneNoInput}
+                  />
+                  <label htmlFor="floatingPassword3">Phone No.</label>
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-12">
+                <div className="form-floating mb-3">
+                  <input
                     type="email"
                     className="form-control"
                     id="floatingPassword3"
@@ -127,6 +139,21 @@ const [role,setRole] = useState<string>('');
                   <label htmlFor="floatingPassword7">Employee ID</label>
                 </div>
               </div>
+              <div className="col-lg-6 col-md-12">
+              <div className="form-floating">
+                <select
+                  className="form-select"
+                  id="floatingSelectGrid"
+                  aria-label="Floating label select example"
+                >
+                  <option>---Select---</option>
+                  <option value="Simpro">Simpro</option>
+                  <option value="BACGD">BACGD</option>
+                  <option value="BSJGD">BSJGD</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">Company</label>
+              </div>
+              </div>
             </div>
             <div className="row ">
               <div className="col-md">
@@ -162,6 +189,21 @@ const [role,setRole] = useState<string>('');
                   </select>
                   <label htmlFor="floatingSelectGrid3">Role</label>
                 </div>
+              </div>
+              <div className="col-lg-6 col-md-12">
+              <div className="form-floating">
+                <select
+                  className="form-select"
+                  id="floatingSelectGrid"
+                  aria-label="Floating label select example"
+                >
+                  <option>---Select---</option>
+                  <option value="Maker">Maker</option>
+                  <option value="Checker">Checker</option>
+                  <option value="Approver">Approver</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">User Classification</label>
+              </div>
               </div>
             </div>
             <div className="row" style={{ marginTop: "10px" }}>
