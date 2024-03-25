@@ -19,6 +19,8 @@ const ComfortGurantee = () => {
   const [isShowAddUtilized, setShowAddUtilized] = useState(false);
   const [selectedSsl, setSelectedSsl] = useState("1");
   const [selectedUsl, setSelectedUsl] = useState("1");
+  const [selectedTableId, setTableId] = useState("ComfortLetters");
+  const [showPopup, setShowPopup] = useState<boolean>(false);
   // const [selectedCompany, setSelectedCompany] = useState("Simpro");
   //Comfort Input
   const sonbehalfInput = useRef<any>("");
@@ -32,11 +34,11 @@ const ComfortGurantee = () => {
   const ufacilityInput = useRef<any>("");
 
   const exportToExcel = () => {
+    const table = document.getElementById(selectedTableId);
+    const ws = XLSX.utils.table_to_sheet(table);
+
     const wb = XLSX.utils.book_new();
-    const ws1 = XLSX.utils.json_to_sheet(BankingFacilitiesTemplate);
-    const ws2 = XLSX.utils.json_to_sheet(BankingFacilitiesTemplate);
-    XLSX.utils.book_append_sheet(wb, ws1, "Sanctioned limits");
-    XLSX.utils.book_append_sheet(wb, ws2, "Utilisation of limits");
+    XLSX.utils.book_append_sheet(wb, ws, "Confort_Gurantee" );
     const currentDate = new Date();
     const formattedDate =
       currentDate.toISOString().slice(0, 10).replace(/-/g, "-") +
@@ -47,34 +49,40 @@ const ComfortGurantee = () => {
       ":" +
       currentDate.getSeconds();
     const filename = `${formattedDate}.xlsx`;
-    XLSX.writeFile(wb, `Comfort_Guarantee_${filename}.xlsx`);
+    XLSX.writeFile(wb, `Confort_Gurantee_${selectedTableId}_${filename}.xlsx`);
   };
-  const handleFileChange = (e: any) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (event: any) => {
-      const binaryString = event.target.result;
-      const workbook = XLSX.read(binaryString, { type: "binary" });
-      const sheetName1 = workbook.SheetNames[0];
-      const worksheet1 = workbook.Sheets[sheetName1];
-      const sheetName2 = workbook.SheetNames[1];
-      const worksheet2 = workbook.Sheets[sheetName2];
-      const inportedData1: any[] = XLSX.utils.sheet_to_json(worksheet1, {
-        header: 1,
-      });
-      const inportedData2: any[] = XLSX.utils.sheet_to_json(worksheet2, {
-        header: 1,
-      });
-
-      const jsonResult1: metaData[] = excelFileDataToJson(inportedData1);
-      setSData((prev) => [...prev, ...jsonResult1]);
-      const jsonResult2: metaData[] = excelFileDataToJson(inportedData2);
-      setUData((prev) => [...prev, ...jsonResult2]);
-    };
-
-    reader.readAsBinaryString(file);
+  const showDownloadOption = (action: boolean) => {
+    setShowPopup(action);
   };
+  const handleTableIdSelection = (e:any) =>{
+    setTableId(e.target.value);
+  }
+  // const handleFileChange = (e: any) => {
+  //   const file = e.target.files[0];
+  //   const reader = new FileReader();
+
+  //   reader.onload = (event: any) => {
+  //     const binaryString = event.target.result;
+  //     const workbook = XLSX.read(binaryString, { type: "binary" });
+  //     const sheetName1 = workbook.SheetNames[0];
+  //     const worksheet1 = workbook.Sheets[sheetName1];
+  //     const sheetName2 = workbook.SheetNames[1];
+  //     const worksheet2 = workbook.Sheets[sheetName2];
+  //     const inportedData1: any[] = XLSX.utils.sheet_to_json(worksheet1, {
+  //       header: 1,
+  //     });
+  //     const inportedData2: any[] = XLSX.utils.sheet_to_json(worksheet2, {
+  //       header: 1,
+  //     });
+
+  //     const jsonResult1: metaData[] = excelFileDataToJson(inportedData1);
+  //     setSData((prev) => [...prev, ...jsonResult1]);
+  //     const jsonResult2: metaData[] = excelFileDataToJson(inportedData2);
+  //     setUData((prev) => [...prev, ...jsonResult2]);
+  //   };
+
+  //   reader.readAsBinaryString(file);
+  // };
   const removeSInput = () => {
     sonbehalfInput.current.value = 0;
     stoInput.current.value = 0;
@@ -145,21 +153,21 @@ const ComfortGurantee = () => {
               borderRadius: "0.3px",
               display: "flex",
               flexWrap: "wrap",
-              justifyContent: 'flex-end',
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
             <div
-              style={{ marginRight: "10px", marginTop: "10px" }}
-              title="Download Template"
+              style={{ marginRight: "10px" }}
+              // title="Download Template"
             >
               <button
-                onClick={exportToExcel}
+                onClick={() => showDownloadOption(true)}
                 style={{ backgroundColor: "white", borderWidth: "0" }}
               >
                 <i
                   style={{
-                    fontSize: "25px",
+                    fontSize: "20px",
                     fontWeight: "bold",
                     cursor: "pointer",
                   }}
@@ -220,7 +228,7 @@ const ComfortGurantee = () => {
                         maxHeight: "80vh",
                       }}
                     >
-                      <table className="table table-bordered">
+                      <table className="table table-bordered" id="ComfortLetters">
                         <thead
                           style={{
                             color: "#FC5C7D",
@@ -262,17 +270,12 @@ const ComfortGurantee = () => {
                           {isShowAddSanction ? (
                             <tr>
                               <td>
-                                <select
-                                  className="form-select"
-                                  onChange={handleSsl}
-                                  value={selectedSsl}
-                                  style={{ width: "200px" }}
-                                >
-                                  <option>---Select---</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
+                              <input
+                                  // ref={sonbehalfInput}
+                                  type="text"
+                                  className="form-control"
+                                  style={{ minWidth: "100px" }}
+                                />
                               </td>
                               <td>
                                 <input
@@ -421,7 +424,7 @@ const ComfortGurantee = () => {
                         maxHeight: "80vh",
                       }}
                     >
-                      <table className="table table-bordered">
+                      <table className="table table-bordered" id='CorporateGurantee'>
                         <thead
                           style={{
                             color: "#FC5C7D",
@@ -458,22 +461,12 @@ const ComfortGurantee = () => {
                           {isShowAddUtilized ? (
                             <tr>
                               <td>
-                                {/* <div className="form-floating"> */}
-                                <select
-                                  className="form-select"
-                                  //   id="floatingSelectGrid"
-                                  //   aria-label="Floating label select example"
-                                  onChange={handleUsl}
-                                  value={selectedUsl}
-                                  style={{ width: "200px" }}
-                                >
-                                  <option>---Select---</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
-                                {/* <label htmlFor="floatingSelectGrid">Bank</label> */}
-                                {/* </div> */}
+                              <input
+                                  // ref={sonbehalfInput}
+                                  type="text"
+                                  className="form-control"
+                                  style={{ minWidth: "100px" }}
+                                />
                               </td>
                               <td>
                                 <input
@@ -626,7 +619,7 @@ const ComfortGurantee = () => {
                         maxHeight: "80vh",
                       }}
                     >
-                      <table className="table table-bordered">
+                      <table className="table table-bordered" id='LTIFZE'>
                         <thead
                           style={{
                             color: "#FC5C7D",
@@ -658,17 +651,12 @@ const ComfortGurantee = () => {
                           {isShowAddUtilized ? (
                             <tr>
                               <td>
-                                <select
-                                  className="form-select"
-                                  onChange={handleUsl}
-                                  value={selectedUsl}
-                                  style={{ width: "200px" }}
-                                >
-                                  <option>---Select---</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
+                              <input
+                                  // ref={sonbehalfInput}
+                                  type="text"
+                                  className="form-control"
+                                  style={{ minWidth: "100px" }}
+                                />
                               </td>
                               <td>
                                 <input
@@ -784,6 +772,57 @@ const ComfortGurantee = () => {
           </div>
         </div>
       </div>
+      {showPopup && (
+        <div className="popup">
+          <div
+            className="popup-inner"
+            style={{ maxHeight: "100vh", overflowY: "auto" }}
+          >
+            <div className="card" style={{ padding: "10px" }}>
+              <p style={{ fontSize: "20px" }}> Select Table </p>
+              <div className="row">
+                <div className="col-12">
+                  <div className="form-floating mb-3">
+                    <select
+                      className="form-select"
+                      id="floatingSelectGrid2"
+                      aria-label="Floating label select example"
+                      onChange={handleTableIdSelection}
+                      value={selectedTableId}
+                    >
+                      <option value="ComfortLetters">Comfort Letters</option>
+                      <option value="CorporateGurantee">Corporate Gurantee</option>
+                      <option value="LTIFZE">Comfort Letters / Corp. Guarantee - by LTIFZE</option>
+                    </select>
+                    <label htmlFor="floatingSelectGrid2">
+                      Selected Table
+                    </label>
+                  </div>
+                </div>
+                
+              </div>
+              <div className="row" style={{ marginTop: "10px" }}>
+                  <div className="col-lg-6 col-md-6 col-12">
+                    <button
+                      style={{ width: "100%", backgroundColor: "red" }}
+                      onClick={() => showDownloadOption(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-12">
+                    <button
+                      style={{ width: "100%", backgroundColor: "#0A6862",whiteSpace:'nowrap' }}
+                      onClick={exportToExcel}
+                    >
+                      Download
+                    </button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

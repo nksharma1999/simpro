@@ -152,7 +152,7 @@ const BalanceSheet = () => {
         >
           {/* <div className="row g-2">
             <div className="col-md"> */}
-          <div className="form-floating" style={{ width: "600px" }}>
+          <div className="form-floating" style={{ width: "300px" }}>
             <select
               className="form-select"
               id="floatingSelectGrid"
@@ -298,18 +298,8 @@ const BalanceSheet = () => {
                     <td style={{ textAlign: "right" }}>{val.FYpre}</td>
                     <td style={{ textAlign: "right" }}>{val.FYcurrent}</td>
                     <td style={{ textAlign: "center" }}>
-                      {info.value}%{" "}
-                      {info.isUp ? (
-                        <i
-                          style={{ color: "green" }}
-                          className="fa-solid fa-arrow-trend-up fa-fade"
-                        ></i>
-                      ) : (
-                        <i
-                          style={{ color: "red" }}
-                          className="fa-solid fa-arrow-trend-down fa-fade"
-                        ></i>
-                      )}
+                      {val.Q1FYCurrent}
+                      
                     </td>
                     <td style={{ textAlign: "right" }}>{val.Q1FYCurrent}</td>
                     <td style={{ textAlign: "right" }}>{val.Q2FYCurrent}</td>

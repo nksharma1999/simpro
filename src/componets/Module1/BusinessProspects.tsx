@@ -144,7 +144,7 @@ const BusinessProspects = () => {
             }}
           >
             {/* <p style={{ fontSize: "20px" }}> Activity Tracker</p> */}
-            <div className="form-floating" style={{ width: "600px" }}>
+            <div className="form-floating" style={{ width: "400px" }}>
               <select
                 className="form-select"
                 id="floatingSelectGrid"

@@ -68,10 +68,9 @@ export const Sidebar = () => {
                   {/* <i className="fa-solid fa-user-plus sidebarIcon"></i> */}
                   User
                 </NavLink>
-                <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
-                  {/* <i className="fa-solid fa-user-shield sidebarIcon"></i> */}
+                {/* <NavLink className="nav-link sidebarNavLink" to={"admin/role"}>
                   Role
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   className="nav-link sidebarNavLink"
                   to={"admin/role-mapping"}
@@ -147,6 +146,13 @@ export const Sidebar = () => {
                 >
                   {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   Financial Year
+                </NavLink>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"master-data/Currency"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  Currency
                 </NavLink>
               </div>
             </div>
