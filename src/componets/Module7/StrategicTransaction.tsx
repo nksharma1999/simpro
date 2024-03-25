@@ -152,11 +152,12 @@ const StrategicTransactionDashbord = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{
             overflow: "auto",
             marginTop: "10px",
             maxHeight: "80vh",
+            position:'relative'
           }}
         >
           <table className="table table-bordered">
@@ -179,7 +180,7 @@ const StrategicTransactionDashbord = () => {
               {list.map((val, index) => {
                 return (
                   <tr key={index}>
-                    <td>{val.companyName}</td>
+                    <th>{val.companyName}</th>
                     <td>{val.type}</td>
                     <td>{val.dealDate}</td>
                     <td>{val.shareType}</td>
