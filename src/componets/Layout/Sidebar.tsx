@@ -147,6 +147,13 @@ export const Sidebar = () => {
                   {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
                   Financial Year
                 </NavLink>
+                <NavLink
+                  className="nav-link sidebarNavLink"
+                  to={"master-data/Currency"}
+                >
+                  {/* <i className="fa-regular fa-calendar-days sidebarIcon"></i> */}
+                  Currency
+                </NavLink>
               </div>
             </div>
           </div>

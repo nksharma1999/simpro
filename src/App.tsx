@@ -28,6 +28,7 @@ import TermLoan from "./componets/Module4/TermLoan/TermLoan";
 import NCDDashboard from "./componets/Module4/NCD/NCDDashboard";
 import NCD from "./componets/Module6/NCD_FY22";
 import ECBDashboard from "./componets/Module4/ECB/ECBDashboard";
+import Currency from "./componets/MasterData/Currency";
 const StrategicTransactionDashbord = lazy(
   () => import("./componets/Module7/StrategicTransaction")
 );
@@ -86,6 +87,7 @@ function App() {
             <Route path="bank" element={<Bank />} />
             <Route path="financial-year" element={<FY />} />
             <Route path="sa-company" element={<SACompany />} />
+            <Route path="Currency" element={<Currency />} />
           </Route>
           <Route path="/pms" element={<Outlet />}>
             <Route index element={<ActionTakenReport />} />
