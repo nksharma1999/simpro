@@ -416,10 +416,10 @@ const WorkingCapital = () => {
           style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
         ></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
-          <table className="table table-bordered table-striped">
+          <table className="table table-bordered">
             <thead className="table-format tableHeader" >
               <tr>
                 <th rowSpan={2}>Particulars</th>
@@ -434,7 +434,8 @@ const WorkingCapital = () => {
                 <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
               </tr>
               <tr>
-                <th scope="col">Q1 FY{selectedFY}{selectedQtr[0]}</th>
+                
+                <th scope="col" style={{zIndex:0}}>Q1 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q2 FY{selectedFY}{selectedQtr[1]}</th>

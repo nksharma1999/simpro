@@ -5,17 +5,28 @@
   background: #fff;
   /* border: 1px solid red; */
 }
-th {
+/* th {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-}
+} */
 .tableFreezeOption th:first-child {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
   z-index: 1;
   background: white;
+}
+.handleMergeRowFreeze{
+  position: -webkit-sticky;
+  position: sticky;
+  /* top: '20px'; */
+}
+.tableFreezeOptionSecondHeader th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .tableFreezeOption thead th:first-child {
   z-index: 2;
@@ -52,7 +63,7 @@ th {
   /* position: sticky; */
   color: "black";
   background: white;
-  top: 0;
+  /* top: 0; */
   /* background-color: "#f6f0f7"; */
 }
 

@@ -393,7 +393,7 @@ const SummaryForecast = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered table-striped">
@@ -401,7 +401,7 @@ const SummaryForecast = () => {
               className="table-format tableHeader"
             >
               <tr>
-                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2} className="handleMergeRowFreeze">Particulars</th>
                 <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
@@ -410,8 +410,8 @@ const SummaryForecast = () => {
                 <th rowSpan={2}>FY{Number(selectedFY)}</th>
                 <th rowSpan={2}>Growth %</th>
               </tr>
-              <tr>
-                <th scope="col">
+              <tr className="tableFreezeOptionSecondHeader">
+                <th scope="col" style={{zIndex:0}}>
                   Q1 FY{selectedFY}
                   {selectedQtr[0]}
                 </th>
