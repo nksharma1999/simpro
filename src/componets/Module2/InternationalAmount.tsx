@@ -78,7 +78,7 @@ const InternationalAmount = () => {
             >
               <i
                 style={{
-                  fontSize: "25px",
+                  fontSize: "20px",
                   fontWeight: "bold",
                   cursor: "pointer",
                 }}
@@ -91,7 +91,7 @@ const InternationalAmount = () => {
                 >
                   <i
                     style={{
-                      fontSize: "25px",
+                      fontSize: "20px",
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}

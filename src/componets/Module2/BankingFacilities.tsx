@@ -30,7 +30,7 @@ const BankingFacilities = () => {
   const [isShowAddUtilized, setShowAddUtilized] = useState(false);
   const [selectedSBank, setSelectedSBank] = useState("HDFC");
   const [selectedUBank, setSelectedUBank] = useState("HDFC");
-  const [selectedCompany, setSelectedCompany] = useState("Simpro");
+  const [selectedCompany, setSelectedCompany] = useState("");
   const [showAddNew, setShowAddNew] = useState<boolean>(false);
   const handleShowBtn = (action: boolean) => {
     setShowAddNew(action);
@@ -288,23 +288,23 @@ const BankingFacilities = () => {
                 alignItems: "center",
               }}
             >
-              <div className="form-floating">
+              <div className="form-floating" style={{ maxWidth: "270px" }}>
                 <select
                   className="form-select"
                   id="floatingSelectGrid"
                   aria-label="Floating label select example"
                   onChange={handleCompany}
                   value={selectedCompany}
-                  style={{ width: "300px" }}
+                  style={{ height: "36px", paddingTop: "5px" }}
                 >
-                  <option>---Select---</option>
+                  <option>---Select Company---</option>
                   <option value="Simpro">Simpro</option>
                   <option value="BACGD">BACGD</option>
                   <option value="BSJGD">BSJGD</option>
                 </select>
-                <label htmlFor="floatingSelectGrid">Company</label>
+                {/* <label htmlFor="floatingSelectGrid">Company</label> */}
               </div>
-              <div style={{ marginTop: "10px" }}>
+              <div >
                 <div className="input-group">
                   <input
                     type="file"
@@ -317,7 +317,7 @@ const BankingFacilities = () => {
               </div>
 
               <div
-                style={{ marginRight: "10px", marginTop: "10px" }}
+                style={{ marginRight: "10px" }}
                 title="Download Template"
               >
                 <button
@@ -326,7 +326,7 @@ const BankingFacilities = () => {
                 >
                   <i
                     style={{
-                      fontSize: "25px",
+                      fontSize: "20px",
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}
@@ -339,7 +339,7 @@ const BankingFacilities = () => {
                 >
                   <i
                     style={{
-                      fontSize: "25px",
+                      fontSize: "20px",
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}
