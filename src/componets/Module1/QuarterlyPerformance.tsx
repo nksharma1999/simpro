@@ -253,12 +253,12 @@ const QuarterlyPerformance = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption "
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr>
+              <tr className="tableFreezeOptionSecondHeader">
                 <th scope="col">Particulars</th>
                 <th scope="col">FY{Number(selectedFY) - 1}</th>
                 <th scope="col">FY{selectedFY}</th>

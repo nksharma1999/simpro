@@ -100,7 +100,7 @@ const InternationalAmount = () => {
                 </button>
           </div>
           <div
-            className=""
+            className="tableFreezeOption"
             style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
           >
             <table className="table table-bordered">
@@ -122,7 +122,7 @@ const InternationalAmount = () => {
                     Equity from L&T as at
                   </th>
                 </tr>
-                <tr style={{ textAlign: "center" }}>
+                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                   <th scope="col">Business Entity</th>
                   <th scope="col">Mar 23</th>
                   <th scope="col">Q1 June-23(A)</th>
@@ -135,6 +135,7 @@ const InternationalAmount = () => {
                   <th scope="col">Q2 Sep-23(E)</th>
                   <th scope="col">Q1 June-23(A)</th>
                   <th scope="col">FY-24 (B)</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>

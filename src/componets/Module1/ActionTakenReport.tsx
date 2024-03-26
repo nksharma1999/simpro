@@ -321,12 +321,12 @@ const ActionTakenReport: React.FC = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
           ></div>
           <div
-            className="ActionTakenDashboard"
+            className="ActionTakenDashboard tableFreezeOption"
             style={{ overflow: "auto", marginTop: "10px" }}
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr>
+                <tr className="tableFreezeOptionSecondHeader">
                   <th scope="col">Sn.</th>
                   <th scope="col">Topic</th>
                   <th scope="col">Steps Identifed</th>

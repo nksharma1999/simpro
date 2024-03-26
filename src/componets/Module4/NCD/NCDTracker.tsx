@@ -244,12 +244,12 @@ const NCDTracker = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr>
+              <tr className="tableFreezeOptionSecondHeader">
                 <th scope="col">ISIN no</th>
                 <th scope="col">Bond discription</th>
                 <th scope="col">Allotment/Issue Date</th>
@@ -272,7 +272,7 @@ const NCDTracker = () => {
                 return (
                   <tr key={index}>
                     {/* <th scope="row">{val.Particulars}</th> */}
-                    <td>{val.ISINnO}</td>
+                    <th>{val.ISINnO}</th>
                     <td>{val.bond}</td>
                     <td>{val.allotment}</td>
                     <td>{val.maturity}</td>

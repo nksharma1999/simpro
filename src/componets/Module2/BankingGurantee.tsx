@@ -123,7 +123,7 @@ const BankingGuarantee = () => {
           </div>
 
           <div
-            className="ActionTakenDashboard"
+            className="ActionTakenDashboard tableFreezeOption"
             style={{
               overflow: "auto",
               marginTop: "10px",
@@ -132,7 +132,7 @@ const BankingGuarantee = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                   <th scope="col">Name of subsidiary company</th>
                   <th scope="col">Project name</th>
                   <th scope="col">Contract Value (Cr) INR/FCY</th>

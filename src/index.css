@@ -28,6 +28,14 @@
   top: 0;
   z-index: 1;
 }
+.customeFreezeColumn{
+  /* position: fixed; */
+  /* width: 100px */
+  position: -webkit-sticky;
+  position: sticky;
+  left: 100px;
+  /* z-index: 2; */
+}
 .tableFreezeOption thead th:first-child {
   z-index: 2;
 }
@@ -168,12 +176,21 @@ th {
 
 /* .accordion-button.collapsed::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  }
-  .accordion-button.collapsed::before {
+  } */
+  /* .accordion-button.collapsed::before {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   } */
-.accordionBtnStyle:after {
+/* .accordionBtnStyle:after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+} */
+
+.accordionBtnStyle::after{
+  /* background-color: white; */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='%23ffffff' class='bi bi-plus-lg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2'/%3E%3C/svg%3E") !important;
+  transition: all 0.5s;
+}
+.accordionBtnStyle:not(.collapsed)::after{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='%23ffffff' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8'/%3E%3C/svg%3E") !important;
 }
 /**************Dashboard **********/
 .dashboardTileStyle {
@@ -200,16 +217,18 @@ th {
   /* -ms-overflow-style: none; */
 }
 .sidebarNavLink {
-  margin-top: 5px;
+  margin-top: 1px;
 }
 /* The links inside the sidebar */
 .sidebar a {
-  padding: 8px 8px 8px 10px;
+  /* padding: 8px 8px 8px 10px; */
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   display: block;
   transition: 0.3s;
+  padding: 3px;
+  padding-left: 10px;
 }
 
 /* Hover effects on sidebar links */

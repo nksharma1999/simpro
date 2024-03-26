@@ -207,7 +207,7 @@ const removeSInput = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -221,11 +221,9 @@ const removeSInput = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr>
-                            
-                            <th rowSpan={3}>ISIN no</th>
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
+                         
+                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                          <th rowSpan={3}>ISIN no</th>
                             <th
                               scope="col"
                               style={{ width: "250px", whiteSpace: "wrap" }}
@@ -250,14 +248,14 @@ const removeSInput = () => {
                         <tbody>
                           {isShowAddSanction ? (
                             <tr>
-                              <td>
+                              <th>
                               <input
                                   ref={sISINInput}
                                   type="number"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={sbondInput}
@@ -356,7 +354,7 @@ const removeSInput = () => {
                           {sData.map((val, index) => {
                             return (
                               <tr key={index}>
-                                <td>{val.ISIN}</td>
+                                <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>
                                 <td>{val.maturity}</td>
@@ -403,7 +401,7 @@ const removeSInput = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -417,10 +415,8 @@ const removeSInput = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr>
+                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                             <th rowSpan={3}>ISIN no</th>
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
                             <th
                               scope="col"
                               style={{ width: "250px", whiteSpace: "wrap" }}
@@ -445,14 +441,14 @@ const removeSInput = () => {
                         <tbody>
                           {isShowAddUtilized ? (
                             <tr>
-                              <td>
+                              <th>
                                 <input
                                   ref={uISINInput}
                                   type="number"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={ubondInput}
@@ -550,7 +546,7 @@ const removeSInput = () => {
                           {uData.map((val, index) => {
                             return (
                               <tr key={index}>
-                                <td>{val.ISIN}</td>
+                                <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>
                                 <td>{val.maturity}</td>
@@ -596,7 +592,7 @@ const removeSInput = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -610,10 +606,8 @@ const removeSInput = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr>
+                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                             <th rowSpan={3}>SL</th>
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
                             <th scope="col">Onbehalf</th>
                             <th
                               scope="col"
@@ -633,14 +627,14 @@ const removeSInput = () => {
                         <tbody>
                           {isShowAddUtilized ? (
                             <tr>
-                              <td>
+                              <th>
                               <input
                                   ref={uISINInput}
                                   type="number"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={ubondInput}
@@ -737,7 +731,7 @@ const removeSInput = () => {
                           {uData.map((val, index) => {
                             return (
                               <tr key={index}>
-                                <td>{val.ISIN}</td>
+                                <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>
                                 <td>{val.maturity}</td>

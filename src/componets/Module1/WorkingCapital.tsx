@@ -422,19 +422,19 @@ const WorkingCapital = () => {
           <table className="table table-bordered">
             <thead className="table-format tableHeader" >
               <tr>
-                <th rowSpan={2}>Particulars</th>
-                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}></th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
+                <th colSpan={4}></th>
+                {/* <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
                 <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th> */}
               </tr>
-              <tr>
-                
+              <tr className="tableFreezeOptionSecondHeader">
+              <th scope="col">Particulars</th>
+                <th scope="col">FY{Number(selectedFY) - 1}</th>
                 <th scope="col" style={{zIndex:0}}>Q1 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
@@ -443,7 +443,11 @@ const WorkingCapital = () => {
                 <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
-
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
+                <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+              
               </tr>
             </thead>
             <tbody>

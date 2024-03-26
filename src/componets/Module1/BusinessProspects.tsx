@@ -213,12 +213,12 @@ const BusinessProspects = () => {
               <h4>Part A - Bids Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard"
+              className="ActionTakenDashboard tableFreezeOption"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr>
+                  <tr className="tableFreezeOptionSecondHeader">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -252,12 +252,12 @@ const BusinessProspects = () => {
               <h4>Part B - Bids yet to be Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard"
+              className="ActionTakenDashboard tableFreezeOption"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr>
+                  <tr className="tableFreezeOptionSecondHeader">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>

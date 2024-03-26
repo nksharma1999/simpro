@@ -162,7 +162,7 @@ const StrategicTransactionDashbord = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                 <th scope="col">Company Name</th>
                 <th scope="col">Type</th>
                 <th scope="col">Deal Date</th>

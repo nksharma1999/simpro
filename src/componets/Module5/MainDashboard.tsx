@@ -144,7 +144,7 @@ export const DividendMainDashboard = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{
             overflow: "auto",
             marginTop: "10px",
@@ -153,7 +153,7 @@ export const DividendMainDashboard = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                 <th scope="col">Company Name</th>
                 <th scope="col">Q1</th>
                 <th scope="col">Q2</th>
@@ -180,7 +180,7 @@ export const DividendMainDashboard = () => {
               {dataList.map((val, index) => {
                 return (
                   <tr key={index} style={{ textAlign: "center" }}>
-                    <td style={{ whiteSpace: "nowrap" }}>{val.companyName}</td>
+                    <th style={{ whiteSpace: "nowrap" }}>{val.companyName}</th>
                     <td>{val.q1}</td>
                     <td>{val.q2}</td>
                     <td>{val.q3}</td>

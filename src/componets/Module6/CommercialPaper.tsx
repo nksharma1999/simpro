@@ -47,7 +47,6 @@ const CommercialPaper = () => {
   const handleSsl = (e: any) => {
     setSelectedSsl(e.target.value);
   };
-  
 
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
@@ -66,41 +65,38 @@ const CommercialPaper = () => {
     XLSX.writeFile(wb, filename);
   };
 
-  return (<>
-  <h3>Commercial Paper</h3>
-    <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
-      <div>
-        <div className="d-flex justify-content-end mb-2">
-          <button
-            onClick={exportToExcel}
-            style={{
-              backgroundColor: "white",
-              borderWidth: "0",
-              marginRight: "15px",
-              marginLeft: "10px",
-            }}
-          >
-            <i
+  return (
+    <>
+      <h3>Commercial Paper</h3>
+      <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
+        <div>
+          <div className="d-flex justify-content-end mb-2">
+            <button
+              onClick={exportToExcel}
               style={{
-                fontSize: "25px",
-                fontWeight: "bold",
-                cursor: "pointer",
+                backgroundColor: "white",
+                borderWidth: "0",
+                marginRight: "15px",
+                marginLeft: "10px",
               }}
-              className="fa-solid fa-download fa-fade buttonColorPrimary"
-            ></i>
-          </button>
-        </div>
-          <div className="" style={{ overflow: "auto",
-                            marginTop: "10px",
-                            maxHeight: "80vh",
-                          }}>
-                          
-              <table className="table table-bordered">
-                <thead
-                  className="tableHeader"
-                >
-                
-                <tr style={{ textAlign: "center" }}>
+            >
+              <i
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+                className="fa-solid fa-download fa-fade buttonColorPrimary"
+              ></i>
+            </button>
+          </div>
+          <div
+            className=" ActionTakenDashboard tableFreezeOption"
+            style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
+          >
+            <table className="table table-bordered">
+              <thead className="tableHeader">
+                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                   <th scope="col">Deal Date</th>
                   <th scope="col">Issue Date</th>
                   <th scope="col">Maturity</th>
@@ -110,139 +106,142 @@ const CommercialPaper = () => {
                   <th scope="col">Disc</th>
                   <th scope="col">Interest</th>
                 </tr>
-                </thead>
-                <tbody>
-                  {isShowAddSanction ? (
-                    <tr>
-                      <td>
+              </thead>
+              <tbody>
+                {isShowAddSanction ? (
+                  <tr>
+                    <th>
                       <DatePicker
-                      selected={selectedstartDate}
-                      onChange={handlestartDateChange}
-                      dateFormat="dd/MM/yyyy"
-                      className="form-control"
-                      wrapperClassName="date-picker-wrapper" 
-                    />
-                      </td>
-                      <td>
+                        selected={selectedstartDate}
+                        onChange={handlestartDateChange}
+                        dateFormat="dd/MM/yyyy"
+                        className="form-control"
+                        wrapperClassName="date-picker-wrapper"
+                      />
+                    </th>
+                    <td>
                       <DatePicker
-                      selected={selectedendDate}
-                      onChange={handleEndDateChange}
-                      dateFormat="dd/MM/yyyy"
-                      className="form-control"
-                      wrapperClassName="date-picker-wrapper" 
-                    />
-                      </td>
-                      <td>
+                        selected={selectedendDate}
+                        onChange={handleEndDateChange}
+                        dateFormat="dd/MM/yyyy"
+                        className="form-control"
+                        wrapperClassName="date-picker-wrapper"
+                      />
+                    </td>
+                    <td>
                       <DatePicker
-                      selected={selectedissueDate}
-                      onChange={handleIssueDateChange}
-                      dateFormat="dd/MM/yyyy"
-                      className="form-control"
-                      wrapperClassName="date-picker-wrapper" 
-                    />
-                      </td>
-                      <td>
-                        <input
-                          ref={yieldInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                        </td>
-                        <td>
-                        <input
-                          ref={tenorInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                        </td>
-                        <td>
-                        <input
-                          ref={amtInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                        </td>
-                        <td>
-                        <input
-                          ref={discInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                        </td>
-                        <td>
-                        <input
-                          ref={interestInput}
-                          type="text"
-                          className="form-control"
-                          style={{ minWidth: "100px" }}
-                        />
-                        </td>
-                        <td>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                          }}
+                        selected={selectedissueDate}
+                        onChange={handleIssueDateChange}
+                        dateFormat="dd/MM/yyyy"
+                        className="form-control"
+                        wrapperClassName="date-picker-wrapper"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        ref={yieldInput}
+                        type="text"
+                        className="form-control"
+                        style={{ minWidth: "100px" }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        ref={tenorInput}
+                        type="text"
+                        className="form-control"
+                        style={{ minWidth: "100px" }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        ref={amtInput}
+                        type="text"
+                        className="form-control"
+                        style={{ minWidth: "100px" }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        ref={discInput}
+                        type="text"
+                        className="form-control"
+                        style={{ minWidth: "100px" }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        ref={interestInput}
+                        type="text"
+                        className="form-control"
+                        style={{ minWidth: "100px" }}
+                      />
+                    </td>
+                    <td>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <button
+                          onClick={() => handleSanctionInputFormView(false)}
+                          className="btn btn-primary"
+                          style={{ marginRight: "5px" }} // Add margin to the right of the button
                         >
-                          <button
-                            onClick={() => handleSanctionInputFormView(false)}
-                            className="btn btn-primary"
-                            style={{ marginRight: '5px' }} // Add margin to the right of the button
-                          >
-                            <i className="fa-solid fa-xmark"></i>
-                          </button>
-                          <button
-                            onClick={handleSanctionSaveBtn}
-                            className="btn btn-primary"
-                          >
-                            <i className="fa-regular fa-floppy-disk fa-shake" style={{fontSize:'25px',color:''}}></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ) : (
-                    <tr>
-                      <td colSpan={13}>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                          }}
+                          <i className="fa-solid fa-xmark"></i>
+                        </button>
+                        <button
+                          onClick={handleSanctionSaveBtn}
+                          className="btn btn-primary"
                         >
-                          <button
-                            onClick={() => handleSanctionInputFormView(true)}
-                            className="btn btn-primary"
-                          >
-                            <i className="fa-solid fa-plus"></i>
-                          </button>
-                        </div>
-                      </td>
+                          <i
+                            className="fa-regular fa-floppy-disk fa-shake"
+                            style={{ fontSize: "25px", color: "" }}
+                          ></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  <tr>
+                    <td colSpan={13}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <button
+                          onClick={() => handleSanctionInputFormView(true)}
+                          className="btn btn-primary"
+                        >
+                          <i className="fa-solid fa-plus"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+                {sData.map((val: any, index: any) => {
+                  return (
+                    <tr key={index}>
+                      <th>{val.deal}</th>
+                      <td>{val.issue}</td>
+                      <td>{val.maturity}</td>
+                      <td>{val.yield}</td>
+                      <td>{val.tenor}</td>
+                      <td>{val.amt}</td>
+                      <td>{val.disc}</td>
+                      <td>{val.interest}</td>
                     </tr>
-                  )}
-                  {sData.map((val: any, index: any) => {
-                    return (
-                      <tr key={index}>
-                        <td>{val.deal}</td>
-                        <td>{val.issue}</td>
-                        <td>{val.maturity}</td>
-                        <td>{val.yield}</td>
-                        <td>{val.tenor}</td>
-                        <td>{val.amt}</td>
-                        <td>{val.disc}</td>
-                        <td>{val.interest}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-
+        </div>
       </div>
-    </div></>
+    </>
   );
 };
 

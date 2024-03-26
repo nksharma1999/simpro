@@ -122,7 +122,7 @@ const User = () => {
                   return (
                     <tr key={index}>
                       <th>{val.userId}</th>
-                      <td>{val.name}</td>
+                      <td >{val.name}</td>
                       <td>{val.phone}</td>
                       <td>{val.companyName}</td>
                       <td>{val.emailId}</td>

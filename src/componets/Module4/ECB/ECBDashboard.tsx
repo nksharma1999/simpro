@@ -155,7 +155,7 @@ const ECBDashboard = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{
             overflow: "auto",
             marginTop: "10px",
@@ -164,7 +164,7 @@ const ECBDashboard = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
                 <th scope="col">Bank Name</th>
                 <th scope="col">LRN</th>
                 <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
@@ -186,7 +186,7 @@ const ECBDashboard = () => {
               {list.map((val, index) => {
             return (
               <tr key={index}>
-                <td>{val.bankName}</td>
+                <th>{val.bankName}</th>
                 <td>{val.LRN}</td>
                 <td>{val.dealDate}</td>
                 <td>{val.startDate}</td>
