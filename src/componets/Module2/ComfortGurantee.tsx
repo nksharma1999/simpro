@@ -221,7 +221,7 @@ const ComfortGurantee = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -230,21 +230,11 @@ const ComfortGurantee = () => {
                     >
                       <table className="table table-bordered" id="ComfortLetters">
                         <thead
-                          style={{
-                            color: "#FC5C7D",
-                            backgroundColor: "#f6f0f7",
-                          }}
+                        className="table-format tableHeader"
                         >
-                          <tr>
-                            {/* <th rowSpan={3}>Company Name</th> */}
-                            <th rowSpan={3}>SL</th>
-
-                            {/* <th
-                              colSpan={7}
-                              style={{ textAlign: "center" }}
-                            ></th> */}
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
+                      
+                          <tr className=" tableFreezeOptionSecondHeader tableHeaderStyle" style={{ textAlign: "center" }}>
+                          <th rowSpan={3}>SL</th>
                             <th
                               scope="col"
                               style={{ width: "250px", whiteSpace: "wrap" }}
@@ -264,19 +254,20 @@ const ComfortGurantee = () => {
                               For
                             </th>
                             <th scope="col">Facility value</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddSanction ? (
-                            <tr>
-                              <td>
+                            <tr className="tableFirstThStyle">
+                              <th>
                               <input
                                   // ref={sonbehalfInput}
                                   type="text"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={sonbehalfInput}
@@ -374,8 +365,8 @@ const ComfortGurantee = () => {
                           )}
                           {sData.map((val, index) => {
                             return (
-                              <tr key={index}>
-                                <td>{val.sl}</td>
+                              <tr className="tableFirstThStyle" key={index}>
+                                <th>{val.sl}</th>
                                 <td>{val.onbehalf}</td>
                                 <td>{val.to}</td>
                                 <td>{val.for}</td>
@@ -417,7 +408,7 @@ const ComfortGurantee = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -431,11 +422,8 @@ const ComfortGurantee = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr>
-                            {/* <th rowSpan={3}>Company Name</th> */}
-                            <th rowSpan={3}>SL</th>
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
+                          <tr className="tableFreezeOptionSecondHeader tableHeaderStyle" style={{ textAlign: "center" }}>
+                          <th rowSpan={3}>SL</th>
                             <th
                               scope="col"
                               style={{ width: "250px", whiteSpace: "wrap" }}
@@ -455,19 +443,21 @@ const ComfortGurantee = () => {
                               For
                             </th>
                             <th scope="col">Facility value</th>
+                            
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddUtilized ? (
-                            <tr>
-                              <td>
+                            <tr className="tableFirstThStyle">
+                              <th>
                               <input
                                   // ref={sonbehalfInput}
                                   type="text"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={uonbehalfInput}
@@ -501,7 +491,6 @@ const ComfortGurantee = () => {
                                 />
                               </td>
 
-                              <td></td>
                               <td>
                                 <div
                                   style={{
@@ -564,8 +553,8 @@ const ComfortGurantee = () => {
                           )}
                           {uData.map((val, index) => {
                             return (
-                              <tr key={index}>
-                                <td>{val.sl}</td>
+                              <tr className='tableFirstThStyle' key={index}>
+                                <th>{val.sl}</th>
                                 <td>{val.onbehalf}</td>
                                 <td>{val.to}</td>
                                 <td>{val.for}</td>
@@ -612,7 +601,7 @@ const ComfortGurantee = () => {
                 >
                   <div className="accordion-body" style={{ padding: "0px" }}>
                     <div
-                      className="ActionTakenDashboard"
+                      className="ActionTakenDashboard tableFreezeOption"
                       style={{
                         overflow: "auto",
                         marginTop: "10px",
@@ -626,11 +615,9 @@ const ComfortGurantee = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr>
-                            {/* <th rowSpan={3}>Company Name</th> */}
+                          
+                          <tr className=" tableFreezeOptionSecondHeader tableHeaderStyle" style={{ textAlign: "center" }}>
                             <th rowSpan={3}>SL</th>
-                          </tr>
-                          <tr style={{ textAlign: "center" }}>
                             <th scope="col">Onbehalf</th>
                             <th
                               scope="col"
@@ -645,19 +632,20 @@ const ComfortGurantee = () => {
                               For
                             </th>
                             <th scope="col">Facility value</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddUtilized ? (
-                            <tr>
-                              <td>
+                            <tr className="tableFirstThStyle">
+                              <th>
                               <input
                                   // ref={sonbehalfInput}
                                   type="text"
                                   className="form-control"
                                   style={{ minWidth: "100px" }}
                                 />
-                              </td>
+                              </th>
                               <td>
                                 <input
                                   ref={uonbehalfInput}
@@ -690,7 +678,6 @@ const ComfortGurantee = () => {
                                   style={{ minWidth: "100px" }}
                                 />
                               </td>
-                              <td></td>
                               <td>
                                 <div
                                   style={{
@@ -753,8 +740,8 @@ const ComfortGurantee = () => {
                           )}
                           {uData.map((val, index) => {
                             return (
-                              <tr key={index}>
-                                <td>{val.sl}</td>
+                              <tr className="tableFirstThStyle" key={index}>
+                                <th>{val.sl}</th>
                                 <td>{val.onbehalf}</td>
                                 <td>{val.to}</td>
                                 <td>{val.for}</td>

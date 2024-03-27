@@ -96,7 +96,7 @@ const CommercialPaper = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                   <th scope="col">Deal Date</th>
                   <th scope="col">Issue Date</th>
                   <th scope="col">Maturity</th>
@@ -109,7 +109,7 @@ const CommercialPaper = () => {
               </thead>
               <tbody>
                 {isShowAddSanction ? (
-                  <tr>
+                  <tr className="tableFirstThStyle">
                     <th>
                       <DatePicker
                         selected={selectedstartDate}
@@ -224,7 +224,7 @@ const CommercialPaper = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
+                    <tr className="tableFirstThStyle" key={index}>
                       <th>{val.deal}</th>
                       <td>{val.issue}</td>
                       <td>{val.maturity}</td>

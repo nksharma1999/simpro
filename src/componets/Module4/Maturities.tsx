@@ -95,7 +95,7 @@ export const Maturities = () => {
           </p>
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                 <th scope="col" style={{ width: "250px", whiteSpace: "wrap" }}>
                   ISIN No.
                 </th>
@@ -137,7 +137,7 @@ export const Maturities = () => {
 
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                 <th scope="col" style={{ width: "250px", whiteSpace: "wrap" }}>
                   LRN No.
                 </th>
@@ -179,7 +179,7 @@ export const Maturities = () => {
 
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                 <th scope="col" style={{ width: "250px", whiteSpace: "wrap" }}>
                   Loan Ref. No.
                 </th>

@@ -153,7 +153,7 @@ export const DividendMainDashboard = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                 <th scope="col">Company Name</th>
                 <th scope="col">Q1</th>
                 <th scope="col">Q2</th>
@@ -179,7 +179,7 @@ export const DividendMainDashboard = () => {
             <tbody>
               {dataList.map((val, index) => {
                 return (
-                  <tr key={index} style={{ textAlign: "center" }}>
+                  <tr className="tableFirstThStyle" key={index} style={{ textAlign: "center" }}>
                     <th style={{ whiteSpace: "nowrap" }}>{val.companyName}</th>
                     <td>{val.q1}</td>
                     <td>{val.q2}</td>

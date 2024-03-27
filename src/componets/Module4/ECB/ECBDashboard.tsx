@@ -164,7 +164,7 @@ const ECBDashboard = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                 <th scope="col">Bank Name</th>
                 <th scope="col">LRN</th>
                 <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
@@ -185,7 +185,7 @@ const ECBDashboard = () => {
             <tbody>
               {list.map((val, index) => {
             return (
-              <tr key={index}>
+              <tr className="tableFirstThStyle" key={index}>
                 <th>{val.bankName}</th>
                 <td>{val.LRN}</td>
                 <td>{val.dealDate}</td>

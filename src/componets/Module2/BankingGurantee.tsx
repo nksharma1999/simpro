@@ -132,7 +132,7 @@ const BankingGuarantee = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                <tr style={{ textAlign: "center" }} className="tableHeaderStyle tableFreezeOptionSecondHeader">
                   <th scope="col">Name of subsidiary company</th>
                   <th scope="col">Project name</th>
                   <th scope="col">Contract Value (Cr) INR/FCY</th>
@@ -154,8 +154,8 @@ const BankingGuarantee = () => {
               </thead>
               <tbody>
                 {isShowAddSanction ? (
-                  <tr>
-                    <td>
+                  <tr className="tableFirstThStyle">
+                    <th>
                       <select
                         value={selectedCompanyName}
                         onChange={handleCompanyNameChange}
@@ -178,7 +178,7 @@ const BankingGuarantee = () => {
                           L&T Innovation Campus
                         </option>
                       </select>
-                    </td>
+                    </th>
                     <td>
                       <input
                         ref={projectInput}
@@ -333,8 +333,8 @@ const BankingGuarantee = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
-                      <td>{val.name}</td>
+                    <tr key={index} className="tableFirstThStyle">
+                      <th>{val.name}</th>
                       <td>{val.project}</td>
                       <td>{val.contractValue}</td>
                       <td>{val.startAt}</td>

@@ -402,7 +402,7 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead className="tableHeader">
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
                               <th colSpan={8} style={{ textAlign: "center" }}>
@@ -416,7 +416,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               <th colSpan={4} style={{ textAlign: "center" }}>
                                 Fund Based
                               </th>
@@ -428,7 +428,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr style={{ textAlign: "center" }}>
+                            <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                               <th
                                 scope="col"
                                 style={{ width: "250px", whiteSpace: "wrap" }}
@@ -721,7 +721,7 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead className="tableHeader">
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
                               <th colSpan={8} style={{ textAlign: "center" }}>
@@ -735,7 +735,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               <th colSpan={4} style={{ textAlign: "center" }}>
                                 Fund Based
                               </th>
@@ -747,7 +747,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr style={{ textAlign: "center" }}>
+                            <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                               <th
                                 scope="col"
                                 style={{ width: "250px", whiteSpace: "wrap" }}
@@ -1058,7 +1058,7 @@ const BankingFacilities = () => {
                       >
                         <table className="table table-bordered">
                           <thead className="tableHeader">
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               {/* <th rowSpan={3}>Company Name</th> */}
                               <th rowSpan={3}>Bank Name</th>
                               <th colSpan={8} style={{ textAlign: "center" }}>
@@ -1072,7 +1072,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr>
+                            <tr className="tableHeaderStyle">
                               <th colSpan={4} style={{ textAlign: "center" }}>
                                 Fund Based
                               </th>
@@ -1084,7 +1084,7 @@ const BankingFacilities = () => {
                                 style={{ textAlign: "center" }}
                               ></th>
                             </tr>
-                            <tr style={{ textAlign: "center" }}>
+                            <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                               <th scope="col">OD/CC</th>
                               <th
                                 scope="col"
@@ -1212,7 +1212,7 @@ const BankingFacilities = () => {
                 id="combineData_BankingFacilities"
               >
                 <thead className="tableHeader">
-                  <tr>
+                  <tr className="tableHeaderStyle">
                     <th rowSpan={4}>Company Name</th>
                     <th rowSpan={4}>Bank Name</th>
                     <th colSpan={12} style={{ textAlign: "center" }}>
@@ -1226,7 +1226,7 @@ const BankingFacilities = () => {
                     </th>
                   </tr>
 
-                  <tr>
+                  <tr className="tableHeaderStyle">
                     {/* <th rowSpan={3}>Company Name</th> */}
 
                     <th colSpan={8} style={{ textAlign: "center" }}>
@@ -1254,7 +1254,7 @@ const BankingFacilities = () => {
                     <th colSpan={1} style={{ textAlign: "center" }}></th>
                   </tr>
 
-                  <tr>
+                  <tr className="tableHeaderStyle">
                     <th colSpan={4} style={{ textAlign: "center" }}>
                       Fund Based
                     </th>
@@ -1279,7 +1279,7 @@ const BankingFacilities = () => {
                     <th colSpan={6} style={{ textAlign: "center" }}></th>
                   </tr>
 
-                  <tr style={{ textAlign: "center" }}>
+                  <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                     <th
                       scope="col"
                       style={{ width: "250px", whiteSpace: "wrap" }}

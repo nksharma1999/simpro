@@ -155,16 +155,7 @@ const SecondaryInvestor = () => {
     <div>
       <h3>Secondary Investor</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
-        <div>
-          {/* <div className="file-upload">
-        <input
-                  type="file"
-                  className="form-control"
-                  id="inputGroupFile01"
-                  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                  onChange={handleFileChange}
-                />
-        </div> */}
+       
           <div className="d-flex justify-content-between mb-2">
             <div>
               <input
@@ -200,14 +191,14 @@ const SecondaryInvestor = () => {
             style={{
               overflow: "auto",
               marginTop: "10px",
-              maxHeight: "80vh",
+              // maxHeight: "80vh",
             }}
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
                 <tr
                   style={{ textAlign: "center" }}
-                  className="tableFreezeOptionSecondHeader"
+                  className="tableFreezeOptionSecondHeader tableHeaderStyle"
                 >
                   <th scope="col">Self Declaration</th>
                   <th scope="col">TDS Exemptions</th>
@@ -220,7 +211,7 @@ const SecondaryInvestor = () => {
               </thead>
               <tbody>
                 {isShowAddSanction ? (
-                  <tr>
+                  <tr className="tableFirstThStyle">
                     <th>
                       <input
                         ref={selfInput}
@@ -334,7 +325,7 @@ const SecondaryInvestor = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
+                    <tr className="tableFirstThStyle" key={index}>
                       <th>{val.self}</th>
                       <td>{val.TDS}</td>
                       <td>{val.KYC}</td>
@@ -348,7 +339,6 @@ const SecondaryInvestor = () => {
               </tbody>
             </table>
           </div>
-        </div>
       </div>
     </div>
   );

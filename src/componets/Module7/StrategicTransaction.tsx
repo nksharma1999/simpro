@@ -162,7 +162,7 @@ const StrategicTransactionDashbord = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+              <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                 <th scope="col">Company Name</th>
                 <th scope="col">Type</th>
                 <th scope="col">Deal Date</th>
@@ -179,7 +179,7 @@ const StrategicTransactionDashbord = () => {
             <tbody>
               {list.map((val, index) => {
                 return (
-                  <tr key={index}>
+                  <tr className="tableFirstThStyle" key={index}>
                     <th>{val.companyName}</th>
                     <td>{val.type}</td>
                     <td>{val.dealDate}</td>
