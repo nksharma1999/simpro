@@ -227,12 +227,12 @@ const BusinessProspects = () => {
               <h4>Part A - Bids Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard"
+              className="ActionTakenDashboard tableFreezeOption"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr>
+                  <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -248,7 +248,7 @@ const BusinessProspects = () => {
                 <tbody>
                   {filterData(submittedData).map((val: any, index: number) => {
                     return (
-                      <tr key={index}>
+                      <tr key={index} className="tableFirstThStyle">
                         <th>{val.Customer}</th>
                         <td style={{ textAlign: "center" }}>{val.Project}</td>
                         <td style={{ textAlign: "right" }}>{val.Value}</td>
@@ -295,12 +295,12 @@ const BusinessProspects = () => {
               <h4>Part B - Bids yet to be Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard"
+              className="ActionTakenDashboard tableFreezeOption"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr>
+                  <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -317,7 +317,7 @@ const BusinessProspects = () => {
                   {filterData(yetToSubmittedData).map(
                     (val: any, index: number) => {
                       return (
-                        <tr key={index}>
+                        <tr key={index} className="tableFirstThStyle">
                           <th>{val.Customer}</th>
                           <td style={{ textAlign: "center" }}>{val.Project}</td>
                           <td style={{ textAlign: "right" }}>{val.Value}</td>

@@ -102,7 +102,7 @@ const User = () => {
           >
             <table className="table table-bordered" style={{ width: "100%" }}>
               <thead className="table-format tableHeader">
-                <tr>
+                <tr className="tableHeaderStyle">
                   <th scope="col">User Id</th>
 
                   <th scope="col">Name</th>
@@ -120,7 +120,7 @@ const User = () => {
               <tbody>
                 {userList.map((val, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="tableFirstThStyle">
                       <th>{val.userId}</th>
                       <td >{val.name}</td>
                       <td>{val.phone}</td>

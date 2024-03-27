@@ -66,7 +66,7 @@ const Currency = () => {
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader">
-              <tr>
+              <tr className="tableHeaderStyle">
                 <th scope="col" style={{ width: "20px" }}>
                   ID
                 </th>
@@ -78,7 +78,7 @@ const Currency = () => {
             <tbody>
               {currencyList.map((val, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={index} className="tableFirstThStyle">
                     <th scope="row">{val.id}</th>
                     <td style={{ textAlign: "center" }}>{val.currency}</td>
 

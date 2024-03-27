@@ -238,15 +238,14 @@ const BalanceSheet = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader">
-              <tr>
-                <th rowSpan={2}>Particulars</th>
-                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
-                <th colSpan={2}>Q1 FY{selectedFY}</th>
+              <tr className="tableHeaderStyle">
+                <th colSpan={2}></th>
+                <th colSpan={2} >Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
@@ -266,8 +265,10 @@ const BalanceSheet = () => {
                   Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
                 </th>
               </tr>
-              <tr>
-                <th scope="col">
+              <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
+              <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2} >FY{Number(selectedFY) - 1}</th>
+                <th scope="col" style={{zIndex:0}}>
                   Q1 FY{selectedFY}
                   {selectedQtr[0]}
                 </th>
@@ -308,7 +309,7 @@ const BalanceSheet = () => {
               {allActivity.map((val: any, index: number) => {
                 const info = findGrowth(val.FYcurrent, val.FYpre);
                 return (
-                  <tr key={index}>
+                  <tr key={index} className="tableFirstThStyle ">
                     <th scope="row">{val.Particulars}</th>
                     <td style={{ textAlign: "right" }}>{val.FYpre}</td>
                     <td style={{ textAlign: "right" }}>{val.FYcurrent}</td>

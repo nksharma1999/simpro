@@ -404,116 +404,135 @@ const SummaryForecast = () => {
         <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
-        <div
-          className="ActionTakenDashboard tableFreezeOption"
-          style={{ overflow: "auto", marginTop: "10px" }}
-        >
-          <table className="table table-bordered table-striped">
-            <thead
-              className="table-format tableHeader"
-            >
-              <tr>
-                <th rowSpan={2} className="handleMergeRowFreeze">Particulars</th>
-                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
-                <th colSpan={2}>Q1 FY{selectedFY}</th>
-                <th colSpan={2}>Q2 FY{selectedFY}</th>
-                <th colSpan={2}>Q3 FY{selectedFY}</th>
-                <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}</th>
-                <th rowSpan={2}>Growth %</th>
-              </tr>
-              <tr className="tableFreezeOptionSecondHeader">
-                <th scope="col" style={{zIndex:0}}>
-                  Q1 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q1 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col" style={{ textAlign: "center" }}>
+          <div
+            className="ActionTakenDashboard tableFreezeOption"
+            style={{ overflow: "auto", marginTop: "10px" }}
+          >
+            <table className="table table-bordered table-striped">
+              <thead className="table-format tableHeader">
+                <tr className="tableHeaderStyle">
+                  <th colSpan={2}></th>
+                  {/* <th rowSpan={2}>FY{Number(selectedFY) - 1}</th> */}
+                  <th colSpan={2}>Q1 FY{selectedFY}</th>
+                  <th colSpan={2}>Q2 FY{selectedFY}</th>
+                  <th colSpan={2}>Q3 FY{selectedFY}</th>
+                  <th colSpan={2}>Q4 FY{selectedFY}</th>
+                  <th colSpan={2}></th>
+                </tr>
+                <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
+                  <th scope="col">Particulars</th>
+                  <th scope="col">FY{Number(selectedFY) - 1}</th>
+                  <th scope="col" style={{ zIndex: 0 }}>
+                    Q1 FY{selectedFY}
+                    {selectedQtr[0]}
+                  </th>
+                  <th scope="col">
+                    Q1 FY{selectedFY}
+                    {selectedQtr[1]}
+                  </th>
+                  <th scope="col">
+                    Q2 FY{selectedFY}
+                    {selectedQtr[0]}
+                  </th>
+                  <th scope="col">
+                    Q2 FY{selectedFY}
+                    {selectedQtr[1]}
+                  </th>
+                  <th scope="col">
+                    Q3 FY{selectedFY}
+                    {selectedQtr[0]}
+                  </th>
+                  <th scope="col">
+                    Q3 FY{selectedFY}
+                    {selectedQtr[1]}
+                  </th>
+                  <th scope="col">
+                    Q4 FY{selectedFY}
+                    {selectedQtr[0]}
+                  </th>
+                  <th scope="col">
+                    Q4 FY{selectedFY}
+                    {selectedQtr[1]}
+                  </th>
+                  <th scope="col">FY{Number(selectedFY)}</th>
+                  <th scope="col">Growth %</th>
+                  <th scope="col" style={{ textAlign: "center" }}>
                   Edit
                 </th>
-              </tr>
-            </thead>
-            <tbody>
-              {filterData().map((val, index) => {
-                const info = findGrowth(val.FYcurrent, val.FYpre);
-                const isSalesOrMargin =
-                  val.Particulars === "Sales" || val.Particulars === "% Margin";
-                const isSelectedEntity = val.Particulars.toLowerCase().includes(
-                  selectedEntity.toLowerCase()
-                );
+                </tr>
+              </thead>
+              <tbody>
+                {filterData().map((val, index) => {
+                  const info = findGrowth(val.FYcurrent, val.FYpre);
+                  const isSalesOrMargin =
+                    val.Particulars === "Sales" ||
+                    val.Particulars === "% Margin";
+                  const isSelectedEntity =
+                    val.Particulars.toLowerCase().includes(
+                      selectedEntity.toLowerCase()
+                    );
 
-                return (
-                  <tr
-                    key={index}
-                    className={isSelectedEntity ? "highlight-row" : ""}
-                  >
-                    <th
-                      scope="row"
-                      className={isSalesOrMargin ? "bold-text" : ""}
+                  return (
+                    <tr
+                      key={index}
+                      className={isSelectedEntity ? "highlight-row tableFirstThStyle" : "tableFirstThStyle"}
                     >
-                      {val.Particulars.includes("Margin") ? (
-                        <>
-                          % Margin{" "}
-                          <sub style={{ fontSize: "smaller" }}>
-                            (including other income)
-                          </sub>
-                        </>
-                      ) : (
-                        val.Particulars
-                      )}
-                    </th>
-                    <td style={{ textAlign: "right" }}>{val.FYpre}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_A}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_A}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_A}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_A}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_B}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_B}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_B}</td>
-                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_B}</td>
-                    <td style={{ textAlign: "center" }}>{val.FYcurrent}</td>
-                    <td>
-                      {info.value}%{" "}
-                      {info.isUp ? (
-                        <i
-                          style={{ color: "green" }}
-                          className="fa-solid fa-arrow-trend-up fa-fade"
-                        ></i>
-                      ) : (
-                        <i
-                          style={{ color: "red" }}
-                          className="fa-solid fa-arrow-trend-down fa-fade"
-                        ></i>
-                      )}
-                    </td>
-                    <td
+                      <th
+                        scope="row"
+                        className={isSalesOrMargin ? "bold-text" : ""}
+                      >
+                        {val.Particulars.includes("Margin") ? (
+                          <>
+                            % Margin{" "}
+                            <sub style={{ fontSize: "smaller" }}>
+                              (including other income)
+                            </sub>
+                          </>
+                        ) : (
+                          val.Particulars
+                        )}
+                      </th>
+                      <td style={{ textAlign: "right" }}>{val.FYpre}</td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q1FYCurrent_A}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q2FYCurrent_A}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q3FYCurrent_A}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q4FYCurrent_A}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q1FYCurrent_B}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q2FYCurrent_B}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q3FYCurrent_B}
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        {val.Q4FYCurrent_B}
+                      </td>
+                      <td style={{ textAlign: "center" }}>{val.FYcurrent}</td>
+                      <td>
+                        {info.value}%{" "}
+                        {info.isUp ? (
+                          <i
+                            style={{ color: "green" }}
+                            className="fa-solid fa-arrow-trend-up fa-fade"
+                          ></i>
+                        ) : (
+                          <i
+                            style={{ color: "red" }}
+                            className="fa-solid fa-arrow-trend-down fa-fade"
+                          ></i>
+                        )}
+                      </td>
+                      <td
                       style={{
                         textAlign: "center",
                         cursor: "pointer",
@@ -539,24 +558,19 @@ const SummaryForecast = () => {
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    {
-      showAddNewDataView && <AddDataForSummaryForecast closeAddComponent={showAddNewDataEntryView} />
-   }
-   {isShowEditPage && (
-  <EditSummaryForecast
-    closeEditComponent={closeEditPage}
-    Summary={userEditInfo}
-    updateUser={SummaryForecast}
-  />
-)}
+      {showAddNewDataView && (
+        <AddDataForSummaryForecast
+          closeAddComponent={showAddNewDataEntryView}
+        />
+      )}
     </>
   );
 };

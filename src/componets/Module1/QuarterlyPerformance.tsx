@@ -273,12 +273,12 @@ const QuarterlyPerformance = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard"
+          className="ActionTakenDashboard tableFreezeOption"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr>
+              <tr className="tableFreezeOptionSecondHeader tableHeaderStyle" >
                 <th scope="col">Particulars</th>
                 <th scope="col">FY{Number(selectedFY) - 1}</th>
                 <th scope="col">FY{selectedFY}</th>
@@ -296,7 +296,7 @@ const QuarterlyPerformance = () => {
               {allActivity.map((val, index) => {
                 const info = findGrowth(val.FYcurrent, val.FYpre);
                 return (
-                  <tr key={index}>
+                  <tr key={index} className="tableFirstThStyle">
                     <th scope="row">{val.Particulars}</th>
                     <td style={{ textAlign: "right" }}>{val.FYpre}</td>
                     <td style={{ textAlign: "right" }}>{val.FYcurrent}</td>

@@ -176,12 +176,12 @@ const ProjectUpdate = () => {
           ></div>
           <div>
             <div
-              className="ActionTakenDashboard"
+              className="ActionTakenDashboard tableFreezeOption"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr style={{textAlign:'center'}}>
+                  <tr style={{textAlign:'center'}} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project Name</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project details (Short description)</th>
                     <th scope="col" style={{width:'250px',whiteSpace:'wrap'}}>Original Contract Value (Rs. Cr/Mn USD)</th>
@@ -198,7 +198,7 @@ const ProjectUpdate = () => {
                   {filterData(projectUpdateData).map(
                     (val: any, index: number) => {
                       return (
-                        <tr key={index}>
+                        <tr key={index} className="tableFirstThStyle">
                           <th>{val.Project_name}</th>
                           <td style={{ textAlign: "center" }}>{val.Project_details}</td>
                           <td style={{ textAlign: "right" }}>{val.Original_Contract_Value}</td>

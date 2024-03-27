@@ -84,7 +84,7 @@ const SACompany  = () =>{
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader" >
-            <tr>
+            <tr className="tableHeaderStyle">
                   <th scope="col" style={{width:'20px'}}>Sl. No.</th>
                   <th scope="col">Name</th>
                   <th scope="col">Code</th>
@@ -98,7 +98,7 @@ const SACompany  = () =>{
             <tbody>
             {saCompanyList.map((val, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="tableFirstThStyle">
                       <th scope="row">{index + 1}</th>
                       <td>{val.name}</td>
                       <td>{val.code}</td>

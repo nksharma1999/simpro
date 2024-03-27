@@ -94,7 +94,7 @@ const RoleMapping = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr>
+                <tr className="tableHeaderStyle">
                   <th scope="col">Id</th>
                   <th scope="col">Permission Name</th>
                   <th scope="col">All</th>
@@ -108,7 +108,7 @@ const RoleMapping = () => {
               <tbody>
                 {modules.map((val, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="tableFirstThStyle">
                       <th scope="row">{val.permissionId}</th>
                       <th scope="row">{val.name}</th>
                       <th scope="row">
