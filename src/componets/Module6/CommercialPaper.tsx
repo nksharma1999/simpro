@@ -2,9 +2,30 @@ import React, { useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+
+interface metaData {
+  company: string;
+  bank: string;
+  od: number;
+  wcd: number;
+  buyerCredit: number;
+  packingCredit: number;
+  bg: number;
+  lc: number;
+  fxLimit: number;
+  cp: number;
+  termLoan: number;
+  ncd: number;
+  ecb: number;
+}
+
 
 const CommercialPaper = () => {
-  const [sData, setSData] = useState<any>([]);
+  // const [sData, setSData] = useState<any>([]);
+  const [sData, setSData] = useState<metaData[]>([]);
+  const [uData, setUData] = useState<metaData[]>([]);
+  const [bData, setBData] = useState<metaData[]>([]);
   const [isShowAddSanction, setShowAddSanction] = useState(false);
   const [selectedstartDate, setSelectedstartDate] = useState<Date | null>(null);
   const [selectedendDate, setSelectedEndDate] = useState<Date | null>(null);
@@ -64,12 +85,54 @@ const CommercialPaper = () => {
     const filename = `Commercial_Paper_${formattedDate}.xlsx`;
     XLSX.writeFile(wb, filename);
   };
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => {
+      const binaryString = event.target.result;
+      const workbook = XLSX.read(binaryString, { type: "binary" });
+      const sheetName1 = workbook.SheetNames[0];
+      const worksheet1 = workbook.Sheets[sheetName1];
+      const sheetName2 = workbook.SheetNames[1];
+      const worksheet2 = workbook.Sheets[sheetName2];
+      const inportedData1: any[] = XLSX.utils.sheet_to_json(worksheet1, {
+        header: 1,
+      });
+      const inportedData2: any[] = XLSX.utils.sheet_to_json(worksheet2, {
+        header: 1,
+      });
+
+      const jsonResult1: metaData[] = excelFileDataToJson(inportedData1);
+      setSData((prev) => [...prev, ...jsonResult1]);
+      const jsonResult2: metaData[] = excelFileDataToJson(inportedData2);
+      setUData((prev) => [...prev, ...jsonResult2]);
+    };
+
+    reader.readAsBinaryString(file);
+  };
 
   return (
     <>
       <h3>Commercial Paper</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
         <div>
+        <div >
+                <div className="input-group">
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile01"
+                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    onChange={handleFileChange}
+                    style={{
+                      marginRight: '1200px',
+                      marginLeft:'100px',
+                      marginTop:'20px'
+                    }}
+                  />
+                </div>
+              </div>
           <div className="d-flex justify-content-end mb-2">
             <button
               onClick={exportToExcel}
