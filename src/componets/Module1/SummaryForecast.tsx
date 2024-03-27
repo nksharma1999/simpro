@@ -589,6 +589,13 @@ const SummaryForecast = () => {
           closeAddComponent={showAddNewDataEntryView}
         />
       )}
+      {isShowEditPage && (
+  <EditSummaryForecast
+    closeEditComponent={closeEditPage}
+    Summary={userEditInfo}
+    updateUser={SummaryForecast}
+  />
+)}
     </>
   );
 };

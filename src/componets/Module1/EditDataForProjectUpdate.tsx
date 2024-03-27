@@ -67,7 +67,7 @@ export const EditProjectUpdate: React.FC<Props> = ({
               <i className="fa-solid fa-user-pen" style={{ fontSize: "30px" }}></i>
             </div>
             <div style={{ marginLeft: "10px" }}>
-              <p style={{ fontSize: "20px" }}> Edit User Information </p>
+              <p style={{ fontSize: "20px" }}> Project Update</p>
             </div>
           </div>
           <div

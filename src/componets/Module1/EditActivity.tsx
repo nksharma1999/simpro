@@ -57,7 +57,7 @@ export const EditPopup: React.FC<props> = ({ initialValue, closeEditBox }) => {
               // alignItems: "center",
             }}
           >
-            <p style={{ fontSize: "20px" }}> Update Activity </p>
+            <p style={{ fontSize: "20px" }}> Action Taken Report </p>
           </div>
           <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "-10px" }}
