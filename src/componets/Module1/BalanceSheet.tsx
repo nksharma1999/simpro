@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as XLSX from "xlsx";
 import { AddDataForBalanceSheet } from "./AddDataForBalanceSheet";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditBalanceSheet} from "./EditDataForBalanceSheet";
 
 interface metaData {
   company: string;
@@ -78,6 +79,8 @@ const BalanceSheet = () => {
   const [showAddNewDataView, setShowAddNewData] = useState(false);
   const [sData, setSData] = useState<metaData[]>([]);
   const [uData, setUData] = useState<metaData[]>([]);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
   };
@@ -92,6 +95,15 @@ const BalanceSheet = () => {
     } else {
       return { value: growth, isUp: false };
     }
+  };
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
   };
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
@@ -226,55 +238,18 @@ const BalanceSheet = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
         <div
-          className="ActionTakenDashboard tableFreezeOption"
+          className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader">
               <tr>
-                <th colSpan={2}></th>
-                <th colSpan={2} >Q1 FY{selectedFY}</th>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th colSpan={4}>
-                </th>
-              </tr>
-              <tr className="tableFreezeOptionSecondHeader">
-              <th rowSpan={2}>Particulars</th>
-                <th rowSpan={2} >FY{Number(selectedFY) - 1}</th>
-                <th scope="col" style={{zIndex:0}}>
-                  Q1 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q1 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
                 <th rowSpan={2}>
                   FY{Number(selectedFY)}
                   {selectedQtr[0]}
@@ -289,6 +264,43 @@ const BalanceSheet = () => {
                 </th>
                 <th rowSpan={2}>
                   Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
                 </th>
               </tr>
             </thead>
@@ -308,6 +320,39 @@ const BalanceSheet = () => {
                     <td style={{ textAlign: "right" }}>{val.Q2FYCurrent}</td>
                     <td style={{ textAlign: "right" }}>{val.Q3FYCurrent}</td>
                     <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+
                   </tr>
                 );
               })}
@@ -319,8 +364,14 @@ const BalanceSheet = () => {
     {
       showAddNewDataView && <AddDataForBalanceSheet closeAddComponent={showAddNewDataEntryView} />
     }
+    {isShowEditPage && (
+  <EditBalanceSheet
+    closeEditComponent={closeEditPage}
+    Balance={userEditInfo}
+    updateUser={BalanceSheet}
+  />
+)}
     </>
   );
 };
-
 export default BalanceSheet;

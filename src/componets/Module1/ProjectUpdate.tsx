@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AddDataForProjectUpdate } from "./AddDataForProjectUpdate";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditProjectUpdate } from "./EditDataForProjectUpdate";
 
 const data1 = [
   {
@@ -28,6 +29,20 @@ const ProjectUpdate = () => {
   const [projectUpdateData, setprojectUpdateData] = useState(data1);
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const [editData, setEditData] = useState("");
+  const [showEdit, setShowEdit] = useState<boolean>(false);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
+  };
   const exportToExcel = () => {
     const filterprojectUpdateData =
       selectedStatus === "All"
@@ -161,12 +176,12 @@ const ProjectUpdate = () => {
           ></div>
           <div>
             <div
-              className="ActionTakenDashboard tableFreezeOption"
+              className="ActionTakenDashboard"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr style={{textAlign:'center'}} className="tableFreezeOptionSecondHeader">
+                  <tr style={{textAlign:'center'}}>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project Name</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Project details (Short description)</th>
                     <th scope="col" style={{width:'250px',whiteSpace:'wrap'}}>Original Contract Value (Rs. Cr/Mn USD)</th>
@@ -174,6 +189,9 @@ const ProjectUpdate = () => {
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Expected / Actual Completion Date</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>% of Project Completion</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Status </th>
+                    <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -191,6 +209,32 @@ const ProjectUpdate = () => {
                           <td style={{ textAlign: "center", color: "green" }}>
                             {val.Status}
                           </td>
+                          <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
                         </tr>
                       );
                     }
@@ -204,6 +248,13 @@ const ProjectUpdate = () => {
       {showAddNewDataView && (
         <AddDataForProjectUpdate closeAddComponent={showAddNewDataEntryView} />
       )}
+      {isShowEditPage && (
+  <EditProjectUpdate
+    closeEditComponent={closeEditPage}
+    Project={userEditInfo}
+    updateUser={ProjectUpdate}
+  />
+)}
     </>
   );
 };

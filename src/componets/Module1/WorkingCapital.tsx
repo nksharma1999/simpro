@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { AddDataForWorkingCapital } from "./AddDataForWorkingCapital"
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditWorkingCapital } from "./EditDataForWorkingCapital";
 import * as XLSX from "xlsx";
 interface metaData {
   company: string;
@@ -226,6 +227,8 @@ const WorkingCapital = () => {
   const [showAddNewDataView, setShowAddNewData] = useState(false);
   const [sData, setSData] = useState<metaData[]>([]);
   const [uData, setUData] = useState<metaData[]>([]);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
   };
@@ -245,6 +248,15 @@ const WorkingCapital = () => {
 
   const clearFilters = () => {
     setSelectedEntity("");
+  };
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
   };
 
   const exportToExcel = () => {
@@ -422,19 +434,22 @@ const WorkingCapital = () => {
           <table className="table table-bordered">
             <thead className="table-format tableHeader" >
               <tr>
-                <th colSpan={2}></th>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th colSpan={4}></th>
-                {/* <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
                 <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th> */}
+                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
               </tr>
-              <tr className="tableFreezeOptionSecondHeader">
-              <th scope="col">Particulars</th>
-                <th scope="col">FY{Number(selectedFY) - 1}</th>
+              <tr>
+                
                 <th scope="col" style={{zIndex:0}}>Q1 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q1 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q2 FY{selectedFY}{selectedQtr[0]}</th>
@@ -443,11 +458,7 @@ const WorkingCapital = () => {
                 <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
-                <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-              
+
               </tr>
             </thead>
             <tbody>
@@ -481,6 +492,32 @@ const WorkingCapital = () => {
                     <td style={{ textAlign: "right" }}>{val.FYcurrent_B}</td>
                     <td style={{ textAlign: "center" }}>{info.value.toFixed(2)}% {info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
                     <td style={{ textAlign: "center" }}>{fyr_info.value.toFixed(2)}% {fyr_info.isUp ? <i style={{ color: "green" }} className="fa-solid fa-arrow-trend-up fa-fade"></i> : <i style={{ color: "red" }} className="fa-solid fa-arrow-trend-down fa-fade"></i>}</td>
+                    <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
@@ -492,9 +529,15 @@ const WorkingCapital = () => {
     {
       showAddNewDataView && <AddDataForWorkingCapital closeAddComponent={showAddNewDataEntryView} />
    }
+   {isShowEditPage && (
+  <EditWorkingCapital
+    closeEditComponent={closeEditPage}
+    Capital={userEditInfo}
+    updateUser={WorkingCapital}
+  />
+)}
     </>
   );
 };
 
 export default WorkingCapital;
-

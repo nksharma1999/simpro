@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
-import { AddDataForSummaryForecast } from "./AddDataForSummaryForecast";
+import { AddDataForSummaryForecast } from "./AddDataForSummaryForecast"
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditSummaryForecast } from "./EditDataForSummaryForecast";
 import * as XLSX from "xlsx";
 interface metaData {
   company: string;
@@ -209,11 +210,23 @@ const SummaryForecast = () => {
   const [selectedCompanyName, setSelectedCompanyName] = useState("");
   const [sData, setSData] = useState<metaData[]>([]);
   const [uData, setUData] = useState<metaData[]>([]);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
 
   const [showAddNewDataView, setShowAddNewData] = useState(false);
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
   };
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
+  };
+
 
   const handleFY = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedFY(e.target.value);
@@ -222,7 +235,9 @@ const SummaryForecast = () => {
   const handleEntityFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedEntity(e.target.value);
   };
-  const handleCompanyNameChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleCompanyNameChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setSelectedCompanyName(e.target.value);
   };
 
@@ -292,238 +307,256 @@ const SummaryForecast = () => {
 
   return (
     <>
-      <div>
-        <h3>P&L summary report and forecast</h3>
-        <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
-          <div className="d-flex justify-content-end mb-2">
-            <div className="form-floating" style={{ width: "170px" }}>
-              <select
-                className="form-select"
-                id="floatingSelectGrid"
-                aria-label="Floating label select example"
-                onChange={handleFY}
-                value={selectedFY}
-                style={{ height: "40px", paddingTop: "5px" }}
-              >
-                <option disabled>---Select---</option>
-                <option value="2023">2022-2023</option>
-                <option value="2024">2023-2024</option>
-                <option value="2025">2024-2025</option>
-              </select>
-              {/* <label htmlFor="floatingSelectGrid">Select FY</label> */}
-            </div>
-            <div className="Entity-filter">
-              <div className="form-floating" style={{ maxWidth: "240px" }}>
-                <select
-                  value={selectedCompanyName}
-                  onChange={handleCompanyNameChange}
-                  className="form-select"
-                  style={{ height: "40px", paddingTop: "5px" }}
-                >
-                  <option value="" disabled>
-                    ---Select Company---
-                  </option>
-                  <option value="Nabha Power Limited">
-                    Nabha Power Limited
-                  </option>
-                  <option value="L&T Geostructure Pvt. Ltd.">
-                    L&T Geostructure Pvt. Ltd.
-                  </option>
-                  <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
-                    L&T Special Steel & Heavy Forgings Pvt. Ltd.
-                  </option>
-                  <option value="L&T Innovation Campus">
-                    L&T Innovation Campus
-                  </option>
-                </select>
-                {/* <label htmlFor="entityFilter">Company</label> */}
-              </div>
-            </div>
-            
-            <div>
-              <input
-                type="file"
-                className="form-control"
-                id="inputGroupFile01"
-                accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                onChange={handleFileChange}
-                // style={{ marginTop: "10px" }}
-              />
-            </div>
-
-            <button
-              onClick={exportToExcel}
-              style={{
-                backgroundColor: "white",
-                borderWidth: "0",
-                marginRight: "15px",
-                marginLeft: "10px",
-              }}
+    <div>
+      <h3>P&L summary report and forecast</h3>
+      <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
+        <div className="d-flex justify-content-end mb-2">
+          <div className="form-floating">
+            <select
+              className="form-select"
+              id="floatingSelectGrid"
+              aria-label="Floating label select example"
+              onChange={handleFY}
+              value={selectedFY}
             >
-              <i
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-                className="fa-solid fa-download fa-fade buttonColorPrimary"
-              ></i>
-            </button>
-            <button
-              onClick={showAddNewDataEntryView}
-              style={{ backgroundColor: "white", borderWidth: "0" }}
-            >
-              <i
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-                className="fa-solid fa-plus fa-fade buttonColorPrimary"
-              ></i>
-            </button>
+              <option disabled>---Select---</option>
+              <option value="2023">2022-2023</option>
+              <option value="2024">2023-2024</option>
+              <option value="2025">2024-2025</option>
+            </select>
+            <label htmlFor="floatingSelectGrid">Select FY</label>
           </div>
-          <div
+          <div className="Entity-filter">
+            <div className="form-floating">
+            <select
+                      value={selectedCompanyName}
+                      onChange={handleCompanyNameChange}
+                      className="form-select"
+                      style={{ width: "200px" }}
+                    >
+                      <option value="" disabled>
+                        ---Select Company---
+                      </option>
+                      <option value="Nabha Power Limited">
+                        Nabha Power Limited
+                      </option>
+                      <option value="L&T Geostructure Pvt. Ltd.">
+                        L&T Geostructure Pvt. Ltd.
+                      </option>
+                      <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
+                        L&T Special Steel & Heavy Forgings Pvt. Ltd.
+                      </option>
+                      <option value="L&T Innovation Campus">
+                        L&T Innovation Campus
+                      </option>
+                    </select>
+              <label htmlFor="entityFilter">Company</label>
+            </div>
+          </div>
+          {/* <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
+            Clear Filters
+          </button> */}
+          <div style={{ marginTop: "10px" }}></div>
+          <div>
+          <input
+            type="file"
+            className="form-control"
+            id="inputGroupFile01"
+            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            onChange={handleFileChange}
+            style={{marginTop:"10px"}}
+          />
+        </div>
+
+          <button
+            onClick={exportToExcel}
+            style={{
+              backgroundColor: "white",
+              borderWidth: "0",
+              marginRight: "15px",
+              marginLeft:'10px'
+            }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              className="fa-solid fa-download fa-fade buttonColorPrimary"
+            ></i>
+          </button>
+          <button
+            onClick={showAddNewDataEntryView}
+            style={{ backgroundColor: "white", borderWidth: "0" }}
+          >
+            <i
+              style={{
+                fontSize: "25px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              className="fa-solid fa-plus fa-fade buttonColorPrimary"
+            ></i>
+          </button>
+          
+        </div>
+        <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
-          <div
-            className="ActionTakenDashboard tableFreezeOption"
-            style={{ overflow: "auto", marginTop: "10px" }}
-          >
-            <table className="table table-bordered table-striped">
-              <thead className="table-format tableHeader">
-                <tr>
-                  <th colSpan={2}></th>
-                  {/* <th rowSpan={2}>FY{Number(selectedFY) - 1}</th> */}
-                  <th colSpan={2}>Q1 FY{selectedFY}</th>
-                  <th colSpan={2}>Q2 FY{selectedFY}</th>
-                  <th colSpan={2}>Q3 FY{selectedFY}</th>
-                  <th colSpan={2}>Q4 FY{selectedFY}</th>
-                  <th colSpan={2}></th>
-                </tr>
-                <tr className="tableFreezeOptionSecondHeader">
-                  <th scope="col">Particulars</th>
-                  <th scope="col">FY{Number(selectedFY) - 1}</th>
-                  <th scope="col" style={{ zIndex: 0 }}>
-                    Q1 FY{selectedFY}
-                    {selectedQtr[0]}
-                  </th>
-                  <th scope="col">
-                    Q1 FY{selectedFY}
-                    {selectedQtr[1]}
-                  </th>
-                  <th scope="col">
-                    Q2 FY{selectedFY}
-                    {selectedQtr[0]}
-                  </th>
-                  <th scope="col">
-                    Q2 FY{selectedFY}
-                    {selectedQtr[1]}
-                  </th>
-                  <th scope="col">
-                    Q3 FY{selectedFY}
-                    {selectedQtr[0]}
-                  </th>
-                  <th scope="col">
-                    Q3 FY{selectedFY}
-                    {selectedQtr[1]}
-                  </th>
-                  <th scope="col">
-                    Q4 FY{selectedFY}
-                    {selectedQtr[0]}
-                  </th>
-                  <th scope="col">
-                    Q4 FY{selectedFY}
-                    {selectedQtr[1]}
-                  </th>
-                  <th scope="col">FY{Number(selectedFY)}</th>
-                  <th scope="col">Growth %</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filterData().map((val, index) => {
-                  const info = findGrowth(val.FYcurrent, val.FYpre);
-                  const isSalesOrMargin =
-                    val.Particulars === "Sales" ||
-                    val.Particulars === "% Margin";
-                  const isSelectedEntity =
-                    val.Particulars.toLowerCase().includes(
-                      selectedEntity.toLowerCase()
-                    );
+        <div
+          className="ActionTakenDashboard tableFreezeOption"
+          style={{ overflow: "auto", marginTop: "10px" }}
+        >
+          <table className="table table-bordered table-striped">
+            <thead
+              className="table-format tableHeader"
+            >
+              <tr>
+                <th rowSpan={2} className="handleMergeRowFreeze">Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
+                <th colSpan={2}>Q1 FY{selectedFY}</th>
+                <th colSpan={2}>Q2 FY{selectedFY}</th>
+                <th colSpan={2}>Q3 FY{selectedFY}</th>
+                <th colSpan={2}>Q4 FY{selectedFY}</th>
+                <th rowSpan={2}>FY{Number(selectedFY)}</th>
+                <th rowSpan={2}>Growth %</th>
+              </tr>
+              <tr className="tableFreezeOptionSecondHeader">
+                <th scope="col" style={{zIndex:0}}>
+                  Q1 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {filterData().map((val, index) => {
+                const info = findGrowth(val.FYcurrent, val.FYpre);
+                const isSalesOrMargin =
+                  val.Particulars === "Sales" || val.Particulars === "% Margin";
+                const isSelectedEntity = val.Particulars.toLowerCase().includes(
+                  selectedEntity.toLowerCase()
+                );
 
-                  return (
-                    <tr
-                      key={index}
-                      className={isSelectedEntity ? "highlight-row" : ""}
+                return (
+                  <tr
+                    key={index}
+                    className={isSelectedEntity ? "highlight-row" : ""}
+                  >
+                    <th
+                      scope="row"
+                      className={isSalesOrMargin ? "bold-text" : ""}
                     >
-                      <th
-                        scope="row"
-                        className={isSalesOrMargin ? "bold-text" : ""}
+                      {val.Particulars.includes("Margin") ? (
+                        <>
+                          % Margin{" "}
+                          <sub style={{ fontSize: "smaller" }}>
+                            (including other income)
+                          </sub>
+                        </>
+                      ) : (
+                        val.Particulars
+                      )}
+                    </th>
+                    <td style={{ textAlign: "right" }}>{val.FYpre}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_A}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q1FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q2FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q3FYCurrent_B}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent_B}</td>
+                    <td style={{ textAlign: "center" }}>{val.FYcurrent}</td>
+                    <td>
+                      {info.value}%{" "}
+                      {info.isUp ? (
+                        <i
+                          style={{ color: "green" }}
+                          className="fa-solid fa-arrow-trend-up fa-fade"
+                        ></i>
+                      ) : (
+                        <i
+                          style={{ color: "red" }}
+                          className="fa-solid fa-arrow-trend-down fa-fade"
+                        ></i>
+                      )}
+                    </td>
+                    <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
                       >
-                        {val.Particulars.includes("Margin") ? (
-                          <>
-                            % Margin{" "}
-                            <sub style={{ fontSize: "smaller" }}>
-                              (including other income)
-                            </sub>
-                          </>
-                        ) : (
-                          val.Particulars
-                        )}
-                      </th>
-                      <td style={{ textAlign: "right" }}>{val.FYpre}</td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q1FYCurrent_A}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q2FYCurrent_A}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q3FYCurrent_A}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q4FYCurrent_A}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q1FYCurrent_B}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q2FYCurrent_B}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q3FYCurrent_B}
-                      </td>
-                      <td style={{ textAlign: "right" }}>
-                        {val.Q4FYCurrent_B}
-                      </td>
-                      <td style={{ textAlign: "center" }}>{val.FYcurrent}</td>
-                      <td>
-                        {info.value}%{" "}
-                        {info.isUp ? (
-                          <i
-                            style={{ color: "green" }}
-                            className="fa-solid fa-arrow-trend-up fa-fade"
-                          ></i>
-                        ) : (
-                          <i
-                            style={{ color: "red" }}
-                            className="fa-solid fa-arrow-trend-down fa-fade"
-                          ></i>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-      {showAddNewDataView && (
-        <AddDataForSummaryForecast
-          closeAddComponent={showAddNewDataEntryView}
-        />
-      )}
+    </div>
+    {
+      showAddNewDataView && <AddDataForSummaryForecast closeAddComponent={showAddNewDataEntryView} />
+   }
+   {isShowEditPage && (
+  <EditSummaryForecast
+    closeEditComponent={closeEditPage}
+    Summary={userEditInfo}
+    updateUser={SummaryForecast}
+  />
+)}
     </>
   );
 };

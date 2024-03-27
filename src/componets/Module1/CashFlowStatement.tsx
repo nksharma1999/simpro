@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AddDataForCashFlowStatement } from "./AddDataForCashFlowStatement";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditCashFlowStatement } from "./EditDataForCashFlowStatement";
 import * as XLSX from "xlsx";
 interface metaData {
   company: string;
@@ -77,6 +78,8 @@ const CashFlowStatement = () => {
   const [showAddNewDataView, setShowAddNewData] = useState(false);
   const [sData, setSData] = useState<metaData[]>([]);
   const [uData, setUData] = useState<metaData[]>([]);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
   };
@@ -108,6 +111,14 @@ const CashFlowStatement = () => {
       currentDate.getSeconds();
     const filename = `${formattedDate}.xlsx`;
     XLSX.writeFile(wb, `Cash_Flow_Statement_FY${selectedFY}_${filename}.xlsx`);
+  };
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
   };
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
@@ -212,55 +223,18 @@ const CashFlowStatement = () => {
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
         <div
-          className="ActionTakenDashboard tableFreezeOption"
+          className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader" >
               <tr>
-                <th colSpan={2}></th>
+                <th rowSpan={2}>Particulars</th>
+                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th colSpan={4}>
-                </th>
-              </tr>
-              <tr className="tableFreezeOptionSecondHeader">
-              <th rowSpan={2}>Particulars</th>
-                <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
-                <th scope="col" style={{zIndex:0}}>
-                  Q1 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q1 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q2 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q3 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[0]}
-                </th>
-                <th scope="col">
-                  Q4 FY{selectedFY}
-                  {selectedQtr[1]}
-                </th>
                 <th rowSpan={2}>
                   FY{Number(selectedFY)}
                   {selectedQtr[0]}
@@ -275,6 +249,43 @@ const CashFlowStatement = () => {
                 </th>
                 <th rowSpan={2}>
                   Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q1 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q2 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q3 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  Q4 FY{selectedFY}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
                 </th>
               </tr>
             </thead>
@@ -293,6 +304,38 @@ const CashFlowStatement = () => {
                     <td style={{ textAlign: "right" }}>{val.Q2FYCurrent}</td>
                     <td style={{ textAlign: "right" }}>{val.Q3FYCurrent}</td>
                     <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td style={{ textAlign: "right" }}>{val.Q4FYCurrent}</td>
+                    <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
@@ -304,6 +347,13 @@ const CashFlowStatement = () => {
     {
       showAddNewDataView && <AddDataForCashFlowStatement closeAddComponent={showAddNewDataEntryView} />
    }
+   {isShowEditPage && (
+  <EditCashFlowStatement
+    closeEditComponent={closeEditPage}
+    Cash={userEditInfo}
+    updateUser={CashFlowStatement}
+  />
+)}
     </>
   );
 };

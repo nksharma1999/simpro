@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AddDataBusinessProspects } from "./AddDataBusinessProspects";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
+import { EditBusinessProspects } from "./EditDataForBusinessProspects";
 const data1 = [
   {
     Customer: "Order Inflow",
@@ -66,6 +67,10 @@ const BusinessProspects = () => {
   const [yetToSubmittedData, setYetToSubmittedData] = useState(data2);
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const [editData, setEditData] = useState("");
+  const [showEdit, setShowEdit] = useState<boolean>(false);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
+  const [userEditInfo, setUserEditInfo] = useState(null);
   const handleSelection = (e: any) => {
     // console.log(e.target.value);
     setSelectedStatus(e.target.value);
@@ -74,6 +79,15 @@ const BusinessProspects = () => {
     if (selectedStatus === "All") return data;
     const fdata = data.filter((val: any) => val.Status === selectedStatus);
     return fdata;
+  };
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
   };
   const exportToExcel = () => {
     const filterSubmittedData =
@@ -213,12 +227,12 @@ const BusinessProspects = () => {
               <h4>Part A - Bids Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard tableFreezeOption"
+              className="ActionTakenDashboard"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr className="tableFreezeOptionSecondHeader">
+                  <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -226,6 +240,9 @@ const BusinessProspects = () => {
                     <th scope="col">Order Award Qtr.</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Winning Probability High / Medium / Low</th>
                     <th scope="col">Status </th>
+                    <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -240,6 +257,32 @@ const BusinessProspects = () => {
                         <td style={{ textAlign: "right" }}>{val.Order_Award_Qtr}</td>
                         <td style={{ textAlign: "right" }}>{val.Winning_Probability}</td>
                         <td style={{ textAlign: "center" }}>{val.Status}</td>
+                        <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
                       </tr>
                     );
                   })}
@@ -252,12 +295,12 @@ const BusinessProspects = () => {
               <h4>Part B - Bids yet to be Submitted</h4>
             </div>
             <div
-              className="ActionTakenDashboard tableFreezeOption"
+              className="ActionTakenDashboard"
               style={{ overflow: "auto", marginTop: "10px", maxHeight: "80vh" }}
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr className="tableFreezeOptionSecondHeader">
+                  <tr>
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -265,6 +308,9 @@ const BusinessProspects = () => {
                     <th scope="col">Order Award Qtr.</th>
                     <th scope="col" style={{width:'200px',whiteSpace:'wrap'}}>Winning Probability High / Medium / Low</th>
                     <th scope="col">Status </th>
+                    <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -280,6 +326,32 @@ const BusinessProspects = () => {
                           <td style={{ textAlign: "right" }}>{val.Order_Award_Qtr}</td>
                           <td style={{ textAlign: "right" }}>{val.Winning_Probability}</td>
                           <td style={{ textAlign: "center" }}>{val.Status}</td>
+                          <td
+                      style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <button
+                        onClick={() => handleEdit(val)}
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor: "white",
+                          border: "none",
+                          color: "green",
+                        }}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
                         </tr>
                       );
                     }
@@ -293,6 +365,13 @@ const BusinessProspects = () => {
       {showAddNewDataView && (
         <AddDataBusinessProspects closeAddComponent={showAddNewDataEntryView} />
       )}
+      {isShowEditPage && (
+  <EditBusinessProspects
+    closeEditComponent={closeEditPage}
+    Business={userEditInfo}
+    updateUser={BusinessProspects}
+  />
+)}
     </>
   );
 };

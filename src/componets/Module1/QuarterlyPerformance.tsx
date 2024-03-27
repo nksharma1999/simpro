@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 import { AddDataForQuarterlyPerformance } from "./AddDataForQuarterlyPerformance";
+import { EditQuarterlyPerformance } from "./EditDataForQuarterlyPerformance";
 
 
 
@@ -65,8 +66,27 @@ const QuarterlyPerformance = () => {
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const [projectUpdateData, setprojectUpdateData] = useState(data);
   const [showAddNewDataView, setShowAddNewData] = useState(false);
+  const [userEditInfo, setUserEditInfo] = useState(null);
+  const [isShowEditPage, setToShowEditPage] = useState<boolean>(false);
   const showAddNewDataEntryView = () => {
     setShowAddNewData(!showAddNewDataView);
+  };
+
+  const handleEdit = (info: any) => {
+    setUserEditInfo(info);
+    setToShowEditPage(true);
+  };
+  const closeEditPage = () => {
+    setToShowEditPage(false);
+    setUserEditInfo(null);
+  };
+  const QuarterlyPerformance = (EditQuarterlyPerformance: any) => {
+    // Update user information in the list
+    const updatedUserList = allActivity.map((user) =>
+      user.FYpre === EditQuarterlyPerformance.userId ? EditQuarterlyPerformance : user
+    );
+    setAllActivity(updatedUserList);
+    closeEditPage(); // Close the edit modal
   };
 
   const handleFY = (e: any) => {
@@ -119,15 +139,15 @@ const QuarterlyPerformance = () => {
 
     reader.readAsBinaryString(file);
   };
-  const handleEdit = (data: any) => {
-    // console.log(data);
-    setEditData(data);
-    setShowEdit(true);
-  };
-  const closeEditBox = () => {
-    setShowEdit(false);
-    setEditData("");
-  };
+  // const handleEdit = (data: any) => {
+  //   // console.log(data);
+  //   setEditData(data);
+  //   setShowEdit(true);
+  // };
+  // const closeEditBox = () => {
+  //   setShowEdit(false);
+  //   setEditData("");
+  // };
   return (
     <>
     <div>
@@ -253,12 +273,12 @@ const QuarterlyPerformance = () => {
         </div>
         <div style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}></div>
         <div
-          className="ActionTakenDashboard tableFreezeOption "
+          className="ActionTakenDashboard"
           style={{ overflow: "auto", marginTop: "10px" }}
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr className="tableFreezeOptionSecondHeader">
+              <tr>
                 <th scope="col">Particulars</th>
                 <th scope="col">FY{Number(selectedFY) - 1}</th>
                 <th scope="col">FY{selectedFY}</th>
@@ -332,9 +352,19 @@ const QuarterlyPerformance = () => {
         </div>
       </div>
     </div>
-     {
-      showAddNewDataView && <AddDataForQuarterlyPerformance closeAddComponent={showAddNewDataEntryView} />
-   }
+    {
+  showAddNewDataView && (
+    <AddDataForQuarterlyPerformance closeAddComponent={showAddNewDataEntryView} />
+  )
+}
+{isShowEditPage && (
+  <EditQuarterlyPerformance
+    closeEditComponent={closeEditPage}
+    Quarterly={userEditInfo}
+    updateUser={QuarterlyPerformance}
+  />
+)}
+        
     </>
   );
 };
