@@ -249,7 +249,7 @@ const NCDTracker = () => {
         >
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr className="tableFreezeOptionSecondHeader">
+              <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                 <th scope="col">ISIN no</th>
                 <th scope="col">Bond discription</th>
                 <th scope="col">Allotment/Issue Date</th>
@@ -270,7 +270,7 @@ const NCDTracker = () => {
               {allActivity.map((val, index) => {
                 // const info =  findGrowth(val.FYcurrent,val.FYpre);
                 return (
-                  <tr key={index}>
+                  <tr className="tableFirstThStyle" key={index}>
                     {/* <th scope="row">{val.Particulars}</th> */}
                     <th>{val.ISINnO}</th>
                     <td>{val.bond}</td>

@@ -222,7 +222,7 @@ const removeSInput = () => {
                           }}
                         >
                          
-                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                          <tr style={{ textAlign: "center" }} className="tableHeaderStyle tableFreezeOptionSecondHeader">
                           <th rowSpan={3}>ISIN no</th>
                             <th
                               scope="col"
@@ -243,11 +243,12 @@ const removeSInput = () => {
                               Maturity Date
                             </th>
                             <th scope="col">Principal Amount(Cr)</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddSanction ? (
-                            <tr>
+                            <tr className="tableFirstThStyle">
                               <th>
                               <input
                                   ref={sISINInput}
@@ -353,7 +354,7 @@ const removeSInput = () => {
                           )}
                           {sData.map((val, index) => {
                             return (
-                              <tr key={index}>
+                              <tr className="tableFirstThStyle" key={index}>
                                 <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>
@@ -415,7 +416,7 @@ const removeSInput = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                          <tr style={{ textAlign: "center" }} className="tableHeaderStyle tableFreezeOptionSecondHeader">
                             <th rowSpan={3}>ISIN no</th>
                             <th
                               scope="col"
@@ -436,11 +437,12 @@ const removeSInput = () => {
                               Maturity Date
                             </th>
                             <th scope="col">Principal Amount(Cr)</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddUtilized ? (
-                            <tr>
+                            <tr className="tableFirstThStyle">
                               <th>
                                 <input
                                   ref={uISINInput}
@@ -482,7 +484,7 @@ const removeSInput = () => {
                                 />
                               </td>
 
-                              <td></td>
+                          
                               <td>
                                 <div
                                   style={{
@@ -545,7 +547,7 @@ const removeSInput = () => {
                           )}
                           {uData.map((val, index) => {
                             return (
-                              <tr key={index}>
+                              <tr className="tableFirstThStyle" key={index}>
                                 <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>
@@ -606,7 +608,7 @@ const removeSInput = () => {
                             backgroundColor: "#f6f0f7",
                           }}
                         >
-                          <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                          <tr style={{ textAlign: "center" }} className="tableHeaderStyle tableFreezeOptionSecondHeader">
                             <th rowSpan={3}>SL</th>
                             <th scope="col">Onbehalf</th>
                             <th
@@ -622,11 +624,12 @@ const removeSInput = () => {
                               For
                             </th>
                             <th scope="col">Facility value</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           {isShowAddUtilized ? (
-                            <tr>
+                            <tr className="tableFirstThStyle">
                               <th>
                               <input
                                   ref={uISINInput}
@@ -667,7 +670,6 @@ const removeSInput = () => {
                                   style={{ minWidth: "100px" }}
                                 />
                               </td>
-                              <td></td>
                               <td>
                                 <div
                                   style={{
@@ -730,7 +732,7 @@ const removeSInput = () => {
                           )}
                           {uData.map((val, index) => {
                             return (
-                              <tr key={index}>
+                              <tr className="tableFirstThStyle" key={index}>
                                 <th>{val.ISIN}</th>
                                 <td>{val.bond}</td>
                                 <td>{val.issue}</td>

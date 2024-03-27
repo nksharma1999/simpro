@@ -154,16 +154,7 @@ const PrimaryInvestor = () => {
     <div>
       <h3>Primary Investor</h3>
       <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
-        <div>
-          {/* <div className="file-upload">
-        <input
-                  type="file"
-                  className="form-control"
-                  id="inputGroupFile01"
-                  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                  onChange={handleFileChange}
-                />
-        </div> */}
+        {/* <div> */}
           <div className="d-flex justify-content-between mb-2">
             <div>
               <input
@@ -193,18 +184,20 @@ const PrimaryInvestor = () => {
               </button>
             </div>
           </div>
-
+          <div
+            style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
+          ></div>
           <div
             className="ActionTakenDashboard tableFreezeOption"
             style={{
               overflow: "auto",
               marginTop: "10px",
-              maxHeight: "80vh",
+              // maxHeight: "80vh",
             }}
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                   <th scope="col">Bank details</th>
                   <th scope="col">LEIN</th>
                   <th scope="col">IT Exemption</th>
@@ -212,11 +205,12 @@ const PrimaryInvestor = () => {
                   <th scope="col">DTAA clause</th>
                   <th scope="col">PAN</th>
                   <th scope="col">Company Name</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {isShowAddSanction ? (
-                  <tr>
+                  <tr className="tableFirstThStyle">
                     <th>
                       <input
                         ref={banktInput}
@@ -330,7 +324,7 @@ const PrimaryInvestor = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
+                    <tr className="tableFirstThStyle" key={index}>
                       <th>{val.bank}</th>
                       <td>{val.LEIN}</td>
                       <td>{val.exemption}</td>
@@ -344,7 +338,7 @@ const PrimaryInvestor = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

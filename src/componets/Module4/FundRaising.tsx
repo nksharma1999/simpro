@@ -99,7 +99,7 @@ export const FundRaising = () => {
             </p>
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th
                     scope="col"
                     style={{ width: "250px", whiteSpace: "wrap" }}
@@ -150,7 +150,7 @@ export const FundRaising = () => {
 
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th
                     scope="col"
                     style={{ width: "250px", whiteSpace: "wrap" }}
@@ -201,7 +201,7 @@ export const FundRaising = () => {
 
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th
                     scope="col"
                     style={{ width: "250px", whiteSpace: "wrap" }}

@@ -70,7 +70,7 @@ const CorporateGuarantee = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th scope="col">Name of Subsidary company</th>
                   <th scope="col">As at</th>
                   <th scope="col">As at</th>
@@ -160,8 +160,8 @@ const CorporateGuarantee = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
-                      <td>{val.name}</td>
+                    <tr className="tableFirstThStyle" key={index}>
+                      <th>{val.name}</th>
                       <td>{val.start}</td>
                       <td>{val.end}</td>
                       <td>{val.maturity}</td>

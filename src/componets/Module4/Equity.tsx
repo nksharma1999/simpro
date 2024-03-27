@@ -96,7 +96,7 @@ export const Equity = () => {
 
           <table className="table table-bordered">
             <thead className="tableHeader">
-              <tr style={{ textAlign: "center" }}>
+              <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                 <th scope="col">Company Name</th>
                 <th scope="col" style={{ width: "200px", whiteSpace: "wrap" }}>
                   Type of holding

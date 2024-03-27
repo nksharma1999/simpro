@@ -3,6 +3,7 @@ import { AddDataForSummaryForecast } from "./AddDataForSummaryForecast";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 import { EditSummaryForecast } from "./EditDataForSummaryForecast";
 import * as XLSX from "xlsx";
+import { LockCmp, UnlockCmp } from "../../utils/LockUnlockBtn";
 interface metaData {
   company: string;
   bank: string;
@@ -421,52 +422,42 @@ const SummaryForecast = () => {
                   <th scope="col" style={{ zIndex: 0 }}>
                     Q1 FY{selectedFY}
                     {selectedQtr[0]}
-                    <button
-                      // className="btn"
-                      style={{backgroundColor:'transparent',border:'none',color:'white'}}
-                      onClick={() => {
-                        alert("Clicked");
-                      }}
-                    >
-                      <i className="fa-solid fa-lock"></i>
-                    </button>
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q1 FY{selectedFY}
                     {selectedQtr[1]}
-                    <button
-                      // className="btn"
-                      style={{backgroundColor:'transparent',border:'none',color:'white'}}
-                      onClick={() => {
-                        alert("Clicked");
-                      }}
-                    >
-                    <i className="fa-solid fa-lock-open"></i>
-                    </button>
+                    <UnlockCmp />
                   </th>
                   <th scope="col">
                     Q2 FY{selectedFY}
                     {selectedQtr[0]}
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q2 FY{selectedFY}
                     {selectedQtr[1]}
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q3 FY{selectedFY}
                     {selectedQtr[0]}
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q3 FY{selectedFY}
                     {selectedQtr[1]}
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q4 FY{selectedFY}
                     {selectedQtr[0]}
+                    <LockCmp />
                   </th>
                   <th scope="col">
                     Q4 FY{selectedFY}
                     {selectedQtr[1]}
+                    <LockCmp />
                   </th>
                   <th scope="col">FY{Number(selectedFY)}</th>
                   <th scope="col">Growth %</th>
@@ -594,3 +585,5 @@ const SummaryForecast = () => {
 };
 
 export default SummaryForecast;
+
+

@@ -107,7 +107,7 @@ const InternationalAmount = () => {
               <thead
                 
               >
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th scope="col">Amount in Mn USD</th>
                   <th colSpan={3} scope="colgroup">
                     External Debt as at
@@ -121,8 +121,9 @@ const InternationalAmount = () => {
                   <th colSpan={2} scope="colgroup">
                     Equity from L&T as at
                   </th>
+                  <th></th>
                 </tr>
-                <tr style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader">
+                <tr  style={{ textAlign: "center" }} className="tableFreezeOptionSecondHeader tableHeaderStyle">
                   <th scope="col">Business Entity</th>
                   <th scope="col">Mar 23</th>
                   <th scope="col">Q1 June-23(A)</th>
@@ -140,15 +141,15 @@ const InternationalAmount = () => {
               </thead>
               <tbody>
                 {isShowAddSanction ? (
-                  <tr>
-                    <td>
+                  <tr className="tableFirstThStyle">
+                    <th>
                       <input
                         ref={amountInput}
                         type="text"
                         className="form-control"
                         style={{ minWidth: "100px" }}
                       />
-                    </td>
+                    </th>
 
                     <td>
                       <input
@@ -293,8 +294,8 @@ const InternationalAmount = () => {
                 )}
                 {sData.map((val: any, index: any) => {
                   return (
-                    <tr key={index}>
-                      <td>{val.amount}</td>
+                    <tr className="tableFirstThStyle" key={index}>
+                      <th>{val.amount}</th>
                       <td>{val.external}</td>
                       <td>{val.icb}</td>
                       <td>{val.cash}</td>

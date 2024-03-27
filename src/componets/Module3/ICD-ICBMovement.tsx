@@ -101,11 +101,12 @@ const ICBMovement = () => {
           >
             <table className="table table-bordered" id='ICBMovement'>
               <thead className="tableHeader">
-                <tr style={{ textAlign: "center" }}>
+                <tr className="tableHeaderStyle" style={{ textAlign: "center" }}>
                   <th scope="col">ICD</th>
                   <th scope="col">S&A Company</th>
                   <th scope="col">Values in Rs Cr.</th>
                   <th scope="col">Maturity day</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
