@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { AddDataForSummaryForecast } from "./AddDataForSummaryForecast"
+import { AddDataForSummaryForecast } from "./AddDataForSummaryForecast";
 import { excelFileDataToJson } from "../../utils/excelFileDataToJson";
 import { EditSummaryForecast } from "./EditDataForSummaryForecast";
 import * as XLSX from "xlsx";
@@ -227,7 +227,6 @@ const SummaryForecast = () => {
     setUserEditInfo(null);
   };
 
-
   const handleFY = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedFY(e.target.value);
   };
@@ -235,9 +234,7 @@ const SummaryForecast = () => {
   const handleEntityFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedEntity(e.target.value);
   };
-  const handleCompanyNameChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleCompanyNameChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCompanyName(e.target.value);
   };
 
@@ -307,101 +304,100 @@ const SummaryForecast = () => {
 
   return (
     <>
-    <div>
-      <h3>P&L summary report and forecast</h3>
-      <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
-        <div className="d-flex justify-content-end mb-2">
-          <div className="form-floating">
-            <select
-              className="form-select"
-              id="floatingSelectGrid"
-              aria-label="Floating label select example"
-              onChange={handleFY}
-              value={selectedFY}
-            >
-              <option disabled>---Select---</option>
-              <option value="2023">2022-2023</option>
-              <option value="2024">2023-2024</option>
-              <option value="2025">2024-2025</option>
-            </select>
-            <label htmlFor="floatingSelectGrid">Select FY</label>
-          </div>
-          <div className="Entity-filter">
+      <div>
+        <h3>P&L summary report and forecast</h3>
+        <div className={"card "} style={{ maxHeight: "80vh", padding: "10px" }}>
+          <div className="d-flex justify-content-end mb-2">
             <div className="form-floating">
-            <select
-                      value={selectedCompanyName}
-                      onChange={handleCompanyNameChange}
-                      className="form-select"
-                      style={{ width: "200px" }}
-                    >
-                      <option value="" disabled>
-                        ---Select Company---
-                      </option>
-                      <option value="Nabha Power Limited">
-                        Nabha Power Limited
-                      </option>
-                      <option value="L&T Geostructure Pvt. Ltd.">
-                        L&T Geostructure Pvt. Ltd.
-                      </option>
-                      <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
-                        L&T Special Steel & Heavy Forgings Pvt. Ltd.
-                      </option>
-                      <option value="L&T Innovation Campus">
-                        L&T Innovation Campus
-                      </option>
-                    </select>
-              <label htmlFor="entityFilter">Company</label>
+              <select
+                className="form-select"
+                id="floatingSelectGrid"
+                aria-label="Floating label select example"
+                onChange={handleFY}
+                value={selectedFY}
+              >
+                <option disabled>---Select---</option>
+                <option value="2023">2022-2023</option>
+                <option value="2024">2023-2024</option>
+                <option value="2025">2024-2025</option>
+              </select>
+              <label htmlFor="floatingSelectGrid">Select FY</label>
             </div>
-          </div>
-          {/* <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
+            <div className="Entity-filter">
+              <div className="form-floating">
+                <select
+                  value={selectedCompanyName}
+                  onChange={handleCompanyNameChange}
+                  className="form-select"
+                  style={{ width: "200px" }}
+                >
+                  <option value="" disabled>
+                    ---Select Company---
+                  </option>
+                  <option value="Nabha Power Limited">
+                    Nabha Power Limited
+                  </option>
+                  <option value="L&T Geostructure Pvt. Ltd.">
+                    L&T Geostructure Pvt. Ltd.
+                  </option>
+                  <option value="L&T Special Steel & Heavy Forgings Pvt. Ltd.">
+                    L&T Special Steel & Heavy Forgings Pvt. Ltd.
+                  </option>
+                  <option value="L&T Innovation Campus">
+                    L&T Innovation Campus
+                  </option>
+                </select>
+                <label htmlFor="entityFilter">Company</label>
+              </div>
+            </div>
+            {/* <button className="clear-button buttonColorPrimary"style={{backgroundColor:'#0A6862',color:'white'}} onClick={clearFilters}>
             Clear Filters
           </button> */}
-          <div style={{ marginTop: "10px" }}></div>
-          <div>
-          <input
-            type="file"
-            className="form-control"
-            id="inputGroupFile01"
-            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            onChange={handleFileChange}
-            style={{marginTop:"10px"}}
-          />
-        </div>
+            <div style={{ marginTop: "10px" }}></div>
+            <div>
+              <input
+                type="file"
+                className="form-control"
+                id="inputGroupFile01"
+                accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                onChange={handleFileChange}
+                style={{ marginTop: "10px" }}
+              />
+            </div>
 
-          <button
-            onClick={exportToExcel}
-            style={{
-              backgroundColor: "white",
-              borderWidth: "0",
-              marginRight: "15px",
-              marginLeft:'10px'
-            }}
-          >
-            <i
+            <button
+              onClick={exportToExcel}
               style={{
-                fontSize: "25px",
-                fontWeight: "bold",
-                cursor: "pointer",
+                backgroundColor: "white",
+                borderWidth: "0",
+                marginRight: "15px",
+                marginLeft: "10px",
               }}
-              className="fa-solid fa-download fa-fade buttonColorPrimary"
-            ></i>
-          </button>
-          <button
-            onClick={showAddNewDataEntryView}
-            style={{ backgroundColor: "white", borderWidth: "0" }}
-          >
-            <i
-              style={{
-                fontSize: "25px",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              className="fa-solid fa-plus fa-fade buttonColorPrimary"
-            ></i>
-          </button>
-          
-        </div>
-        <div
+            >
+              <i
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+                className="fa-solid fa-download fa-fade buttonColorPrimary"
+              ></i>
+            </button>
+            <button
+              onClick={showAddNewDataEntryView}
+              style={{ backgroundColor: "white", borderWidth: "0" }}
+            >
+              <i
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+                className="fa-solid fa-plus fa-fade buttonColorPrimary"
+              ></i>
+            </button>
+          </div>
+          <div
             style={{ border: "0.6px solid #DFDFDF", marginTop: "0px" }}
           ></div>
           <div
@@ -417,7 +413,7 @@ const SummaryForecast = () => {
                   <th colSpan={2}>Q2 FY{selectedFY}</th>
                   <th colSpan={2}>Q3 FY{selectedFY}</th>
                   <th colSpan={2}>Q4 FY{selectedFY}</th>
-                  <th colSpan={2}></th>
+                  <th colSpan={3}></th>
                 </tr>
                 <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                   <th scope="col">Particulars</th>
@@ -425,10 +421,28 @@ const SummaryForecast = () => {
                   <th scope="col" style={{ zIndex: 0 }}>
                     Q1 FY{selectedFY}
                     {selectedQtr[0]}
+                    <button
+                      // className="btn"
+                      style={{backgroundColor:'transparent',border:'none',color:'white'}}
+                      onClick={() => {
+                        alert("Clicked");
+                      }}
+                    >
+                      <i className="fa-solid fa-lock"></i>
+                    </button>
                   </th>
                   <th scope="col">
                     Q1 FY{selectedFY}
                     {selectedQtr[1]}
+                    <button
+                      // className="btn"
+                      style={{backgroundColor:'transparent',border:'none',color:'white'}}
+                      onClick={() => {
+                        alert("Clicked");
+                      }}
+                    >
+                    <i className="fa-solid fa-lock-open"></i>
+                    </button>
                   </th>
                   <th scope="col">
                     Q2 FY{selectedFY}
@@ -457,8 +471,8 @@ const SummaryForecast = () => {
                   <th scope="col">FY{Number(selectedFY)}</th>
                   <th scope="col">Growth %</th>
                   <th scope="col" style={{ textAlign: "center" }}>
-                  Edit
-                </th>
+                    Edit
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -475,7 +489,11 @@ const SummaryForecast = () => {
                   return (
                     <tr
                       key={index}
-                      className={isSelectedEntity ? "highlight-row tableFirstThStyle" : "tableFirstThStyle"}
+                      className={
+                        isSelectedEntity
+                          ? "highlight-row tableFirstThStyle"
+                          : "tableFirstThStyle"
+                      }
                     >
                       <th
                         scope="row"
@@ -533,31 +551,31 @@ const SummaryForecast = () => {
                         )}
                       </td>
                       <td
-                      style={{
-                        textAlign: "center",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <button
-                        onClick={() => handleEdit(val)}
                         style={{
-                          backgroundColor: "white",
-                          border: "none",
-                          color: "green",
+                          textAlign: "center",
+                          cursor: "pointer",
                         }}
                       >
-                        <i className="fa-solid fa-pen-to-square"></i>
-                      </button>
-                      <button
-                        style={{
-                          backgroundColor: "white",
-                          border: "none",
-                          color: "green",
-                        }}
-                      >
-                        <i className="fa-solid fa-trash"></i>
-                      </button>
-                    </td>
+                        <button
+                          onClick={() => handleEdit(val)}
+                          style={{
+                            backgroundColor: "white",
+                            border: "none",
+                            color: "green",
+                          }}
+                        >
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button
+                          style={{
+                            backgroundColor: "white",
+                            border: "none",
+                            color: "green",
+                          }}
+                        >
+                          <i className="fa-solid fa-trash"></i>
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}

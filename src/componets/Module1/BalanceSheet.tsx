@@ -249,21 +249,9 @@ const BalanceSheet = () => {
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th rowSpan={2}>
-                  FY{Number(selectedFY)}
-                  {selectedQtr[0]}
+                <th colSpan={5}>
                 </th>
-                <th rowSpan={2}>
-                  FY{Number(selectedFY)}
-                  {selectedQtr[1]}
-                </th>
-                <th rowSpan={2}>
-                  Budget v/s Actual {Number(selectedFY)}-
-                  {Number(selectedFY) - 1}
-                </th>
-                <th rowSpan={2}>
-                  Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
-                </th>
+               
               </tr>
               <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
               <th rowSpan={2}>Particulars</th>
@@ -299,6 +287,21 @@ const BalanceSheet = () => {
                 <th scope="col">
                   Q4 FY{selectedFY}
                   {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  FY{Number(selectedFY)}
+                  {selectedQtr[0]}
+                </th>
+                <th scope="col">
+                  FY{Number(selectedFY)}
+                  {selectedQtr[1]}
+                </th>
+                <th scope="col">
+                  Budget v/s Actual {Number(selectedFY)}-
+                  {Number(selectedFY) - 1}
+                </th>
+                <th scope="col">
+                  Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}
                 </th>
                 <th scope="col" style={{ textAlign: "center" }}>
                   Edit

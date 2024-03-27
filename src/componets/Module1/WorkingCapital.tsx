@@ -439,13 +439,8 @@ const WorkingCapital = () => {
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
                 <th colSpan={2}>Q3 FY{selectedFY}</th>
                 <th colSpan={2}>Q4 FY{selectedFY}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[0]}</th>
-                <th rowSpan={2}>FY{Number(selectedFY)}{selectedQtr[1]}</th>
-                <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-                <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
-                <th scope="col" style={{ textAlign: "center" }}>
-                  Edit
-                </th>
+                <th colSpan={5}></th>
+                
               </tr>
               <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
               <th scope="col">Particulars</th>
@@ -458,7 +453,13 @@ const WorkingCapital = () => {
                 <th scope="col">Q3 FY{selectedFY}{selectedQtr[1]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[0]}</th>
                 <th scope="col">Q4 FY{selectedFY}{selectedQtr[1]}</th>
-
+                <th scope="col">FY{Number(selectedFY)}{selectedQtr[0]}</th>
+                <th scope="col">FY{Number(selectedFY)}{selectedQtr[1]}</th>
+                <th scope="col">Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th scope="col" >Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
+                <th scope="col" style={{ textAlign: "center" }}>
+                  Edit
+                </th>
               </tr>
             </thead>
             <tbody>
