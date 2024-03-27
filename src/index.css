@@ -2,7 +2,7 @@
 
 .tableFreezeOption td,
 .tableFreezeOption th {
-  background: #fff;
+  /* background: #fff; */
   /* border: 1px solid red; */
 }
 /* th {
@@ -15,7 +15,7 @@
   position: sticky;
   left: 0;
   z-index: 1;
-  background: white;
+  /* background: white; */
 }
 .handleMergeRowFreeze{
   position: -webkit-sticky;
@@ -27,6 +27,15 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  
+}
+.tableHeaderStyle th{
+  background-color: black;
+  color: white;
+}
+.tableFirstThStyle th{
+  background-color: white;
+  
 }
 .customeFreezeColumn{
   /* position: fixed; */
@@ -40,7 +49,7 @@
   z-index: 2;
 }
 .tableFreezeOption{
-  border: 1px solid #f1f1f1;
+  /* border: 1px solid #f1f1f1; */
 }
 /* *****Table */
 
@@ -70,7 +79,6 @@ th {
 .tableHeader {
   /* position: sticky; */
   color: "black";
-  background: white;
   /* top: 0; */
   /* background-color: "#f6f0f7"; */
 }

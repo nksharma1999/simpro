@@ -421,7 +421,7 @@ const WorkingCapital = () => {
         >
           <table className="table table-bordered">
             <thead className="table-format tableHeader" >
-              <tr>
+              <tr className="tableHeaderStyle">
                 <th colSpan={2}></th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
@@ -432,7 +432,7 @@ const WorkingCapital = () => {
                 <th rowSpan={2}>Budget v/s Actual {Number(selectedFY)}-{Number(selectedFY) - 1}</th>
                 <th rowSpan={2} style={{ width: '200px', whiteSpace: 'wrap' }}>Year on Year {Number(selectedFY)}-{Number(selectedFY) - 1}</th> */}
               </tr>
-              <tr className="tableFreezeOptionSecondHeader">
+              <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
               <th scope="col">Particulars</th>
                 <th scope="col">FY{Number(selectedFY) - 1}</th>
                 <th scope="col" style={{zIndex:0}}>Q1 FY{selectedFY}{selectedQtr[0]}</th>
@@ -458,7 +458,7 @@ const WorkingCapital = () => {
                 //const isSelectedEntity = val.Particulars.toLowerCase().includes(selectedEntity.toLowerCase());
 
                 return (
-                  <tr key={index} /*className={isSelectedEntity ? "highlight-row" : ""}*/>
+                  <tr className="tableFirstThStyle" key={index} /*className={isSelectedEntity ? "highlight-row" : ""}*/>
                     <th scope="row" /*className={isSalesOrMargin ? "bold-text" : ""}*/>
                       {val.Particulars.includes("Margin") ? (
                         <>

@@ -217,7 +217,7 @@ const CashFlowStatement = () => {
         >
           <table className="table table-bordered" style={{ width: "100%" }}>
             <thead className="table-format tableHeader" >
-              <tr>
+              <tr className="tableHeaderStyle">
                 <th colSpan={2}></th>
                 <th colSpan={2}>Q1 FY{selectedFY}</th>
                 <th colSpan={2}>Q2 FY{selectedFY}</th>
@@ -226,7 +226,7 @@ const CashFlowStatement = () => {
                 <th colSpan={4}>
                 </th>
               </tr>
-              <tr className="tableFreezeOptionSecondHeader">
+              <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
               <th rowSpan={2}>Particulars</th>
                 <th rowSpan={2}>FY{Number(selectedFY) - 1}</th>
                 <th scope="col" style={{zIndex:0}}>
@@ -282,7 +282,7 @@ const CashFlowStatement = () => {
               {allActivity.map((val: any, index: number) => {
                 const info = findGrowth(val.FYcurrent, val.FYpre);
                 return (
-                  <tr key={index}>
+                  <tr key={index} className="tableFirstThStyle">
                     <th scope="row">{val.Particulars}</th>
                     <td style={{ textAlign: "right" }}>{val.FYpre}</td>
                     <td style={{ textAlign: "right" }}>{val.FYcurrent}</td>

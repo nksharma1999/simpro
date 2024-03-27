@@ -326,7 +326,7 @@ const ActionTakenReport: React.FC = () => {
           >
             <table className="table table-bordered">
               <thead className="tableHeader">
-                <tr className="tableFreezeOptionSecondHeader">
+                <tr className="tableFreezeOptionSecondHeader tableHeaderStyle" >
                   <th scope="col">Sn.</th>
                   <th scope="col">Topic</th>
                   <th scope="col">Steps Identifed</th>
@@ -343,7 +343,7 @@ const ActionTakenReport: React.FC = () => {
               <tbody>
                 {allActivity.map((val, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="tableFirstThStyle">
                       <th scope="row">{index + 1}</th>
                       <td>{val.topic}</td>
                       <td>{val.stepsIndentifed}</td>

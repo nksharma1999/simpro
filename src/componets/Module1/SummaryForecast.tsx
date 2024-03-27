@@ -392,7 +392,7 @@ const SummaryForecast = () => {
           >
             <table className="table table-bordered table-striped">
               <thead className="table-format tableHeader">
-                <tr>
+                <tr className="tableHeaderStyle">
                   <th colSpan={2}></th>
                   {/* <th rowSpan={2}>FY{Number(selectedFY) - 1}</th> */}
                   <th colSpan={2}>Q1 FY{selectedFY}</th>
@@ -401,7 +401,7 @@ const SummaryForecast = () => {
                   <th colSpan={2}>Q4 FY{selectedFY}</th>
                   <th colSpan={2}></th>
                 </tr>
-                <tr className="tableFreezeOptionSecondHeader">
+                <tr className=" tableFreezeOptionSecondHeader tableHeaderStyle">
                   <th scope="col">Particulars</th>
                   <th scope="col">FY{Number(selectedFY) - 1}</th>
                   <th scope="col" style={{ zIndex: 0 }}>
@@ -454,7 +454,7 @@ const SummaryForecast = () => {
                   return (
                     <tr
                       key={index}
-                      className={isSelectedEntity ? "highlight-row" : ""}
+                      className={isSelectedEntity ? "highlight-row tableFirstThStyle" : "tableFirstThStyle"}
                     >
                       <th
                         scope="row"

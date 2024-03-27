@@ -218,7 +218,7 @@ const BusinessProspects = () => {
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr className="tableFreezeOptionSecondHeader">
+                  <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -231,7 +231,7 @@ const BusinessProspects = () => {
                 <tbody>
                   {filterData(submittedData).map((val: any, index: number) => {
                     return (
-                      <tr key={index}>
+                      <tr key={index} className="tableFirstThStyle">
                         <th>{val.Customer}</th>
                         <td style={{ textAlign: "center" }}>{val.Project}</td>
                         <td style={{ textAlign: "right" }}>{val.Value}</td>
@@ -257,7 +257,7 @@ const BusinessProspects = () => {
             >
               <table className="table table-bordered">
                 <thead className="tableHeader">
-                  <tr className="tableFreezeOptionSecondHeader">
+                  <tr className="tableFreezeOptionSecondHeader tableHeaderStyle">
                     <th scope="col">Customer</th>
                     <th scope="col">Project</th>
                     <th scope="col">Value</th>
@@ -271,7 +271,7 @@ const BusinessProspects = () => {
                   {filterData(yetToSubmittedData).map(
                     (val: any, index: number) => {
                       return (
-                        <tr key={index}>
+                        <tr key={index} className="tableFirstThStyle">
                           <th>{val.Customer}</th>
                           <td style={{ textAlign: "center" }}>{val.Project}</td>
                           <td style={{ textAlign: "right" }}>{val.Value}</td>
